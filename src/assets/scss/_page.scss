@@ -25,10 +25,13 @@ body{
 .wrapper{
   @include fullabsolute(0,0,100%,100%,1);
 }
+.container{
+  @include fullabsolute(0,0,100%,100%,10);
+}
 
 //for border frame
 .border-frame{
-  @include fullabsolute(0,0,100vw,100vh,10);
+  @include fullabsolute(0,0,100vw,100vh,5);
   .bf{
     @include fullabsolute(0,0,100vw,100vh,1);
     box-sizing: border-box;

@@ -24,7 +24,28 @@ Api = {
     },
     //
     //is fill form
-    isFillForm:function(obj,callback){
+    isFillForm:function(callback){
+        Common.msgBox.add('loading...');
+        //$.ajax({
+        //    url:'/api/answer',
+        //    type:'POST',
+        //    data:obj,
+        //    dataType:'json',
+        //    success:function(data){
+        //        Common.msgBox.remove();
+        //        return callback(data);
+        //        //status=1 有库存
+        //    }
+        //});
+
+        return callback({
+            status:1,
+        })
+
+
+    },
+
+    isLuckyDraw:function(callback){
         Common.msgBox.add('loading...');
         //$.ajax({
         //    url:'/api/answer',

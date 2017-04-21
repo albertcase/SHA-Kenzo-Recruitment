@@ -400,6 +400,15 @@ p{
 /*----End ajax loading----*/
 
 
+//verticle align
+.v-content{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  @include transform(translate(-50%,-50%));
+}
+
+
 /*For landscape style*/
 @-webkit-keyframes rotation {
   10% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }

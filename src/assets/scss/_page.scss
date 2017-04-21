@@ -16,6 +16,42 @@ body{
   background-size: cover;
 }
 
+.logo{
+  @include size(2.18rem,0.73rem);
+}
+.pin{
+  //opacity: 0;
+  z-index: -10;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  @include size(100%,calc(100% - 1.3rem));
+  overflow: hidden;
+  @include transition(opacity 1s);
+  display: none;
+  &.current{
+    display: block;
+    //opacity: 1;
+    z-index: 1;
+  }
+}
+
+
+.btn{
+  text-align: center;
+  display: block;
+  //width: 2.7rem;
+  margin: 0 auto;
+  //padding: 0.2rem 1rem;
+  background: #000;
+  color: #fff;
+  font-size: 0.32rem;
+  &:active{
+    background: #000;
+    color: #ccc;
+  }
+}
+
 //for loading
 .loading-wrap{
   display: none;
@@ -48,3 +84,4 @@ body{
     }
   }
 }
+

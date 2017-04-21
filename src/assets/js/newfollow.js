@@ -9,61 +9,28 @@
     controller.prototype.init = function(){
         var self = this;
 
-        if(location.hash=='#form'){
-            Common.gotoPin(1);
-        }else{
-            Common.gotoPin(0);
-        }
-
-        //Common.setParameterByName('page','test');
-        //load userinfo
-        self.userInfo();
-
-        //bind events
         self.bindEvent();
     };
 
     //bind Events
     controller.prototype.bindEvent = function(){
         var self = this;
-
-        //show contact form
-        $('.show-personal span').on('touchstart',function(){
-            //fill the form
-            //Api.getUserForm(function(data){
-            //    if(data.status==1){
-            //        $('#input-name').val('123');
-            //        $('#input-mobile').val('123');
-            //        $('#input-address').val('123');
-            //    }else{
-            //
-            //    }
-            //});
-            location.hash = '#form';
-            //location.search = Common.setParameterByName('page','form');
+    //    receive the prize
+        $('.btn-getprize').on('touchstart',function(){
             Common.gotoPin(1);
         });
 
-        //    submit form
-        $('#form-contact .btn-submit').on('touchstart',function(){
-            if(self.validateForm()){
-                var name =$('#input-name').val(),
-                    mobile =$('#input-mobile').val(),
-                    address =$('#input-address').val();
-                Api.submitUserForm({
-                    name:name,
-                    cellphone:mobile,
-                    address:address
-                },function(data){
-                    if(data.status==1){
-                        console.log('login success,go page1');
-                        location.hash = '#exchange';
-                        Common.gotoPin(0);
-                    }else{
-                        Common.alertBox.add(data.msg);
-                    }
-                });
-            }
+    //    submit the form
+        $('.btn-submit').on('touchstart',function(){
+            Api.submitInfo({
+
+            },function(data){
+                if(data.status==1){
+                    Common.gotoPin(2);
+                }else{
+                    alert(data.msg);
+                }
+            });
         });
 
     };
@@ -134,8 +101,8 @@
 
     $(document).ready(function(){
 //    show form
-        var exchange = new controller();
-        exchange.init();
+        var newFollow = new controller();
+        newFollow.init();
 
     });
 

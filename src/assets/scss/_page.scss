@@ -20,7 +20,7 @@ body{
   @include size(2.18rem,0.73rem);
 }
 .pin{
-  //opacity: 0;
+  opacity: 0;
   z-index: -10;
   position: absolute;
   left: 0;
@@ -28,10 +28,10 @@ body{
   @include size(100%,calc(100% - 1.3rem));
   overflow: hidden;
   @include transition(opacity 1s);
-  display: none;
+  //display: none;
   &.current{
     display: block;
-    //opacity: 1;
+    opacity: 1;
     z-index: 1;
   }
 }
@@ -40,12 +40,15 @@ body{
 .btn{
   text-align: center;
   display: block;
-  //width: 2.7rem;
+  width: 4.12rem;
+  height: 1.22rem;
   margin: 0 auto;
-  //padding: 0.2rem 1rem;
-  background: #000;
+  padding-top: 0.15rem;
+  background: url("../images/btn.png") center center no-repeat;
+  background-size: cover;
   color: #fff;
   font-size: 0.32rem;
+  box-sizing: border-box;
   &:active{
     background: #000;
     color: #ccc;
@@ -85,3 +88,114 @@ body{
   }
 }
 
+
+
+//for pin-landing
+  //  setting animate time parameter
+$ani-delay-1: 1000ms;
+$ani-delay-2: 2000ms;
+$ani-delay-3: 3000ms;
+$ani-delay-4: 4000ms;
+$ani-delay-5: 5000ms;
+.pin-landing{
+  .title{
+    @include size(4.11rem,0.84rem);
+    margin: 0.3rem auto 0;
+  }
+  .des-wrap{
+    position: relative;
+    height: 2rem;
+    margin: 0.6rem auto;
+    mask-image: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 70%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    -webkit-mask-image: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 70%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */;
+    -webkit-mask-image: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 70%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    .des{
+      position: absolute;
+      top:0;
+      left: 0%;
+      width: 100%;
+      height: 2.8rem;
+      text-align: center;
+      @include transform(translateY(1.8rem));
+      color: #676763;
+      font-size: 0.28rem;
+      line-height: 2;
+      @include animation(overandover 10s linear infinite);
+    }
+  }
+  .terms-link{
+    width: 3rem;
+    text-align: center;
+    margin: -0.2rem auto 0;
+    color: #6b6b6b;
+    font-size: 0.22rem;
+    text-decoration: underline;
+  }
+  .foreground{
+    .box-top{
+      position: absolute;
+      z-index: 2;
+      bottom: 1.4rem;
+      left: 2.29rem;
+      @include size(2.91rem,1.32rem);
+    }
+    .box-bottom{
+      position: absolute;
+      z-index: 1;
+      bottom: 0.5rem;
+      left: 1.8rem;
+      @include size(3.81rem,2.94rem);
+    }
+  }
+  .flower{
+    position: absolute;
+    left: 0.2rem;
+    bottom: -5rem;
+    @include size(6.52rem,5.01rem);
+    @include transition(bottom 2s $ani-delay-1);
+  }
+  .ani-petal{
+    position: absolute;
+    z-index: 1;
+    @include size(1.09rem,1.26rem);
+  }
+  &.current{
+    .flower{
+      bottom: 0rem;
+    }
+    .foreground{
+      .box-top{
+        @include animation(outandfade $ani-delay-2 1 forwards);
+        @keyframes outandfade {
+          0%{
+            bottom: 1.4rem;
+          }
+          20%{
+            bottom: 1.5rem;
+            left: 2.4rem;
+            @include transform(rotate(10deg));
+          }
+          40%{
+            bottom: 2rem;
+            left: 3rem;
+            @include transform(rotate(30deg));
+          }
+          100%{
+            bottom: 3rem;
+            left: 7.5rem;
+            @include transform(rotate(30deg));
+          }
+
+        }
+      }
+    }
+  }
+}
+@keyframes overandover {
+  0%{
+    @include transform(translateY(1.8rem));
+  }
+  100%{
+    @include transform(translateY(-3.2rem));
+  }
+}

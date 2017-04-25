@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
     <script src="../src/assets/js/lib/zepto.min.js"></script>
+    <script src="../src/assets/js/lib/pre-loader.js"></script>
     <script src="../src/assets/js/rem.js"></script>
     <script src="../src/assets/js/region.js"></script>
     <script src="../src/assets/js/common.js"></script>
@@ -24,12 +25,17 @@
         <div class="mod-orient-layer__desc">请在解锁模式下使用竖屏浏览</div>
     </div>
 </div>
-<div class="loading-wrap">
-    loading...
+<div class="preload">
+    <div class="animate-flower">
+        <img src="../src/dist/images/preload-flower.jpg" alt="kenzo"/>
+    </div>
+    <div class="loading-num">
+        ...<span class="num">10</span>%
+    </div>
 </div>
 <!--main content-->
 <!-- 未关注 -->
-<div class="wrapper">
+<div class="wrapper animate">
     <!-- sometimes z-index is larger than border-frame, sometimes is lower-->
 
     <!-- z-index is middle-->
@@ -43,7 +49,7 @@
     </div>
     <!-- z-index is low-->
     <div class="container">
-        <div class="pin pin-1 pin-landing current" id="pin-landing-1">
+        <div class="pin pin-1 pin-landing" id="pin-landing-1">
             <div class="title">
                 <img src="../src/dist/images/landing-1.png" alt="kenzo"/>
             </div>
@@ -121,12 +127,12 @@
         </div>
         <div class="pin pin-3" id="pin-gift">
             <div class="des v-content">
-                <div class="prize-item prize-yes show">
+                <div class="prize-item prize-yes">
                     <h3 class="title">「恭喜您」</h3>
                     KENZO睡美人面膜正装（75ML）<br>
                     Miss K 将火速为您寄送礼品！
                 </div>
-                <div class="prize-item prize-no">
+                <div class="prize-item prize-no show">
                     <div class="guide-share">
                         <img src="../src/dist/images/guide-share.png" alt=""/>
                     </div>

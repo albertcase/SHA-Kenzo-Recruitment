@@ -10,6 +10,7 @@
         var self = this;
 
         var timeStart = 0,
+            step= 5,
             isTrueNext = false,
             isFalseNext = false;
         var loadingAni = setInterval(function(){
@@ -21,12 +22,12 @@
                 clearInterval(loadingAni);
                 return;
             };
-            if(timeStart==2){
+            if(timeStart==step){
                 $('.animate-flower').addClass('fadenow');
             }
             $('.loading-num .num').html(timeStart);
-            timeStart++;
-        },100);
+            timeStart += step;
+        },200);
 
         var baseurl = ''+'/src/dist/images/';
         var imagesArray = [

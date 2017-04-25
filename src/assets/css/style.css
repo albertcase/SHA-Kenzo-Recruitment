@@ -679,10 +679,10 @@ body {
   bottom: 0;
   width: 100%;
   opacity: 0;
-  -moz-transition: opacity 10s linear;
-  -o-transition: opacity 10s linear;
-  -webkit-transition: opacity 10s linear;
-  transition: opacity 10s linear;
+  -moz-transition: opacity 4s linear;
+  -o-transition: opacity 4s linear;
+  -webkit-transition: opacity 4s linear;
+  transition: opacity 4s linear;
 }
 .preload .animate-flower.fadenow {
   opacity: 1;

@@ -27,7 +27,7 @@ body{
     bottom: 0;
     width: 100%;
     opacity: 0;
-    @include transition(opacity 10s linear);
+    @include transition(opacity 4s linear);
     //background: url("../images/preload-flower.jpg")  center center no-repeat;
     //background-size: cover;
     &.fadenow{

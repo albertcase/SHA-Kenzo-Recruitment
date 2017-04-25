@@ -8,7 +8,7 @@ class PageController extends Controller {
 	public function indexAction() {	
 		ini_set("display_errors", 1);
 		global $user;
-		if (!$user) {
+		if (!$user->uid) {
 			$this->redirect('/wechat/curio/callback');
 		}
 		var_dump($user);exit;

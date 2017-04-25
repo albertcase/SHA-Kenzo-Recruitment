@@ -67,40 +67,40 @@ class DatabaseAPI {
 	/**
 	 * Create user in database  
 	 */
-	// public function findUserByOpenid($openid){
-	// 	$sql = "SELECT `uid`, `openid` FROM `user` WHERE `openid` = ?"; 
-	// 	$res = $this->connect()->prepare($sql);
-	// 	$res->bind_param("s", $openid);
-	// 	$res->execute();
-	// 	$res->bind_result($uid, $openid);
-	// 	if($res->fetch()) {
-	// 		$user = new \stdClass();
-	// 		$user->uid = $uid;
-	// 		$user->openid = $openid;
-	// 		return $user;
-	// 	}
-	// 	return NULL;
-	// }
-
-	/**
-	 * Create user in database
-	 */
 	public function findUserByOpenid($openid){
-		$sql = "SELECT `uid`, `openid`, `nickname`, `headimgurl` FROM `user` WHERE `openid` = ?"; 
+		$sql = "SELECT `uid`, `openid` FROM `user` WHERE `openid` = ?"; 
 		$res = $this->connect()->prepare($sql);
 		$res->bind_param("s", $openid);
 		$res->execute();
-		$res->bind_result($uid, $openid, $nickname, $headimgurl);
+		$res->bind_result($uid, $openid);
 		if($res->fetch()) {
 			$user = new \stdClass();
 			$user->uid = $uid;
 			$user->openid = $openid;
-			$user->nickname = $nickname;
-			$user->headimgurl = $headimgurl;
 			return $user;
 		}
 		return NULL;
 	}
+
+	/**
+	 * Create user in database
+	 */
+	// public function findUserByOpenid($openid){
+	// 	$sql = "SELECT `uid`, `openid`, `nickname`, `headimgurl` FROM `user` WHERE `openid` = ?"; 
+	// 	$res = $this->connect()->prepare($sql);
+	// 	$res->bind_param("s", $openid);
+	// 	$res->execute();
+	// 	$res->bind_result($uid, $openid, $nickname, $headimgurl);
+	// 	if($res->fetch()) {
+	// 		$user = new \stdClass();
+	// 		$user->uid = $uid;
+	// 		$user->openid = $openid;
+	// 		$user->nickname = $nickname;
+	// 		$user->headimgurl = $headimgurl;
+	// 		return $user;
+	// 	}
+	// 	return NULL;
+	// }
 
 	/**
 	 * 

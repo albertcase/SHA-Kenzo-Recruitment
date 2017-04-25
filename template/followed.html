@@ -9,8 +9,9 @@
     <meta name="full-screen" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
-    <script src="../src/assets/js/rem.js"></script>
     <script src="../src/assets/js/lib/zepto.min.js"></script>
+    <script src="../src/assets/js/rem.js"></script>
+    <script src="../src/assets/js/region.js"></script>
     <script src="../src/assets/js/common.js"></script>
     <script src="../src/assets/js/api.js"></script>
     <!--<script src="../src/assets/js/wxshare.js"></script>-->
@@ -79,7 +80,7 @@
         <!-- 填写表单选项-->
         <div class="pin pin-2" id="pin-fillform">
             <h3 class="title">
-                *请确认您的邮寄信息填写无误
+                *请确认您的邮寄信息填写无误<br>
                 以便我们为您更快寄出产品
             </h3>
             <form id="form-contact">
@@ -90,18 +91,28 @@
                     <div class="input-box input-box-mobile">
                         <input type="tel" maxlength="11" id="input-mobile" placeholder="电话"/>
                     </div>
-                    <div class="input-box input-box-province">
-                        <select name="province" id="input-province">
+                    <div class="input-box input-box-province select-box">
+                        <input type="text" id="input-text-province" placeholder="省份"/>
+                        <select name="province" id="select-province">
                             <option value="">省份</option>
                         </select>
                     </div>
                     <div class="input-box input-box-city-district">
-                        <select name="city" id="input-city">
-                            <option value="">城市</option>
-                        </select>
-                        <select name="district" id="input-district">
-                            <option value="">区县</option>
-                        </select>
+                        <div class="select-box">
+                            <input type="text" id="input-text-city" placeholder="城市"/>
+                            <select name="city" id="select-city">
+                                <option value="">城市</option>
+                            </select>
+                        </div>
+                        <div class="select-box">
+                            <input type="text" id="input-text-district" placeholder="区县"/>
+                            <select name="district" id="select-district">
+                                <option value="">区县</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-box input-box-address">
+                        <input type="text" id="input-address" placeholder="详细地址"/>
                     </div>
                 </div>
                 <div class="btn btn-submit">提 交</div>
@@ -109,16 +120,15 @@
 
         </div>
         <div class="pin pin-3" id="pin-gift">
-            <p>
-                「恭喜您」
-                获得KENZO睡美人面膜试用装*
-                （2ML）一份
+            <div class="des">
+                <h3 class="title">「恭喜您」</h3>
+                KENZO睡美人面膜正装（75ML）<br>
                 Miss K 将火速为您寄送礼品！
-            </p>
-            <div class="p3-2">
-                <p class="name">* KENZO花颜舒柔夜间修护面膜</p>
-                <div class="btn btn-getproduct">点击赢取睡美人面膜正装</div>
             </div>
+            <!--<div class="p3-2">-->
+                <!--<p class="name">* KENZO花颜舒柔夜间修护面膜</p>-->
+                <!--<div class="btn btn-getproduct">点击赢取睡美人面膜正装</div>-->
+            <!--</div>-->
         </div>
     </div>
 </div>

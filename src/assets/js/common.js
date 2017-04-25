@@ -65,6 +65,23 @@
 				}
 			}
 		},
+		errorMsgBox : {
+			add:function(msg){
+				if(!$('.msgbox').length){
+					$('#pin-fillform').append('<div class="msgbox">'+msg+'</div>');
+				}else{
+					$('#pin-fillform .msgbox').html(msg);
+				}
+				var rvMsgBox = setTimeout(function(){
+					$('.msgbox').remove();
+				},3000);
+			},
+			remove:function(ele){
+				if($('.msgbox').length){
+					$('.msgbox').remove();
+				}
+			}
+		},
 		alertBox:{
 			add:function(msg){
 				$('body').append('<div class="alertpop msgbox"><div class="inner"><div class="msg">'+msg+'</div><div class="btn-alert-ok">关闭</div></div></div>');

@@ -608,7 +608,9 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: calc(100% - 1.3rem);
+  height: 100%;
+  padding-top: 1.3rem;
+  box-sizing: border-box;
   overflow: hidden;
   -moz-transition: opacity 1s;
   -o-transition: opacity 1s;
@@ -954,4 +956,73 @@ body {
     -o-transform: translateY(-3.2rem);
     transform: translateY(-3.2rem);
   }
+}
+/*
+  For pin-fillform
+*/
+#pin-fillform .msgbox {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 1rem;
+  text-align: center;
+  line-height: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+#pin-fillform .title {
+  font-size: 0.26rem;
+  color: #6b6b6b;
+  text-align: center;
+  margin: 0.3rem auto 0.6rem;
+}
+#pin-fillform #form-contact {
+  width: 80vw;
+  margin: 0 auto;
+  font-size: 0.26rem;
+  color: #6b6b6b;
+}
+#pin-fillform #form-contact .input-box {
+  position: relative;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+#pin-fillform #form-contact .input-box input[type="text"],
+#pin-fillform #form-contact .input-box input[type="tel"],
+#pin-fillform #form-contact .input-box select {
+  display: inline-block;
+  width: 100%;
+  padding: 0.15rem 0;
+  font-size: 0.26rem;
+  text-align: center;
+  border: none;
+  background: transparent;
+  border-bottom: #a4b3e7 1px solid;
+  mask-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #ffffff 15%, #ffffff 50%, #ffffff 85%, rgba(255, 255, 255, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  -webkit-mask-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #ffffff 15%, #ffffff 50%, #ffffff 85%, rgba(255, 255, 255, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  -webkit-mask-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 15%, white 50%, white 85%, rgba(255, 255, 255, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+}
+#pin-fillform #form-contact .select-box {
+  position: relative;
+}
+#pin-fillform #form-contact .select-box input[type="text"] {
+  position: relative;
+  z-index: 1;
+}
+#pin-fillform #form-contact .select-box select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+}
+#pin-fillform #form-contact .input-box-city-district .select-box {
+  display: inline-block;
+  width: 48%;
+}
+#pin-fillform #form-contact .btn-submit {
+  margin-top: 0.6rem;
 }

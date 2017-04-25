@@ -17,7 +17,7 @@ class CurioController extends Controller {
 		if(!$user) {
 			$userAPI->userRegister($request->query->get('openid'));
 		}
-		$url = '';
+		$url = $request->getSourcetUrl();
 		$this->redirect($url);
 	}
 

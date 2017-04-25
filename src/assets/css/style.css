@@ -171,7 +171,7 @@ p {
   padding: 1.4rem 0.5rem;
   box-sizing: border-box;
   background: rgba(0, 0, 0, 0.8);
-  z-index: 20;
+  z-index: 200;
   color: #000;
 }
 .popup.show {
@@ -709,6 +709,57 @@ body {
 .logo {
   width: 2.18rem;
   height: 0.73rem;
+}
+
+.terms-pop {
+  background: transparent;
+}
+.terms-pop .inner {
+  width: 7.5rem;
+  height: 10.79rem;
+  background: url("../images/pop-bg.png") no-repeat;
+  background-size: 100%;
+  box-sizing: border-box;
+  padding-top: 1rem;
+}
+.terms-pop .title {
+  background: transparent;
+  color: #9eaee5;
+  font-size: 0.52rem;
+  padding: 0;
+}
+.terms-pop .pcontent {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.terms-pop .pcontent .subtitle {
+  display: inline-block;
+  background: #a5a8e0;
+  color: #fff;
+  font-size: 0.3rem;
+  font-weight: normal;
+  padding: 0.04rem 0.2rem;
+  border-radius: 5px;
+  margin-bottom: 0.1rem;
+}
+.terms-pop .pcontent .des {
+  color: #6b6b6b;
+  font-size: 0.24rem;
+  line-height: 1.8;
+}
+.terms-pop .pcontent .product-name {
+  color: #6b6b6b;
+  font-size: 0.22rem;
+}
+.terms-pop .btn-close {
+  top: auto;
+  bottom: 1rem;
+  left: 50%;
+  background: #9eaee5;
+  border-radius: 100%;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 
 .pin {

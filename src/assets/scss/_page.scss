@@ -16,6 +16,40 @@ body{
   background-size: cover;
 }
 
+//for preload
+.preload{
+  @include fullabsolute(0,0,100%,100%,100);
+  background: url("../images/preload-bg.jpg") center center no-repeat;
+  background-size: cover;
+  .animate-flower{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    @include transition(opacity 4s linear);
+    //background: url("../images/preload-flower.jpg")  center center no-repeat;
+    //background-size: cover;
+    &.fadenow{
+      opacity: 1;
+    }
+  }
+  .loading-num{
+    position: absolute;
+    right: 2.8rem;
+    bottom: 10vh;
+    width: 1.2rem;
+    height: 0.6rem;
+    @include transform(rotate(90deg));
+    .num{
+      width: .6rem;
+      height: .6rem;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+}
+
 .logo{
   @include size(2.18rem,0.73rem);
 }
@@ -64,6 +98,7 @@ body{
 
 //for wrapper
 .wrapper{
+  opacity: 0;
   @include fullabsolute(0,0,100%,100%,1);
 }
 .container{
@@ -317,6 +352,51 @@ $ani-delay-5: 5000ms;
     }
     .btn-submit{
       margin-top: 0.6rem;
+    }
+  }
+}
+
+//for pin-gift
+#pin-gift{
+  .title{
+    color: #6b6b6b;
+    font-size: 0.4rem;
+  }
+  .des{
+    top: 35%;
+    width: 4.6rem;
+    text-align: center;
+    font-size: 0.26rem;
+  }
+  .prize-item{
+    display: none;
+    &.show{
+      display: block;
+    }
+  }
+  .b-img{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  .guide-share{
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    @include size(1.10rem,1.04rem);
+    @include transform-origin(50% 0);
+    @include animation(lefttoright 2s infinite);
+    @include keyframes(lefttoright){
+      0%{
+        @include transform(rotate(5deg));
+      }
+      50%{
+        @include transform(rotate(-5deg));
+      }
+      100%{
+        @include transform(rotate(5deg));
+      }
     }
   }
 }

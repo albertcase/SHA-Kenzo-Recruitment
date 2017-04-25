@@ -8,7 +8,7 @@ define("VENDOR_ROOT", dirname(__FILE__) . '/../vendor');
 define("USER_STORAGE", 'SESSION');
 
 //Wechat Vendor
-define("WECHAT_VENDOR", 'default'); // default | curio
+define("WECHAT_VENDOR", 'curio'); // default | curio
 
 //Wechat config info
 define("TOKEN", '?????');
@@ -20,7 +20,7 @@ define("NOWTIME", date('Y-m-d H:i:s'));
 define("AHEADTIME", '100');
 
 define("NONCESTR", '?????');
-define("CURIO_AUTH_URL", '?????'); 
+define("CURIO_AUTH_URL", 'http://kenzowechat.samesamechina.com/weixin/oauth2'); 
 
 //Redis config info
 define("REDIS_HOST", '127.0.0.1');

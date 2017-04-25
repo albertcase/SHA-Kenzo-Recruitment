@@ -11,6 +11,7 @@ class CurioController extends Controller {
 			'openid' => array('notnull', '120'),
 		);
 		$request->validation($fields);
+		echo $request->query->get('openid');exit;
 		$userAPI = new \Lib\UserAPI();
 		$user = $userAPI->userLogin($request->query->get('openid'));
 		if(!$user) {

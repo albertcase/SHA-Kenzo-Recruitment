@@ -53,6 +53,57 @@ body{
 .logo{
   @include size(2.18rem,0.73rem);
 }
+
+//for terms-pop
+.terms-pop{
+  background: transparent;
+  .inner{
+    @include size(7.5rem,10.79rem);
+    background: url("../images/pop-bg.png") no-repeat;
+    background-size: 100%;
+    box-sizing: border-box;
+    padding-top: 1rem;
+  }
+  .title{
+    background: transparent;
+    color: #9eaee5;
+    font-size: 0.52rem;
+    padding: 0;
+  }
+  .pcontent{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    .subtitle{
+      display: inline-block;
+      background: #a5a8e0;
+      color: #fff;
+      font-size: 0.3rem;
+      font-weight: normal;
+      padding: 0.04rem 0.2rem;
+      border-radius: 5px;
+      margin-bottom: 0.1rem;
+    }
+    .des{
+      color: #6b6b6b;
+      font-size: 0.24rem;
+      line-height: 1.8;
+    }
+    .product-name{
+      color: #6b6b6b;
+      font-size: 0.22rem;
+    }
+  }
+  .btn-close{
+    top: auto;
+    bottom: 1rem;
+    left: 50%;
+    background: #9eaee5;
+    border-radius: 100%;
+    @include size(0.6rem,0.6rem);
+  }
+}
+
 .pin{
   opacity: 0;
   z-index: -10;

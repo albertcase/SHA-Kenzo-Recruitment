@@ -67,6 +67,16 @@
     //bind Events
     controller.prototype.bindEvent = function(){
         var self = this;
+        //show and hide terms pop
+            //close terms popup
+        $('body').on('touchstart','.btn-close',function(){
+            $('.terms-pop').removeClass('show');
+        });
+        //    show terms pop
+        $('.terms-link').on('touchstart',function(){
+            $('.terms-pop').addClass('show');
+        });
+
         //    receive the prize
         $('.btn-luckydraw').on('touchstart',function(){
             //Common.gotoPin(1);

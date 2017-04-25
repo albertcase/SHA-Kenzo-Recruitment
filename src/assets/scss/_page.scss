@@ -320,3 +320,35 @@ $ani-delay-5: 5000ms;
     }
   }
 }
+
+//for pin-gift
+#pin-gift{
+  .title{
+    color: #6b6b6b;
+    font-size: 0.4rem;
+  }
+  .des{
+    top: 35%;
+    width: 4.6rem;
+    text-align: center;
+    font-size: 0.26rem;
+  }
+  .prize-item{
+    display: none;
+    &.show{
+      display: block;
+    }
+  }
+  .b-img{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  .guide-share{
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    @include size(1.10rem,1.04rem);
+  }
+}

@@ -7,6 +7,9 @@ class PageController extends Controller {
 
 	public function indexAction() {	
 		global $user;
+		if (!$user) {
+			$this->redirect('/wechat/curio/callback');
+		}
 		$subscribed = $this->subscribed($user->openid);
 		if (!$subscribed) {
 			//未关注

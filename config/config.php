@@ -38,7 +38,7 @@ define("SCOPE", 'snsapi_base');
 
 //Wechat Authorize Page
 define("AUTHORIZE_URL", '[
-	"/"
+	"/wechat/curio/callback"
 ]');
 
 //Account Access

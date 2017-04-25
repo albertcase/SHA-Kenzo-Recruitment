@@ -11,6 +11,7 @@ class PageController extends Controller {
 		if (!$user) {
 			$this->redirect('/wechat/curio/callback');
 		}
+		var_dump($user);exit;
 		$subscribed = $this->subscribed($user->openid);
 		if (!$subscribed) {
 			//未关注

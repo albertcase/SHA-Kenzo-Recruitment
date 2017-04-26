@@ -125,6 +125,7 @@
                 },function(data){
                     if(data.status==1){
                         Common.gotoPin(2);
+                        self.prizeResult();
                     }else{
                         alert(data.msg);
                     }

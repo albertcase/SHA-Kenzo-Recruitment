@@ -77,17 +77,15 @@ class PageController extends Controller {
 	public function loginAction() {
 		$request = $this->request;
 		$fields = array(
-			'id' => array('notnull', '120'),
+			'openid' => array('notnull', '120'),
 		);
 		$request->validation($fields);
-		$id = $request->query->get('id');
-		$user = new \stdClass();
-		$user->uid = $id;
-		$user->openid = 'openid_'.$id;
-		$user->nickname = 'user_'.$id;
-		$user->headimgurl = '111';
-		setcookie('_user0206', json_encode($user), time()+3600*24*30, '/');
-		echo 'user:login:'.$id;
+		$userAPI = new \Lib\UserAPI();
+		$user = $userAPI->userLogin($request->query->get('openid'));
+		if(!$user) {
+			$userAPI->userRegister($request->query->get('openid'));
+		}
+		echo 'user:login:'.$openid;
 		exit;
 
 	}

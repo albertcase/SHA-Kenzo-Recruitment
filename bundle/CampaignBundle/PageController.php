@@ -6,22 +6,27 @@ use Core\Controller;
 class PageController extends Controller {
 
 	public function indexAction() {	
+		ini_set("display_errors", 1);
 		global $user;
+		if (!$user->uid) {
+			$this->redirect('/wechat/curio/callback');
+		}
+		//var_dump($user);exit;
 		$subscribed = $this->subscribed($user->openid);
 		if (!$subscribed) {
 			//未关注
 			$this->render('unfollow');
 		}
 		//关注
-		$databaseAPI = new \Lib\DatabaseAPI();
-		$checknew = $databaseAPI->checkOpenid($user->openid);
-		if (!$checknew) {
-			$this->render('followed');
-		}
-		$lottery = $databaseAPI->loadLotteryByUid($user->uid);
-		if (!$lottery) {
-			$this->render('newfollow');
-		}
+		// $databaseAPI = new \Lib\DatabaseAPI();
+		// $checknew = $databaseAPI->checkOpenid($user->openid);
+		// if (!$checknew) {
+		// 	$this->render('followed');
+		// }
+		// $lottery = $databaseAPI->loadLotteryByUid($user->uid);
+		// if (!$lottery) {
+		// 	$this->render('newfollow');
+		// }
 		$this->render('followed');
 	}
 

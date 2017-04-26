@@ -23,8 +23,8 @@ class UserAPI extends Base {
         $data = new \stdClass();
         $data->uid = $_user->uid;
         $data->openid = $_user->openid;
-        $data->nickname = $_user->nickname;
-        $data->headimgurl = $_user->headimgurl;
+        // $data->nickname = $_user->nickname;
+        // $data->headimgurl = $_user->headimgurl;
         // if($re = $this->_db->findInfoByUid($_user->uid)) {
         //   $data->info = $re;
         // }

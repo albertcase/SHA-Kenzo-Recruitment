@@ -6,6 +6,7 @@ use Core\Controller;
 class CurioController extends Controller {
 
 	public function callbackAction() {
+		ini_set("display_errors", 1);
 		$request = $this->request;
 		$fields = array(
 			'openid' => array('notnull', '120'),
@@ -16,7 +17,7 @@ class CurioController extends Controller {
 		if(!$user) {
 			$userAPI->userRegister($request->query->get('openid'));
 		}
-		$url = '';
+		$url = $request->getSourcetUrl();
 		$this->redirect($url);
 	}
 

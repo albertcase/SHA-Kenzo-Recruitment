@@ -35,8 +35,8 @@ class RequestListener {
 	}
 
 	private function curioWechatAuthoize($request, $current_url) {
-		//$request->setSourceUrl($current_url);
+		$request->setSourceUrl($current_url);
 		$WechatAPI = new \Lib\CurioWechatAPI();
-		$WechatAPI->wechatAuthorize($current_url);
+		$WechatAPI->wechatAuthorize(BASE_URL.'wechat/curio/callback');
 	}
 }

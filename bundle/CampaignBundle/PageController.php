@@ -85,7 +85,7 @@ class PageController extends Controller {
 		if(!$user) {
 			$userAPI->userRegister($request->query->get('openid'));
 		}
-		echo 'user:login:'.$openid;
+		echo 'user:login:'.$request->query->get('openid');
 		exit;
 
 	}

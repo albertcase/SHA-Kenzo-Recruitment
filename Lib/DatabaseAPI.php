@@ -165,30 +165,7 @@ class DatabaseAPI {
 	}
 
 
-	public function insertSubmit($data){
-		$sql = "INSERT INTO `submit` SET `uid` = ?, `name` = ?, `mobile` = ?, `province` = ?, `city` = ?, `area` = ?, `address` = ?"; 
-		$res = $this->connect()->prepare($sql); 
-		$res->bind_param("sssssss", $data->uid, $data->name, $data->mobile, $data->province, $data->city, $data->area, $data->address);
-		if($res->execute()) 
-			return $res->insert_id;
-		else 
-			return FALSE;
-	}
-
-	public function loadSubmit($uid){
-		$sql = "SELECT `name`, `info` FROM `submit` WHERE `uid` = ?"; 
-		$res = $this->connect()->prepare($sql);
-		$res->bind_param("s", $uid);
-		$res->execute();
-		$res->bind_result($name, $info);
-		if($res->fetch()) {
-			$data = new \stdClass();
-			$data->name = $name;
-			$data->info = $info;
-			return $data;
-		}
-		return NULL;
-	}
+	
 
 	
 

@@ -9,8 +9,9 @@
     <meta name="full-screen" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
-    <script src="../src/assets/js/rem.js"></script>
+    <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite?debug=1"></script>
     <script src="../src/assets/js/lib/zepto.min.js"></script>
+    <script src="../src/assets/js/rem.js"></script>
     <script src="../src/assets/js/common.js"></script>
     <script src="../src/assets/js/wxshare.js"></script>
 </head>

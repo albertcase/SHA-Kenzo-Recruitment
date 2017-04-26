@@ -61,7 +61,6 @@
         $('.preload').remove();
         $('.wrapper').addClass('fade');
         Common.gotoPin(0);
-        self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
         //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
@@ -156,8 +155,6 @@
     //share success
     controller.prototype.shareSuccess = function(){
         var self = this;
-        Cookies.set('hasShared',true);
-        self.hasShared = true;
         $('.share-popup').removeClass('show');
         Api.isFillForm(function (data) {
             //if filled, go lucky draw page

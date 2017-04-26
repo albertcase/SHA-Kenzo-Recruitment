@@ -9,8 +9,9 @@
     <meta name="full-screen" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
-    <script src="../src/assets/js/rem.js"></script>
+    <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite?debug=1"></script>
     <script src="../src/assets/js/lib/zepto.min.js"></script>
+    <script src="../src/assets/js/rem.js"></script>
     <script src="../src/assets/js/common.js"></script>
     <script src="../src/assets/js/wxshare.js"></script>
 </head>
@@ -21,14 +22,10 @@
             <div class="mod-orient-layer__desc">请在解锁模式下使用竖屏浏览</div>
         </div>
     </div>
-    <div class="loading-wrap">
-        loading...
-    </div>
     <!--main content-->
     <!-- 未关注 -->
     <div class="wrapper animate fade">
         <!-- sometimes z-index is larger than border-frame, sometimes is lower-->
-
         <!-- z-index is middle-->
         <div class="border-frame">
             <div class="bf bf-1"></div>
@@ -40,7 +37,7 @@
         </div>
         <!-- z-index is low-->
         <div class="container">
-            <div class="pin pin-1">
+            <div class="pin pin-1 current" id="pin-follow">
                 <div class="qrcode">
                     <img src="../src/dist/images/qrcode.png" alt="kenzo"/>
                 </div>

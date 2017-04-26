@@ -46,13 +46,13 @@ function weixinshare(obj,successCallBack){
 };
 
 $(document).ready(function(){
-    //weixinshare({
-    //    title1: 'kenzo',
-    //    des: 'kenzo',
-    //    link: window.location.origin,
-    //    img: window.location.origin+'/src/dist/images/logo.png'
-    //},function(){
-    //    console.log('sharesuccess');
-    //});
+    weixinshare({
+        title1: 'kenzo',
+        des: 'kenzo',
+        link: window.location.origin,
+        img: window.location.origin+'/src/dist/images/logo.png'
+    },function(){
+        console.log('sharesuccess');
+    });
 
 });

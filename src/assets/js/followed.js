@@ -113,7 +113,6 @@
             }else{
                 console.log('show share pop');
                 $('.share-popup').addClass('show');
-
             }
         });
 

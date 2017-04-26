@@ -136,10 +136,6 @@ body{
   color: #fff;
   font-size: 0.32rem;
   box-sizing: border-box;
-  &:active{
-    background: #000;
-    color: #ccc;
-  }
 }
 
 //for loading
@@ -212,7 +208,7 @@ $ani-delay-5: 5000ms;
       @include animation(overandover 10s linear infinite);
     }
   }
-  .btn-luckydraw{
+  .btn{
     position: relative;
     z-index: 2;
   }
@@ -335,6 +331,11 @@ $ani-delay-5: 5000ms;
   }
 }
 
+#pin-landing-2{
+  .title{
+    @include size(4.97rem,0.84rem);
+  }
+}
 
 /*
   For pin-fillform
@@ -421,6 +422,7 @@ $ani-delay-5: 5000ms;
   }
   .prize-item{
     display: none;
+    color: #6b6b6b;
     &.show{
       display: block;
     }
@@ -430,6 +432,15 @@ $ani-delay-5: 5000ms;
     left: 0;
     bottom: 0;
     width: 100%;
+  }
+  .name{
+    margin-top: 0.8rem;
+    font-size: 0.22rem;
+    color: #6b6b6b;
+  }
+  .btn-getproduct{
+    width: 4.6rem;
+    height: 1.4rem;
   }
 }
 .guide-share{

@@ -4,6 +4,10 @@
 ;(function(){
     var controller = function(){
         this.hasShared = false;
+        //if getPrize is 0, no lottery
+        //if getPrize is 1, lottery and get prize
+        //if getPrize is 2, lottery and no prize
+        this.getPrize = 0;
     };
     //init
     controller.prototype.init = function(){
@@ -73,8 +77,22 @@
         var self = this;
         $('.preload').remove();
         $('.wrapper').addClass('fade');
-        Common.gotoPin(0);
+
         self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
+        self.getPrize = Cookies.get('getPrize')?Cookies.get('getPrize'):0;
+        if(self.getPrize == 0){
+            Common.gotoPin(0);
+        }else{
+            Common.gotoPin(2);
+            if(self.getPrize==1){
+                //    get prize
+                $('.prize-yes').addClass('show');
+                $('.prize-no').removeClass('show');
+            }else if(self.getPrize==2){
+                $('.prize-yes').removeClass('show');
+                $('.prize-no').addClass('show');
+            };
+        }
         //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
@@ -209,10 +227,12 @@
         Api.isLuckyDraw(function(result){
             //self.prizeResult(result.status,result.msg);
             if(result.status==1){
+                Cookies.set('getPrize',1);
                 //    get prize
                 $('.prize-yes').addClass('show');
                 $('.prize-no').removeClass('show');
             }else if(result.status==2){
+                Cookies.set('getPrize',2);
                 $('.prize-yes').removeClass('show');
                 $('.prize-no').addClass('show');
             }else{

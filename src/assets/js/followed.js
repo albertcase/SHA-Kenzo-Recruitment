@@ -31,7 +31,20 @@
 
         var baseurl = ''+'/src/dist/images/';
         var imagesArray = [
-            baseurl + 'logo.png'
+            baseurl + 'logo.png',
+            baseurl + 'ani-1.png',
+            baseurl + 'ani-2.png',
+            baseurl + 'ani-3.png',
+            baseurl + 'ani-5.png',
+            baseurl + 'bg.jpg',
+            baseurl + 'btn.png',
+            baseurl + 'foreground-1.png',
+            baseurl + 'gift-flower.png',
+            baseurl + 'guide-share.png',
+            baseurl + 'landing-1.png',
+            baseurl + 'pop-bg.png',
+            baseurl + 'preload-bg.jpg',
+            baseurl + 'preload-flower.jpg',
         ];
 
         imagesArray = imagesArray.concat(self.loadingImg);

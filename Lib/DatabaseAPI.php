@@ -107,9 +107,9 @@ class DatabaseAPI {
 	 */
 	public function saveInfo($data){
 		if($this->findInfoByUid($data->uid)) {
-			$this->updateInfo($data);
+			return $this->updateInfo($data);
 		} else {
-			$this->insertInfo($data);
+			return $this->insertInfo($data);
 		}
 	} 
 

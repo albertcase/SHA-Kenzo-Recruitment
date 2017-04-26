@@ -165,7 +165,40 @@ class DatabaseAPI {
 	}
 
 
+	public function checkOpenid($openid) {
+		$sql = "SELECT `id` FROM `openid` WHERE `openid` = ?"; 
+		$res = $this->connect()->prepare($sql);
+		$res->bind_param("s", $openid);
+		$res->execute();
+		$res->bind_result($id);
+		if($res->fetch()) {		
+			return 1;
+		}
+		return 0;
+	}
+
+	public function loadLotteryByUid($uid) {
+		$sql = "SELECT `id` FROM `lottery` WHERE `uid` = ? and `status` = 1"; 
+		$res = $this->connect()->prepare($sql);
+		$res->bind_param("s", $uid);
+		$res->execute();
+		$res->bind_result($id);
+		if($res->fetch()) {		
+			return 1;
+		}
+		return 0;
+	}
 	
+
+	public function setLottery($uid, $status) {
+		$sql = "INSERT INTO `lottery` SET `uid` = ?, `status` = ?"; 
+		$res = $this->connect()->prepare($sql); 
+		$res->bind_param("ss", $uid, $status);
+		if($res->execute()) 
+			return $res->insert_id;
+		else 
+			return FALSE;
+	}
 
 	
 

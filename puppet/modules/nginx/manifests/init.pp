@@ -26,8 +26,6 @@ class nginx {
   file {
     '/etc/nginx/sites-available/www.conf':
       content  => template("nginx/www-${env}.erb"),
-      owner   => 'root',
-      group   => 'root',
       notify  => Exec['enable-site-www-conf'];
     '/etc/nginx/nginx.conf':
       content  => template("nginx/nginx-${env}.erb"),

@@ -7,8 +7,8 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "sha-kenzo-recruitment"
 
   
-  config.vm.network :forwarded_port, guest: 80, host: 9344
-  config.vm.network :forwarded_port, guest: 3306, host: 33344
+  config.vm.network :forwarded_port, guest: 80, host: 9302
+  config.vm.network :forwarded_port, guest: 3306, host: 33042
   config.vm.network :forwarded_port, guest: 6379, host: 63798
 
   

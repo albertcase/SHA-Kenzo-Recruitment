@@ -61,7 +61,7 @@
         $('.preload').remove();
         $('.wrapper').addClass('fade');
         Common.gotoPin(0);
-        //self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
+        self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
         //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
@@ -80,14 +80,28 @@
         });
 
         //    receive the prize
-        $('.btn-getprize').on('touchstart',function(){
-            //go form page
-            Common.gotoPin(1);
-        });
+        $('.btn-luckydraw').on('touchstart',function(){
+            //Common.gotoPin(1);
+            //if user has shared the link, go next page,
+            //if not, show pop to guide user share
+            if(self.hasShared){
+                Api.isFillForm(function (data) {
+                    //if filled, go lucky draw page
+                    //if not,fill form first
+                    if(data.status == 1){
+                        Common.gotoPin(2);
+                        Api.isLuckyDraw(function(data){
+                            self.prizeResult(data.status,data.msg);
+                        })
+                    }else{
+                        Common.gotoPin(1);
+                    }
+                })
+            }else{
+                console.log('show share pop');
+                $('.share-popup').addClass('show');
 
-        //reload the page
-        $('.btn-getproduct').on('touchstart',function(){
-            location.reload();
+            }
         });
 
         //    submit the form
@@ -131,60 +145,60 @@
 
 
     //    share function
-    //    weixinshare({
-    //        title1: 'kenzo',
-    //        des: 'kenzo',
-    //        link: window.location.origin,
-    //        img: window.location.origin+'/src/dist/images/logo.png'
-    //    },function(){
-    //        console.log('sharesuccess2');
-    //        self.shareSuccess();
-    //
-    //    });
-    //
-    ////    imitate share function on pc
-    //    $('.share-popup .guide-share').on('touchstart',function(){
-    //        self.shareSuccess();
-    //    });
+        weixinshare({
+            title1: 'kenzo',
+            des: 'kenzo',
+            link: window.location.origin,
+            img: window.location.origin+'/src/dist/images/logo.png'
+        },function(){
+            console.log('sharesuccess2');
+            self.shareSuccess();
+
+        });
+
+    //    imitate share function on pc
+        $('.share-popup .guide-share').on('touchstart',function(){
+            self.shareSuccess();
+        });
 
     };
 
     //share success
-    //controller.prototype.shareSuccess = function(){
-    //    var self = this;
-    //    Cookies.set('hasShared',true);
-    //    self.hasShared = true;
-    //    $('.share-popup').removeClass('show');
-    //    Api.isFillForm(function (data) {
-    //        //if filled, go lucky draw page
-    //        //if not,fill form first
-    //        if(data.status == 1){
-    //            Common.gotoPin(2);
-    //            self.prizeResult();
-    //        }else{
-    //            Common.gotoPin(1);
-    //        }
-    //    })
-    //};
+    controller.prototype.shareSuccess = function(){
+        var self = this;
+        Cookies.set('hasShared',true);
+        self.hasShared = true;
+        $('.share-popup').removeClass('show');
+        Api.isFillForm(function (data) {
+            //if filled, go lucky draw page
+            //if not,fill form first
+            if(data.status == 1){
+                Common.gotoPin(2);
+                self.prizeResult();
+            }else{
+                Common.gotoPin(1);
+            }
+        })
+    };
 
     //show the prize result, if prize, show prize msg, if not, show sorry msg
-    //controller.prototype.prizeResult = function(){
-    //    Common.gotoPin(2);
-    //    Api.isLuckyDraw(function(result){
-    //        //self.prizeResult(result.status,result.msg);
-    //        if(result.status==1){
-    //            //    get prize
-    //            $('.prize-yes').addClass('show');
-    //            $('.prize-no').removeClass('show');
-    //        }else if(result.status==2){
-    //            $('.prize-yes').removeClass('show');
-    //            $('.prize-no').addClass('show');
-    //        }else{
-    //            Common.alertBox.add(result.msg);
-    //        }
-    //    });
-    //
-    //};
+    controller.prototype.prizeResult = function(){
+        Common.gotoPin(2);
+        Api.isLuckyDraw(function(result){
+            //self.prizeResult(result.status,result.msg);
+            if(result.status==1){
+                //    get prize
+                $('.prize-yes').addClass('show');
+                $('.prize-no').removeClass('show');
+            }else if(result.status==2){
+                $('.prize-yes').removeClass('show');
+                $('.prize-no').addClass('show');
+            }else{
+                Common.alertBox.add(result.msg);
+            }
+        });
+
+    };
 
     //province city and district
     controller.prototype.showAllProvince = function(){

@@ -48,7 +48,14 @@
                 <img src="../src/dist/images/landing2-1.png" alt="kenzo"/>
             </div>
             <div class="des-wrap">
-                <div class="des">
+                <div class="des des-1">
+                    感悟白莲精粹的呵护<br>
+                    安然悠享整夜青春修护<br>
+                    云朵般的慕斯质地轻而柔软<br>
+                    清晨梦醒时肌肤紧致、光滑<br>
+                    ···身心亦是焕然一新
+                </div>
+                <div class="des des-2">
                     感悟白莲精粹的呵护<br>
                     安然悠享整夜青春修护<br>
                     云朵般的慕斯质地轻而柔软<br>

@@ -205,7 +205,12 @@ $ani-delay-5: 5000ms;
       color: #676763;
       font-size: 0.28rem;
       line-height: 2;
+    }
+    .des-1{
       @include animation(overandover 10s linear infinite);
+    }
+    .des-2{
+      @include animation(overandover 10s 5s linear infinite);
     }
   }
   .btn{
@@ -354,7 +359,7 @@ $ani-delay-5: 5000ms;
     @include transform(translateY(1.8rem));
   }
   100%{
-    @include transform(translateY(-3.2rem));
+    @include transform(translateY(-4.8rem));
   }
 }
 

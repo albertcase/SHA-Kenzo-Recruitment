@@ -888,9 +888,16 @@ body {
   color: #676763;
   font-size: 0.28rem;
   line-height: 2;
+}
+.pin-landing .des-wrap .des-1 {
   -webkit-animation: overandover 10s linear infinite;
   -moz-animation: overandover 10s linear infinite;
   animation: overandover 10s linear infinite;
+}
+.pin-landing .des-wrap .des-2 {
+  -webkit-animation: overandover 10s 5s linear infinite;
+  -moz-animation: overandover 10s 5s linear infinite;
+  animation: overandover 10s 5s linear infinite;
 }
 .pin-landing .btn {
   position: relative;
@@ -1154,11 +1161,11 @@ body {
     transform: translateY(1.8rem);
   }
   100% {
-    -webkit-transform: translateY(-3.2rem);
-    -moz-transform: translateY(-3.2rem);
-    -ms-transform: translateY(-3.2rem);
-    -o-transform: translateY(-3.2rem);
-    transform: translateY(-3.2rem);
+    -webkit-transform: translateY(-4.8rem);
+    -moz-transform: translateY(-4.8rem);
+    -ms-transform: translateY(-4.8rem);
+    -o-transform: translateY(-4.8rem);
+    transform: translateY(-4.8rem);
   }
 }
 #pin-landing-2 .title {

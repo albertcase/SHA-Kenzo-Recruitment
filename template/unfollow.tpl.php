@@ -21,14 +21,10 @@
             <div class="mod-orient-layer__desc">请在解锁模式下使用竖屏浏览</div>
         </div>
     </div>
-    <div class="loading-wrap">
-        loading...
-    </div>
     <!--main content-->
     <!-- 未关注 -->
-    <div class="wrapper">
+    <div class="wrapper animate fade">
         <!-- sometimes z-index is larger than border-frame, sometimes is lower-->
-
         <!-- z-index is middle-->
         <div class="border-frame">
             <div class="bf bf-1"></div>
@@ -40,7 +36,7 @@
         </div>
         <!-- z-index is low-->
         <div class="container">
-            <div class="pin pin-1">
+            <div class="pin pin-1 current" id="pin-follow">
                 <div class="qrcode">
                     <img src="../src/dist/images/qrcode.png" alt="kenzo"/>
                 </div>

@@ -9,13 +9,15 @@
     <meta name="full-screen" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
+    <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite?debug=1"></script>
     <script src="../src/assets/js/lib/zepto.min.js"></script>
     <script src="../src/assets/js/lib/pre-loader.js"></script>
+    <script src="../src/assets/js/lib/cookie.js"></script>
     <script src="../src/assets/js/rem.js"></script>
     <script src="../src/assets/js/region.js"></script>
     <script src="../src/assets/js/common.js"></script>
     <script src="../src/assets/js/api.js"></script>
-    <!--<script src="../src/assets/js/wxshare.js"></script>-->
+    <script src="../src/assets/js/wxshare.js"></script>
     <script src="../src/assets/js/followed.js"></script>
 </head>
 <body class="page-home">
@@ -34,7 +36,7 @@
     </div>
 </div>
 <!--main content-->
-<!-- 未关注 -->
+<!-- 已关注 -->
 <div class="wrapper animate">
     <!-- sometimes z-index is larger than border-frame, sometimes is lower-->
 
@@ -152,6 +154,19 @@
         </div>
     </div>
 </div>
+<!--share pop-->
+<div class="popup share-popup">
+    <div class="guide-share right-star">
+        <img src="../src/dist/images/guide-share.png" alt=""/>
+    </div>
+    <div class="des">
+        <span class="bigfont">·向好友传递睡美人悦肤礼赠·</span>
+        即刻获得一次<br>
+        KENZO睡美人面膜正装（75ML）<br>
+        抽奖机会
+    </div>
+</div>
+
 <!-- z-index is high-->
 <div class="popup terms-pop">
     <div class="inner">

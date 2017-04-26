@@ -160,10 +160,10 @@
 
         //    share function
         weixinshare({
-            title1: 'kenzo',
-            des: 'kenzo',
+            title1: 'KENZO关注有礼 | 睡美人面膜免费申领',
+            des: '和“好肌友”一起领取睡美人悦肤礼赠吧！',
             link: window.location.origin,
-            img: window.location.origin+'/src/dist/images/logo.png'
+            img: window.location.origin+'/src/dist/images/share.jpg'
         },function(){
             console.log('sharesuccess2');
             self.shareSuccess();

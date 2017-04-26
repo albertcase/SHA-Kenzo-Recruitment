@@ -3,7 +3,7 @@
  * */
 ;(function(){
     var controller = function(){
-        this.hasShared = true;
+        this.hasShared = false;
     };
     //init
     controller.prototype.init = function(){
@@ -61,6 +61,8 @@
         $('.preload').remove();
         $('.wrapper').addClass('fade');
         Common.gotoPin(0);
+        self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
+        //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
     };
@@ -89,11 +91,7 @@
                     if(data.status == 1){
                         Common.gotoPin(2);
                         Api.isLuckyDraw(function(data){
-                            if(data.status==1){
-                                //    中奖
-                            }else{
-                                // 没有中奖
-                            }
+                            self.prizeResult(data.status,data.msg);
                         })
                     }else{
                         Common.gotoPin(1);
@@ -101,6 +99,8 @@
                 })
             }else{
                 console.log('show share pop');
+                $('.share-popup').addClass('show');
+
             }
         });
 
@@ -143,6 +143,59 @@
             self.showDistrict(curProvinceIndex,curCityIndex);
         });
 
+
+    //    share function
+        weixinshare({
+            title1: 'kenzo',
+            des: 'kenzo',
+            link: window.location.origin,
+            img: window.location.origin+'/src/dist/images/logo.png'
+        },function(){
+            console.log('sharesuccess2');
+            self.shareSuccess();
+
+        });
+
+    //    imitate share function on pc
+        $('.share-popup .guide-share').on('touchstart',function(){
+            self.shareSuccess();
+        });
+
+    };
+
+    //share success
+    controller.prototype.shareSuccess = function(){
+        var self = this;
+        Cookies.set('hasShared',true);
+        self.hasShared = true;
+        $('.share-popup').removeClass('show');
+        Api.isFillForm(function (data) {
+            //if filled, go lucky draw page
+            //if not,fill form first
+            if(data.status == 1){
+                Common.gotoPin(2);
+                Api.isLuckyDraw(function(data){
+                    self.prizeResult(data.status,data.msg);
+                })
+            }else{
+                Common.gotoPin(1);
+            }
+        })
+    };
+
+    //show the prize result, if prize, show prize msg, if not, show sorry msg
+    controller.prototype.prizeResult = function(isprize,msg){
+        Common.gotoPin(2);
+        if(isprize==1){
+        //    get prize
+            $('.prize-yes').addClass('show');
+            $('.prize-no').removeClass('show');
+        }else if(isprize==2){
+            $('.prize-yes').removeClass('show');
+            $('.prize-no').addClass('show');
+        }else{
+            Common.alertBox.add(msg);
+        }
     };
 
     //province city and district

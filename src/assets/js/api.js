@@ -40,6 +40,7 @@ Api = {
 
         return callback({
             status:1,
+            msg:'fillform'
         })
 
 
@@ -61,6 +62,7 @@ Api = {
 
         return callback({
             status:1,
+            msg:'zhognjiang'
         })
 
 

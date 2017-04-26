@@ -1211,7 +1211,8 @@ body {
   bottom: 0;
   width: 100%;
 }
-#pin-gift .guide-share {
+
+.guide-share {
   position: absolute;
   top: -2rem;
   right: 0;
@@ -1228,48 +1229,63 @@ body {
 }
 @-webkit-keyframes lefttoright {
   0% {
-    -webkit-transform: rotate(5deg);
+    -webkit-transform: rotate(10deg);
   }
   50% {
-    -webkit-transform: rotate(-5deg);
+    -webkit-transform: rotate(-10deg);
   }
   100% {
-    -webkit-transform: rotate(5deg);
+    -webkit-transform: rotate(10deg);
   }
 }
 @-moz-keyframes lefttoright {
   0% {
-    -moz-transform: rotate(5deg);
+    -moz-transform: rotate(10deg);
   }
   50% {
-    -moz-transform: rotate(-5deg);
+    -moz-transform: rotate(-10deg);
   }
   100% {
-    -moz-transform: rotate(5deg);
+    -moz-transform: rotate(10deg);
   }
 }
 @-o-keyframes lefttoright {
   0% {
-    -o-transform: rotate(5deg);
+    -o-transform: rotate(10deg);
   }
   50% {
-    -o-transform: rotate(-5deg);
+    -o-transform: rotate(-10deg);
   }
   100% {
-    -o-transform: rotate(5deg);
+    -o-transform: rotate(10deg);
   }
 }
 @keyframes lefttoright {
   0% {
-    -webkit-transform: rotate(5deg);
-    transform: rotate(5deg);
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
   }
   50% {
-    -webkit-transform: rotate(-5deg);
-    transform: rotate(-5deg);
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
   }
   100% {
-    -webkit-transform: rotate(5deg);
-    transform: rotate(5deg);
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
   }
+}
+.share-popup .right-star {
+  right: 0.7rem;
+  top: 0.7rem;
+}
+.share-popup .des {
+  padding-top: 0.8rem;
+  text-align: center;
+  font-size: 0.26rem;
+  color: #fff;
+}
+.share-popup .des .bigfont {
+  display: block;
+  font-size: 0.32rem;
+  margin-bottom: 0.2rem;
 }

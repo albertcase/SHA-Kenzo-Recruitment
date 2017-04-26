@@ -431,23 +431,43 @@ $ani-delay-5: 5000ms;
     bottom: 0;
     width: 100%;
   }
-  .guide-share{
-    position: absolute;
-    top: -2rem;
-    right: 0;
-    @include size(1.10rem,1.04rem);
-    @include transform-origin(50% 0);
-    @include animation(lefttoright 2s infinite);
-    @include keyframes(lefttoright){
-      0%{
-        @include transform(rotate(5deg));
-      }
-      50%{
-        @include transform(rotate(-5deg));
-      }
-      100%{
-        @include transform(rotate(5deg));
-      }
+}
+.guide-share{
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  @include size(1.10rem,1.04rem);
+  @include transform-origin(50% 0);
+  @include animation(lefttoright 2s infinite);
+  @include keyframes(lefttoright){
+    0%{
+      @include transform(rotate(10deg));
+    }
+    50%{
+      @include transform(rotate(-10deg));
+    }
+    100%{
+      @include transform(rotate(10deg));
+    }
+  }
+}
+
+//for share-popup
+.share-popup{
+  .right-star{
+    right: 0.7rem;
+    top: 0.7rem;
+    //@include size(1.1rem,1.04rem);
+  }
+  .des{
+    padding-top: 0.8rem;
+    text-align: center;
+    font-size: 0.26rem;
+    color: #fff;
+    .bigfont{
+      display: block;
+      font-size: 0.32rem;
+      margin-bottom: 0.2rem;
     }
   }
 }

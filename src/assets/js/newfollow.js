@@ -96,18 +96,19 @@
         //    submit the form
         $('.btn-submit').on('touchstart',function(){
             if(self.validateForm()){
-                var inputNameVal = $('input-name').val(),
-                    inputMobileVal = $('input-mobile').val(),
-                    inputAddressVal = $('input-address').val(),
-                    selectProvinceVal = $('select-province').val(),
-                    selectCityVal = $('select-city').val(),
-                    selectDistrictVal = $('select-district').val();
+                //name mobile province city area address
+                var inputNameVal = $('#input-name').val(),
+                    inputMobileVal = $('#input-mobile').val(),
+                    inputAddressVal = $('#input-address').val(),
+                    selectProvinceVal = $('#select-province').val(),
+                    selectCityVal = $('#select-city').val(),
+                    selectDistrictVal = $('#select-district').val();
                 Api.submitInfo({
                     name:inputNameVal,
                     mobile:inputMobileVal,
                     province:selectProvinceVal,
                     city:selectCityVal,
-                    district:selectDistrictVal,
+                    area:selectDistrictVal,
                     address:inputAddressVal
                 },function(data){
                     if(data.status==1){
@@ -132,6 +133,17 @@
             self.showDistrict(curProvinceIndex,curCityIndex);
         });
 
+        $('#select-district').on('change',function(){
+            var districtInputEle = $('#input-text-district'),
+                districtSelectEle = $('#select-district');
+            var curCityIndex = document.getElementById('select-district').selectedIndex;
+            districtInputEle.val(districtSelectEle.val());
+        });
+
+        //
+        $('.btn-getproduct').on('touchstart',function(){
+           location.reload();
+        });
 
         //    share function
         weixinshare({
@@ -234,6 +246,7 @@
             districts = districts + '<option data-id="'+k+'" value="'+districtJson[k]+'">'+districtJson[k]+'</option>';
         }
         districtSelectEle.html(districts);
+        cityInputEle.val(citySelectEle.val());
         districtInputEle.val(districtSelectEle.val());
     };
 

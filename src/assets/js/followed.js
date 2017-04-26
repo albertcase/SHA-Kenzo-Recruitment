@@ -107,18 +107,20 @@
         //    submit the form
         $('.btn-submit').on('touchstart',function(){
             if(self.validateForm()){
-                var inputNameVal = $('input-name').val(),
-                    inputMobileVal = $('input-mobile').val(),
-                    inputAddressVal = $('input-address').val(),
-                    selectProvinceVal = $('select-province').val(),
-                    selectCityVal = $('select-city').val(),
-                    selectDistrictVal = $('select-district').val();
+                //name mobile province city area address
+                var inputNameVal = $('#input-name').val(),
+                    inputMobileVal = $('#input-mobile').val(),
+                    inputAddressVal = $('#input-address').val(),
+                    selectProvinceVal = $('#select-province').val(),
+                    selectCityVal = $('#select-city').val(),
+                    selectDistrictVal = $('#select-district').val();
+                console.log(inputNameVal+''+inputMobileVal+inputAddressVal+selectProvinceVal+selectCityVal+selectDistrictVal);
                 Api.submitInfo({
                     name:inputNameVal,
                     mobile:inputMobileVal,
                     province:selectProvinceVal,
                     city:selectCityVal,
-                    district:selectDistrictVal,
+                    area:selectDistrictVal,
                     address:inputAddressVal
                 },function(data){
                     if(data.status==1){
@@ -141,6 +143,13 @@
         $('#select-city').on('change',function(){
             var curCityIndex = document.getElementById('select-city').selectedIndex;
             self.showDistrict(curProvinceIndex,curCityIndex);
+        });
+
+        $('#select-district').on('change',function(){
+            var districtInputEle = $('#input-text-district'),
+                districtSelectEle = $('#select-district');
+            var curCityIndex = document.getElementById('select-district').selectedIndex;
+            districtInputEle.val(districtSelectEle.val());
         });
 
 
@@ -246,6 +255,7 @@
         for(var k=0;k<districtJson.length;k++){
             districts = districts + '<option data-id="'+k+'" value="'+districtJson[k]+'">'+districtJson[k]+'</option>';
         }
+        cityInputEle.val(citySelectEle.val());
         districtSelectEle.html(districts);
         districtInputEle.val(districtSelectEle.val());
     };

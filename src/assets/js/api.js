@@ -27,7 +27,6 @@ Api = {
         $.ajax({
             url:'/api/lottery',
             type:'POST',
-            data:obj,
             dataType:'json',
             success:function(data){
                 Common.msgBox.remove();
@@ -45,6 +44,7 @@ Api = {
     },
     //submit form
     // name  info
+///api/submit    name mobile province city area address
     submitInfo:function(obj,callback){
         Common.msgBox.add('loading...');
         $.ajax({

@@ -71,7 +71,9 @@
                 <div class="flower">
                     <img src="../src/dist/images/ani-5.png" alt="kenzo"/>
                 </div>
-                <!--<img src="../src/dist/images/foreground-1.png" alt="kenzo"/>-->
+                <div class="product-demo">
+                    <img src="../src/dist/images/product-demo.png" alt="kenzo"/>
+                </div>
             </div>
             <div class="ani-petal">
                 <img src="../src/dist/images/ani-1.png" alt="kenzo"/>

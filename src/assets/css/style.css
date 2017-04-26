@@ -908,7 +908,7 @@ body {
 }
 .pin-landing .foreground .box-top {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   bottom: 1.4rem;
   left: 2.29rem;
   width: 2.91rem;
@@ -916,11 +916,19 @@ body {
 }
 .pin-landing .foreground .box-bottom {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   bottom: 0.5rem;
   left: 1.8rem;
   width: 3.81rem;
   height: 2.94rem;
+}
+.pin-landing .foreground .product-demo {
+  position: absolute;
+  z-index: 1;
+  bottom: 1.8rem;
+  right: -2rem;
+  width: 1.54rem;
+  height: 2.01rem;
 }
 .pin-landing .flower {
   position: absolute;
@@ -1066,24 +1074,11 @@ body {
 @keyframes outandfade {
   0% {
     bottom: 1.4rem;
-  }
-  20% {
-    bottom: 1.5rem;
-    left: 2.4rem;
-    -webkit-transform: rotate(10deg);
-    -moz-transform: rotate(10deg);
-    -ms-transform: rotate(10deg);
-    -o-transform: rotate(10deg);
-    transform: rotate(10deg);
-  }
-  40% {
-    bottom: 2rem;
-    left: 3rem;
-    -webkit-transform: rotate(30deg);
-    -moz-transform: rotate(30deg);
-    -ms-transform: rotate(30deg);
-    -o-transform: rotate(30deg);
-    transform: rotate(30deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
     bottom: 3rem;
@@ -1093,6 +1088,61 @@ body {
     -ms-transform: rotate(30deg);
     -o-transform: rotate(30deg);
     transform: rotate(30deg);
+  }
+}
+.pin-landing.current .foreground .product-demo {
+  -webkit-animation: fadefromright 2000ms 1000ms 1 forwards;
+  -moz-animation: fadefromright 2000ms 1000ms 1 forwards;
+  animation: fadefromright 2000ms 1000ms 1 forwards;
+}
+@-webkit-keyframes fadefromright {
+  0% {
+    bottom: 2.8rem;
+    right: -2rem;
+    -webkit-transform: rotate(15deg);
+  }
+  100% {
+    bottom: 1.8rem;
+    right: 2rem;
+    -webkit-transform: rotate(-15deg);
+  }
+}
+@-moz-keyframes fadefromright {
+  0% {
+    bottom: 2.8rem;
+    right: -2rem;
+    -moz-transform: rotate(15deg);
+  }
+  100% {
+    bottom: 1.8rem;
+    right: 2rem;
+    -moz-transform: rotate(-15deg);
+  }
+}
+@-o-keyframes fadefromright {
+  0% {
+    bottom: 2.8rem;
+    right: -2rem;
+    -o-transform: rotate(15deg);
+  }
+  100% {
+    bottom: 1.8rem;
+    right: 2rem;
+    -o-transform: rotate(-15deg);
+  }
+}
+@keyframes fadefromright {
+  0% {
+    bottom: 2.8rem;
+    right: -2rem;
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  100% {
+    bottom: 1.8rem;
+    right: 2rem;
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
   }
 }
 @keyframes overandover {

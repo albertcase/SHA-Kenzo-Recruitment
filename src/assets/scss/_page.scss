@@ -225,17 +225,25 @@ $ani-delay-5: 5000ms;
   .foreground{
     .box-top{
       position: absolute;
-      z-index: 2;
+      z-index: 3;
       bottom: 1.4rem;
       left: 2.29rem;
       @include size(2.91rem,1.32rem);
     }
     .box-bottom{
       position: absolute;
-      z-index: 1;
+      z-index: 2;
       bottom: 0.5rem;
       left: 1.8rem;
       @include size(3.81rem,2.94rem);
+    }
+    .product-demo{
+      position: absolute;
+      z-index: 1;
+      bottom: 1.8rem;
+      right: -2rem;
+      //transform: rotate(-15deg);
+      @include size(1.54rem,2.01rem);
     }
   }
   .flower{
@@ -300,23 +308,42 @@ $ani-delay-5: 5000ms;
         @keyframes outandfade {
           0%{
             bottom: 1.4rem;
+            @include transform(rotate(0deg));
           }
-          20%{
-            bottom: 1.5rem;
-            left: 2.4rem;
-            @include transform(rotate(10deg));
-          }
-          40%{
-            bottom: 2rem;
-            left: 3rem;
-            @include transform(rotate(30deg));
-          }
+          //20%{
+          //  bottom: 1.5rem;
+          //  left: 2.4rem;
+          //  @include transform(rotate(10deg));
+          //}
+          //40%{
+          //  bottom: 2rem;
+          //  left: 3rem;
+          //  @include transform(rotate(30deg));
+          //}
           100%{
             bottom: 3rem;
             left: 7.5rem;
             @include transform(rotate(30deg));
           }
 
+        }
+      }
+      .product-demo{
+        //bottom: 1.8rem;
+        //right: 2rem;
+        //transform: rotate(-15deg);
+        @include animation(fadefromright $ani-delay-2 $ani-delay-1 1 forwards);
+        @include keyframes(fadefromright){
+          0%{
+            bottom: 2.8rem;
+            right: -2rem;
+            @include transform(rotate(15deg));
+          }
+          100%{
+            bottom: 1.8rem;
+            right: 2rem;
+            @include transform(rotate(-15deg));
+          }
         }
       }
     }

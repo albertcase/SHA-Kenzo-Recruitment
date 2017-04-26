@@ -1296,3 +1296,15 @@ body {
   font-size: 0.32rem;
   margin-bottom: 0.2rem;
 }
+
+#pin-follow .qrcode {
+  width: 3.27rem;
+  height: 4.89rem;
+  margin: 0.8rem auto;
+}
+#pin-follow .foreground {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 5.52rem;
+}

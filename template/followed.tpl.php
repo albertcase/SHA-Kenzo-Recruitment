@@ -117,7 +117,9 @@
                 </div>
                 <div class="btn btn-submit">提 交</div>
             </form>
-
+            <div class="foreground">
+                <img src="../src/dist/images/foreground-1.png" alt="kenzo"/>
+            </div>
         </div>
         <div class="pin pin-3" id="pin-gift">
             <div class="des v-content">

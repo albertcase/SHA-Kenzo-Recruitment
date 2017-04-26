@@ -1235,6 +1235,13 @@ body {
 #pin-fillform #form-contact .btn-submit {
   margin-top: 0.6rem;
 }
+#pin-fillform .foreground {
+  position: absolute;
+  left: 0rem;
+  bottom: -1rem;
+  width: 5.52rem;
+  height: 4.57rem;
+}
 
 #pin-gift .title {
   color: #6b6b6b;

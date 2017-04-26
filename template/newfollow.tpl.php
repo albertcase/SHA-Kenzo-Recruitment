@@ -79,23 +79,6 @@
                 <img src="../src/dist/images/ani-1.png" alt="kenzo"/>
             </div>
         </div>
-        <!--<div class="pin pin-1 current" id="pin-landing">-->
-            <!--<div class="title">-->
-                <!--<img src="../src/dist/images/landing2-1.png" alt="kenzo"/>-->
-            <!--</div>-->
-            <!--<div class="msg">-->
-                <!--感悟白莲精粹的呵护-->
-                <!--安然悠享整夜青春修护-->
-                <!--云朵般的慕斯质地轻而柔软-->
-                <!--清晨梦醒时肌肤紧致、光滑-->
-                <!--···身心亦是焕然一新-->
-            <!--</div>-->
-            <!--<div class="btn btn-getprize">即刻领取睡美人试用装</div>-->
-            <!--<div class="terms-link">*规则与条款</div>-->
-            <!--<div class="foreground">-->
-                <!--<img src="../src/dist/images/foreground-1.png" alt="kenzo"/>-->
-            <!--</div>-->
-        <!--</div>-->
         <!-- 填写表单选项-->
         <div class="pin pin-2" id="pin-fillform">
             <h3 class="title">
@@ -136,7 +119,9 @@
                 </div>
                 <div class="btn btn-submit">提 交</div>
             </form>
-
+            <div class="foreground">
+                <img src="../src/dist/images/foreground-1.png" alt="kenzo"/>
+            </div>
         </div>
         <div class="pin pin-3" id="pin-gift">
             <div class="des v-content">

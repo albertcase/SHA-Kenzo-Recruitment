@@ -433,6 +433,12 @@ $ani-delay-5: 5000ms;
       margin-top: 0.6rem;
     }
   }
+  .foreground{
+    position: absolute;
+    left: 0rem;
+    bottom: -1rem;
+    @include size(5.52rem,4.57rem);
+  }
 }
 
 //for pin-gift

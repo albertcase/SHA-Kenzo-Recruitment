@@ -118,9 +118,9 @@ class DatabaseAPI {
 	 */
 	public function insertInfo($data){
 		$nowtime = NOWTIME;
-		$sql = "INSERT INTO `info` SET `uid` = ?, `name` = ?, `cellphone` = ?, `address` = ?, `created` = ?, `updated` = ?"; 
+		$sql = "INSERT INTO `info` SET `uid` = ?, `name` = ?, `mobile` = ?, `province` = ?, `city` = ?, `area` = ?, `address` = ?, `created` = ?, `updated` = ?"; 
 		$res = $this->connect()->prepare($sql); 
-		$res->bind_param("ssssss", $data->uid, $data->name, $data->cellphone, $data->address, $nowtime, $nowtime);
+		$res->bind_param("sssssssss", $data->uid, $data->name, $data->mobile, $data->province, $data->city, $data->area, $data->address, $nowtime, $nowtime);
 		if($res->execute()) 
 			return $res->insert_id;
 		else 
@@ -132,9 +132,9 @@ class DatabaseAPI {
 	 */
 	public function updateInfo($data){
 		$nowtime = NOWTIME;
-		$sql = "UPDATE `info` SET `name` = ?, `cellphone` = ?, `address` = ?, `updated` = ? WHERE `uid` = ?"; 
+		$sql = "UPDATE `info` SET `name` = ?, `mobile` = ?, `province` = ?, `city` = ?, `area` = ?, `address` = ?, `updated` = ? WHERE `uid` = ?"; 
 		$res = $this->connect()->prepare($sql); 
-		$res->bind_param("sssss", $data->name, $data->cellphone, $data->address, $nowtime, $data->uid);
+		$res->bind_param("ssssssss", $data->name, $data->mobile, $data->province, $data->city, $data->area, $data->address, $nowtime, $data->uid);
 		if($res->execute()) 
 			return $this->findInfoByUid($data->uid);
 		else 
@@ -145,118 +145,30 @@ class DatabaseAPI {
 	 * Create user in database
 	 */
 	public function findInfoByUid($uid){
-		$sql = "SELECT `id`, `name`, `cellphone`, `address` FROM `info` WHERE `uid` = ?"; 
+		$sql = "SELECT `id`, `name`, `mobile`, `province`, `city`, `area`, `address` FROM `info` WHERE `uid` = ?"; 
 		$res = $this->connect()->prepare($sql);
 		$res->bind_param("s", $uid);
 		$res->execute();
-		$res->bind_result($id, $name, $cellphone, $address);
+		$res->bind_result($id, $name, $mobile, $province, $city, $area, $address);
 		if($res->fetch()) {
 			$info = new \stdClass();
 			$info->id = $id;
 			$info->name = $name;
-			$info->cellphone = $cellphone;
+			$info->mobile = $mobile;
+			$info->province = $province;
+			$info->city = $city;
+			$info->area = $area;
 			$info->$address = $address;
 			return $info;
 		}
 		return NULL;
 	}
 
-	/**
-	 * 
-	 */
-	public function insertMake($data){
-		if($rs = $this->loadMakeByUid($data->uid)) {
-			$this->updateAnswer($data);
-			return $rs->id;
-		} else {
-			return $this->insertAnswer($data);
-		}
-	}
-
-	public function insertAnswer($data){
-		$sql = "INSERT INTO `answer` SET `uid` = ?, `nickname` = ?, `answer1` = ?, `answer2` = ?, `answer3` = ?, `answer4` = ?, `answer5` = ?, `total` = ?, `image` = ?"; 
-		$res = $this->connect()->prepare($sql); 
-		$res->bind_param("sssssssss", $data->uid, $data->nickname, $data->answer1, $data->answer2, $data->answer3, $data->answer4, $data->answer5, $data->total, $data->image);
-		if($res->execute()) 
-			return $res->insert_id;
-		else 
-			return FALSE;
-	}
-
-	public function updateAnswer($data){
-		$sql = "UPDATE `answer` SET `nickname` = ?, `answer1` = ?, `answer2` = ?, `answer3` = ?, `answer4` = ?, `answer5` = ?, `total` = ?, `image` = ? WHERE `uid` = ?"; 
-		$res = $this->connect()->prepare($sql); 
-		$res->bind_param("sssssssss", $data->nickname, $data->answer1, $data->answer2, $data->answer3, $data->answer4, $data->answer5, $data->total, $data->image, $data->uid);
-		if($res->execute()) 
-			return TRUE;
-		else 
-			return FALSE;
-	}
-
-	public function loadMakeById($id){
-		$sql = "SELECT `id`, `uid`, `nickname`, `total`, `image` FROM `answer` WHERE `id` = ?"; 
-		$res = $this->connect()->prepare($sql);
-		$res->bind_param("s", $id);
-		$res->execute();
-		$res->bind_result($id, $uid, $nickname, $total, $image);
-		if($res->fetch()) {
-			$info = new \stdClass();
-			$info->id = $id;
-			$info->uid = $uid;
-			$info->nickname = $nickname;
-			$info->total = $total;
-			$info->image = $image;
-			return $info;
-		}
-		return NULL;
-	}
-
-	public function loadMakeByUid($uid){
-		$sql = "SELECT `id`, `uid`, `nickname`, `total`, `image` FROM `answer` WHERE `uid` = ?"; 
-		$res = $this->connect()->prepare($sql);
-		$res->bind_param("s", $uid);
-		$res->execute();
-		$res->bind_result($id, $uid, $nickname, $total, $image);
-		if($res->fetch()) {
-			$info = new \stdClass();
-			$info->id = $id;
-			$info->uid = $uid;
-			$info->nickname = $nickname;
-			$info->total = $total;
-			$info->image = $image;
-			return $info;
-		}
-		return NULL;
-	}
-
-	public function loadListByUid($uid) {
-		$sql = "SELECT * FROM `answer` WHERE uid in (select fuid from band where uid = '".intval($uid)."') or uid = '".$uid."' order by total desc"; 
-		$res = $this->db->query($sql);
-		$data = array();
-		while($rows = $res->fetch_array(MYSQLI_ASSOC))
-		{
-			$data[] = $rows;
-		}	
-		return $data;
-	}
-
-	/**
-	 * 
-	 */
-	public function bandShare($uid, $fuid){
-		$sql = "INSERT INTO `band` SET `uid` = ?, `fuid` = ?"; 
-		$res = $this->connect()->prepare($sql); 
-		$res->bind_param("ss", $uid, $fuid);
-		if($res->execute()) 
-			return $res->insert_id;
-		else 
-			return FALSE;
-	}
 
 	public function insertSubmit($data){
-		$sql = "INSERT INTO `submit` SET `uid` = ?, `name` = ?, `info` = ?"; 
+		$sql = "INSERT INTO `submit` SET `uid` = ?, `name` = ?, `mobile` = ?, `province` = ?, `city` = ?, `area` = ?, `address` = ?"; 
 		$res = $this->connect()->prepare($sql); 
-		$res->bind_param("sss", $data->uid, $data->name, $data->info);
+		$res->bind_param("sssssss", $data->uid, $data->name, $data->mobile, $data->province, $data->city, $data->area, $data->address);
 		if($res->execute()) 
 			return $res->insert_id;
 		else 
@@ -278,18 +190,6 @@ class DatabaseAPI {
 		return NULL;
 	}
 
-	public function clearMake(){
-		$sql = "TRUNCATE table answer"; 
-		$res = $this->connect()->prepare($sql); 
-		if($res->execute()) {
-			$sql2 = "TRUNCATE table band"; 
-			$res2 = $this->connect()->prepare($sql2); 
-			$res2->execute();
-			return TRUE;
-		}
-			
-		else 
-			return FALSE;
-	}
+	
 
 }

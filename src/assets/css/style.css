@@ -127,10 +127,6 @@ p {
   color: #fff;
   font-size: 0.32rem;
 }
-.btn:active {
-  background: #000;
-  color: #ccc;
-}
 
 .v-content {
   position: absolute;
@@ -797,10 +793,6 @@ body {
   font-size: 0.32rem;
   box-sizing: border-box;
 }
-.btn:active {
-  background: #000;
-  color: #ccc;
-}
 
 .loading-wrap {
   display: none;
@@ -900,7 +892,7 @@ body {
   -moz-animation: overandover 10s linear infinite;
   animation: overandover 10s linear infinite;
 }
-.pin-landing .btn-luckydraw {
+.pin-landing .btn {
   position: relative;
   z-index: 2;
 }
@@ -1119,6 +1111,11 @@ body {
     transform: translateY(-3.2rem);
   }
 }
+#pin-landing-2 .title {
+  width: 4.97rem;
+  height: 0.84rem;
+}
+
 /*
   For pin-fillform
 */
@@ -1201,6 +1198,7 @@ body {
 }
 #pin-gift .prize-item {
   display: none;
+  color: #6b6b6b;
 }
 #pin-gift .prize-item.show {
   display: block;
@@ -1210,6 +1208,15 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
+}
+#pin-gift .name {
+  margin-top: 0.8rem;
+  font-size: 0.22rem;
+  color: #6b6b6b;
+}
+#pin-gift .btn-getproduct {
+  width: 4.6rem;
+  height: 1.4rem;
 }
 
 .guide-share {

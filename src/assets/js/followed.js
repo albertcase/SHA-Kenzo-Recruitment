@@ -201,6 +201,7 @@
             self.shareSuccess();
         });
 
+
     };
 
     //share success
@@ -224,6 +225,7 @@
     //show the prize result, if prize, show prize msg, if not, show sorry msg
     controller.prototype.prizeResult = function(){
         Common.gotoPin(2);
+        $('.prize-item').removeClass('show');
         Api.isLuckyDraw(function(result){
             //self.prizeResult(result.status,result.msg);
             if(result.status==1){

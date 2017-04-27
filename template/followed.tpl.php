@@ -135,7 +135,7 @@
                     KENZO睡美人面膜正装（75ML）<br>
                     Miss K 将火速为您寄送礼品！
                 </div>
-                <div class="prize-item prize-no show">
+                <div class="prize-item prize-no">
                     <div class="guide-share">
                         <img src="../src/dist/images/guide-share.png" alt=""/>
                     </div>
@@ -145,10 +145,6 @@
                     即可获得再一次的抽奖机会哦！
                 </div>
             </div>
-            <!--<div class="p3-2">-->
-                <!--<p class="name">* KENZO花颜舒柔夜间修护面膜</p>-->
-                <!--<div class="btn btn-getproduct">点击赢取睡美人面膜正装</div>-->
-            <!--</div>-->
             <div class="b-img">
                 <img src="../src/dist/images/gift-flower.png" alt=""/>
             </div>

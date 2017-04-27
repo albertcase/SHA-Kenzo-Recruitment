@@ -1597,15 +1597,20 @@ Api = {
     },
 
     isLuckyDraw:function(callback){
-        Common.msgBox.add('loading...');
-        //Common.msgBox.add('抽奖中...');
+        //Common.msgBox.add('loading...');
+        Common.msgBox.add('抽奖中...');
         $.ajax({
             url:'/api/lottery',
             type:'POST',
             dataType:'json',
             success:function(data){
-                Common.msgBox.remove();
-                return callback(data);
+                var aaa = setTimeout(function(){
+
+                    Common.msgBox.remove();
+                    clearTimeout(aaa);
+                    return callback(data);
+                },3000);
+
                 //status=1 有库存
             }
         });
@@ -1904,6 +1909,7 @@ $(document).ready(function(){
             self.shareSuccess();
         });
 
+
     };
 
     //share success
@@ -1927,6 +1933,7 @@ $(document).ready(function(){
     //show the prize result, if prize, show prize msg, if not, show sorry msg
     controller.prototype.prizeResult = function(){
         Common.gotoPin(2);
+        $('.prize-item').removeClass('show');
         Api.isLuckyDraw(function(result){
             //self.prizeResult(result.status,result.msg);
             if(result.status==1){

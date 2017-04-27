@@ -39,7 +39,10 @@
         <div class="container">
             <div class="pin pin-1 current" id="pin-follow">
                 <div class="qrcode">
-                    <img src="../src/dist/images/qrcode.png" alt="kenzo"/>
+                    <img src="../src/dist/images/qrcode.jpg" alt="kenzo"/>
+                </div>
+                <div class="qrcode-des">
+                    <img src="../src/dist/images/qr-des.png" alt="kenzo"/>
                 </div>
                 <div class="foreground">
                     <img src="../src/dist/images/foreground-1.png" alt="kenzo"/>

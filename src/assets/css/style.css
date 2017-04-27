@@ -890,14 +890,14 @@ body {
   line-height: 2;
 }
 .pin-landing .des-wrap .des-1 {
-  -webkit-animation: overandover 10s linear infinite;
-  -moz-animation: overandover 10s linear infinite;
-  animation: overandover 10s linear infinite;
+  -webkit-animation: overandover 16s linear infinite;
+  -moz-animation: overandover 16s linear infinite;
+  animation: overandover 16s linear infinite;
 }
 .pin-landing .des-wrap .des-2 {
-  -webkit-animation: overandover 10s 5s linear infinite;
-  -moz-animation: overandover 10s 5s linear infinite;
-  animation: overandover 10s 5s linear infinite;
+  -webkit-animation: overandover 16s 8s linear infinite;
+  -moz-animation: overandover 16s 8s linear infinite;
+  animation: overandover 16s 8s linear infinite;
 }
 .pin-landing .btn {
   position: relative;

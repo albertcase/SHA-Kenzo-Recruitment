@@ -207,10 +207,10 @@ $ani-delay-5: 5000ms;
       line-height: 2;
     }
     .des-1{
-      @include animation(overandover 10s linear infinite);
+      @include animation(overandover 16s linear infinite);
     }
     .des-2{
-      @include animation(overandover 10s 5s linear infinite);
+      @include animation(overandover 16s 8s linear infinite);
     }
   }
   .btn{

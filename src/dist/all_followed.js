@@ -1788,18 +1788,12 @@ $(document).ready(function(){
 
         self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
         self.getPrize = Cookies.get('getPrize')?Cookies.get('getPrize'):0;
-        if(self.getPrize == 0){
-            Common.gotoPin(0);
-        }else{
+        if(self.getPrize == 1){
             Common.gotoPin(2);
-            if(self.getPrize==1){
-                //    get prize
-                $('.prize-yes').addClass('show');
-                $('.prize-no').removeClass('show');
-            }else if(self.getPrize==2){
-                $('.prize-yes').removeClass('show');
-                $('.prize-no').addClass('show');
-            };
+            $('.prize-yes').addClass('show');
+            $('.prize-no').removeClass('show');
+        }else{
+            Common.gotoPin(0);
         }
         //console.log(self.hasShared);
         self.bindEvent();

@@ -157,59 +157,7 @@
            location.reload();
         });
 
-        //    share function
-        //weixinshare({
-        //    title1: 'KENZO睡美人悦肤礼赠',
-        //    des: '和“好肌友”一起领取睡美人悦肤礼赠吧！',
-        //    link: window.location.origin,
-        //    img: window.location.origin+'/src/dist/images/share.jpg'
-        //},function(){
-        //    console.log('sharesuccess2');
-        //    self.shareSuccess();
-        //
-        //});
-
-        //    imitate share function on pc
-        //$('.share-popup .guide-share').on('touchstart',function(){
-        //    self.shareSuccess();
-        //});
-
     };
-
-    //share success
-    //controller.prototype.shareSuccess = function(){
-    //    var self = this;
-    //    $('.share-popup').removeClass('show');
-    //    Api.isFillForm(function (data) {
-    //        //if filled, go lucky draw page
-    //        //if not,fill form first
-    //        if(data.status == 1){
-    //            Common.gotoPin(2);
-    //            self.prizeResult();
-    //        }else{
-    //            Common.gotoPin(1);
-    //        }
-    //    })
-    //};
-
-    //show the prize result, if prize, show prize msg, if not, show sorry msg
-    //controller.prototype.prizeResult = function(){
-    //    Common.gotoPin(2);
-    //    Api.isLuckyDraw(function(result){
-    //        //self.prizeResult(result.status,result.msg);
-    //        if(result.status==1){
-    //            //    get prize
-    //            $('.prize-yes').addClass('show');
-    //            $('.prize-no').removeClass('show');
-    //        }else if(result.status==2){
-    //            $('.prize-yes').removeClass('show');
-    //            $('.prize-no').addClass('show');
-    //        }else{
-    //            Common.alertBox.add(result.msg);
-    //        }
-    //    });
-    //
-    //};
 
     //province city and district
     controller.prototype.showAllProvince = function(){

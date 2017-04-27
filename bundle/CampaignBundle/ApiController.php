@@ -74,7 +74,7 @@ class ApiController extends Controller {
     	$lottery = $databaseAPI->loadLotteryByUid($user->uid);
     	if ($lottery) {
 			$databaseAPI->setLottery($user->uid, 2);
-			$data = array('status' => 1, 'msg'=>'谢谢参与');
+			$data = array('status' => 2, 'msg'=>'谢谢参与');
 			$this->dataPrint($data);
 		}
 		$checknew = $databaseAPI->checkOpenid($user->openid);
@@ -92,7 +92,7 @@ class ApiController extends Controller {
 			$this->dataPrint($data);
 		}
 		$databaseAPI->setLottery($user->uid, 2);
-		$data = array('status' => 1, 'msg'=>'谢谢参与');
+		$data = array('status' => 2, 'msg'=>'谢谢参与');
 		$this->dataPrint($data);
 		
     }

@@ -32,6 +32,27 @@ var path = {
         //'./src/assets/js/api.js',
         //'./src/assets/js/home.js'
     ],
+    newFollowJs:[
+        './src/assets/js/lib/zepto.min.js',
+        './src/assets/js/lib/pre-loader.js',
+        './src/assets/js/rem.js',
+        './src/assets/js/region.js',
+        './src/assets/js/common.js',
+        './src/assets/js/api.js',
+        './src/assets/js/wxshare.js',
+        './src/assets/js/newfollow.js',
+    ],
+    followedJs:[
+        './src/assets/js/lib/zepto.min.js',
+        './src/assets/js/lib/pre-loader.js',
+        './src/assets/js/lib/cookie.js',
+        './src/assets/js/rem.js',
+        './src/assets/js/region.js',
+        './src/assets/js/common.js',
+        './src/assets/js/api.js',
+        './src/assets/js/wxshare.js',
+        './src/assets/js/followed.js',
+    ],
     images:[
         './src/assets/*.{png,jpg,jpeg}',
         './src/assets/*/*.{png,jpg,jpeg}',
@@ -68,11 +89,19 @@ gulp.task('css',['clean'],function () {
 });
 
 // Concatenate & Minify
-gulp.task('scripts_welcome',['clean'], function() {
-    return gulp.src(path.js)
-        .pipe(concat('all.js'))
+gulp.task('scripts_newfollow',['clean'], function() {
+    return gulp.src(path.newFollowJs)
+        .pipe(concat('all_newfollow.js'))
         .pipe(gulp.dest('./src/dist'))
-        .pipe(rename('all.min.js'))
+        .pipe(rename('all_newfollow.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./src/dist/js'));
+});
+gulp.task('scripts_followed',['clean'], function() {
+    return gulp.src(path.followedJs)
+        .pipe(concat('all_followed.js'))
+        .pipe(gulp.dest('./src/dist'))
+        .pipe(rename('all_followed.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./src/dist/js'));
 });
@@ -93,9 +122,11 @@ gulp.task("tinypng", function(){
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
     gulp.watch(path.css,['css']);
+    gulp.watch(path.newFollowJs,['scripts_newfollow']);
+    gulp.watch(path.followedJs,['scripts_followed']);
 });
 
 // Default Task
-gulp.task('default', ['watch', 'css','browser-sync']);
+gulp.task('default', ['watch', 'css','scripts_newfollow','scripts_followed','browser-sync']);
 
 

@@ -31,7 +31,20 @@
 
         var baseurl = ''+'/src/dist/images/';
         var imagesArray = [
-            baseurl + 'logo.png'
+            baseurl + 'logo.png',
+            baseurl + 'ani-1.png',
+            baseurl + 'ani-2.png',
+            baseurl + 'ani-3.png',
+            baseurl + 'ani-5.png',
+            baseurl + 'bg.jpg',
+            baseurl + 'btn.png',
+            baseurl + 'foreground-1.png',
+            baseurl + 'gift-flower.png',
+            baseurl + 'guide-share.png',
+            baseurl + 'landing2-1.png',
+            baseurl + 'pop-bg.png',
+            baseurl + 'preload-bg.jpg',
+            baseurl + 'preload-flower.jpg',
         ];
 
         imagesArray = imagesArray.concat(self.loadingImg);
@@ -96,18 +109,19 @@
         //    submit the form
         $('.btn-submit').on('touchstart',function(){
             if(self.validateForm()){
-                var inputNameVal = $('input-name').val(),
-                    inputMobileVal = $('input-mobile').val(),
-                    inputAddressVal = $('input-address').val(),
-                    selectProvinceVal = $('select-province').val(),
-                    selectCityVal = $('select-city').val(),
-                    selectDistrictVal = $('select-district').val();
+                //name mobile province city area address
+                var inputNameVal = $('#input-name').val(),
+                    inputMobileVal = $('#input-mobile').val(),
+                    inputAddressVal = $('#input-address').val(),
+                    selectProvinceVal = $('#select-province').val(),
+                    selectCityVal = $('#select-city').val(),
+                    selectDistrictVal = $('#select-district').val();
                 Api.submitInfo({
                     name:inputNameVal,
                     mobile:inputMobileVal,
                     province:selectProvinceVal,
                     city:selectCityVal,
-                    district:selectDistrictVal,
+                    area:selectDistrictVal,
                     address:inputAddressVal
                 },function(data){
                     if(data.status==1){
@@ -132,13 +146,24 @@
             self.showDistrict(curProvinceIndex,curCityIndex);
         });
 
+        $('#select-district').on('change',function(){
+            var districtInputEle = $('#input-text-district'),
+                districtSelectEle = $('#select-district');
+            var curCityIndex = document.getElementById('select-district').selectedIndex;
+            districtInputEle.val(districtSelectEle.val());
+        });
+
+        //
+        $('.btn-getproduct').on('touchstart',function(){
+           location.reload();
+        });
 
         //    share function
         weixinshare({
-            title1: 'kenzo',
-            des: 'kenzo',
+            title1: 'KENZO关注有礼 | 睡美人面膜免费申领',
+            des: '和“好肌友”一起领取睡美人悦肤礼赠吧！',
             link: window.location.origin,
-            img: window.location.origin+'/src/dist/images/logo.png'
+            img: window.location.origin+'/src/dist/images/share.jpg'
         },function(){
             console.log('sharesuccess2');
             self.shareSuccess();
@@ -234,6 +259,7 @@
             districts = districts + '<option data-id="'+k+'" value="'+districtJson[k]+'">'+districtJson[k]+'</option>';
         }
         districtSelectEle.html(districts);
+        cityInputEle.val(citySelectEle.val());
         districtInputEle.val(districtSelectEle.val());
     };
 

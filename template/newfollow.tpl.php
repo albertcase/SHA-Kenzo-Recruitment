@@ -9,21 +9,8 @@
     <meta name="full-screen" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
-    <!--<script src="../src/assets/js/rem.js"></script>-->
-    <!--<script src="../src/assets/js/lib/zepto.min.js"></script>-->
-    <!--<script src="../src/assets/js/common.js"></script>-->
-    <!--<script src="../src/assets/js/api.js"></script>-->
-    <!--<script src="../src/assets/js/wxshare.js"></script>-->
-    <!--<script src="../src/assets/js/newfollow.js"></script>-->
-    <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite?debug=1"></script>
-    <script src="../src/assets/js/lib/zepto.min.js"></script>
-    <script src="../src/assets/js/lib/pre-loader.js"></script>
-    <script src="../src/assets/js/rem.js"></script>
-    <script src="../src/assets/js/region.js"></script>
-    <script src="../src/assets/js/common.js"></script>
-    <script src="../src/assets/js/api.js"></script>
-    <script src="../src/assets/js/wxshare.js"></script>
-    <script src="../src/assets/js/newfollow.js"></script>
+    <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite"></script>
+    <script src="../src/dist/js/all_newfollow.min.js"></script>
 </head>
 <body class="page-home">
 <div id="orientLayer" class="mod-orient-layer">
@@ -61,7 +48,14 @@
                 <img src="../src/dist/images/landing2-1.png" alt="kenzo"/>
             </div>
             <div class="des-wrap">
-                <div class="des">
+                <div class="des des-1">
+                    感悟白莲精粹的呵护<br>
+                    安然悠享整夜青春修护<br>
+                    云朵般的慕斯质地轻而柔软<br>
+                    清晨梦醒时肌肤紧致、光滑<br>
+                    ···身心亦是焕然一新
+                </div>
+                <div class="des des-2">
                     感悟白莲精粹的呵护<br>
                     安然悠享整夜青春修护<br>
                     云朵般的慕斯质地轻而柔软<br>
@@ -84,29 +78,14 @@
                 <div class="flower">
                     <img src="../src/dist/images/ani-5.png" alt="kenzo"/>
                 </div>
-                <!--<img src="../src/dist/images/foreground-1.png" alt="kenzo"/>-->
+                <div class="product-demo">
+                    <img src="../src/dist/images/product-demo.png" alt="kenzo"/>
+                </div>
             </div>
             <div class="ani-petal">
                 <img src="../src/dist/images/ani-1.png" alt="kenzo"/>
             </div>
         </div>
-        <!--<div class="pin pin-1 current" id="pin-landing">-->
-            <!--<div class="title">-->
-                <!--<img src="../src/dist/images/landing2-1.png" alt="kenzo"/>-->
-            <!--</div>-->
-            <!--<div class="msg">-->
-                <!--感悟白莲精粹的呵护-->
-                <!--安然悠享整夜青春修护-->
-                <!--云朵般的慕斯质地轻而柔软-->
-                <!--清晨梦醒时肌肤紧致、光滑-->
-                <!--···身心亦是焕然一新-->
-            <!--</div>-->
-            <!--<div class="btn btn-getprize">即刻领取睡美人试用装</div>-->
-            <!--<div class="terms-link">*规则与条款</div>-->
-            <!--<div class="foreground">-->
-                <!--<img src="../src/dist/images/foreground-1.png" alt="kenzo"/>-->
-            <!--</div>-->
-        <!--</div>-->
         <!-- 填写表单选项-->
         <div class="pin pin-2" id="pin-fillform">
             <h3 class="title">
@@ -147,7 +126,9 @@
                 </div>
                 <div class="btn btn-submit">提 交</div>
             </form>
-
+            <div class="foreground">
+                <img src="../src/dist/images/foreground-1.png" alt="kenzo"/>
+            </div>
         </div>
         <div class="pin pin-3" id="pin-gift">
             <div class="des v-content">

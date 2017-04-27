@@ -9,16 +9,8 @@
     <meta name="full-screen" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
-    <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite?debug=1"></script>
-    <script src="../src/assets/js/lib/zepto.min.js"></script>
-    <script src="../src/assets/js/lib/pre-loader.js"></script>
-    <script src="../src/assets/js/lib/cookie.js"></script>
-    <script src="../src/assets/js/rem.js"></script>
-    <script src="../src/assets/js/region.js"></script>
-    <script src="../src/assets/js/common.js"></script>
-    <script src="../src/assets/js/api.js"></script>
-    <script src="../src/assets/js/wxshare.js"></script>
-    <script src="../src/assets/js/followed.js"></script>
+    <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite"></script>
+<script src="../src/dist/js/all_followed.min.js"></script>
 </head>
 <body class="page-home">
 <div id="orientLayer" class="mod-orient-layer">
@@ -56,7 +48,14 @@
                 <img src="../src/dist/images/landing-1.png" alt="kenzo"/>
             </div>
             <div class="des-wrap">
-                <div class="des">
+                <div class="des des-1">
+                    感悟白莲精粹的呵护<br>
+                    安然悠享整夜青春修护<br>
+                    云朵般的慕斯质地轻而柔软<br>
+                    清晨梦醒时肌肤紧致、光滑<br>
+                    ···身心亦是焕然一新
+                </div>
+                <div class="des des-2">
                     感悟白莲精粹的呵护<br>
                     安然悠享整夜青春修护<br>
                     云朵般的慕斯质地轻而柔软<br>
@@ -125,7 +124,9 @@
                 </div>
                 <div class="btn btn-submit">提 交</div>
             </form>
-
+            <div class="foreground">
+                <img src="../src/dist/images/foreground-1.png" alt="kenzo"/>
+            </div>
         </div>
         <div class="pin pin-3" id="pin-gift">
             <div class="des v-content">
@@ -178,14 +179,14 @@
             </p>
             <h4 class="subtitle">参与条件</h4>
             <p class="des">
-                2017年5月4日起截止至2017年7月1日<br>
-                首次关注KenzoParfums凯卓官方微信的<br>
-                用户可参与申领，每个微信ID仅限申领一次<br>
-                奖品限量6500份（先到先得）
+                活动期间，关注KenzoParfums凯卓官方微信的<br>
+                用户将活动分享给好友<br>
+                即可参与抽奖（随机抽取）<br>
+                每个微信ID仅限中奖一次；奖品限量20份
             </p>
             <h4 class="subtitle">奖品内容</h4>
             <p class="des">
-                奖品为KENZO睡美人面膜体验装*（2ML）<br>
+                奖品为KENZO睡美人面膜*（75ML）<br>
                 根据用户填写的邮寄地址<br>
                 在中奖后的30个工作日内寄送
             </p>

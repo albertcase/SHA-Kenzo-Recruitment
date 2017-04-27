@@ -4,6 +4,10 @@
 ;(function(){
     var controller = function(){
         this.hasShared = false;
+        //if getPrize is 0, no lottery
+        //if getPrize is 1, lottery and get prize
+        //if getPrize is 2, lottery and no prize
+        this.getPrize = 0;
     };
     //init
     controller.prototype.init = function(){
@@ -31,7 +35,20 @@
 
         var baseurl = ''+'/src/dist/images/';
         var imagesArray = [
-            baseurl + 'logo.png'
+            baseurl + 'logo.png',
+            baseurl + 'ani-1.png',
+            baseurl + 'ani-2.png',
+            baseurl + 'ani-3.png',
+            baseurl + 'ani-5.png',
+            baseurl + 'bg.jpg',
+            baseurl + 'btn.png',
+            baseurl + 'foreground-1.png',
+            baseurl + 'gift-flower.png',
+            baseurl + 'guide-share.png',
+            baseurl + 'landing-1.png',
+            baseurl + 'pop-bg.png',
+            baseurl + 'preload-bg.jpg',
+            baseurl + 'preload-flower.jpg',
         ];
 
         imagesArray = imagesArray.concat(self.loadingImg);
@@ -60,8 +77,22 @@
         var self = this;
         $('.preload').remove();
         $('.wrapper').addClass('fade');
-        Common.gotoPin(0);
+
         self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
+        self.getPrize = Cookies.get('getPrize')?Cookies.get('getPrize'):0;
+        if(self.getPrize == 0){
+            Common.gotoPin(0);
+        }else{
+            Common.gotoPin(2);
+            if(self.getPrize==1){
+                //    get prize
+                $('.prize-yes').addClass('show');
+                $('.prize-no').removeClass('show');
+            }else if(self.getPrize==2){
+                $('.prize-yes').removeClass('show');
+                $('.prize-no').addClass('show');
+            };
+        }
         //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
@@ -100,29 +131,31 @@
             }else{
                 console.log('show share pop');
                 $('.share-popup').addClass('show');
-
             }
         });
 
         //    submit the form
         $('.btn-submit').on('touchstart',function(){
             if(self.validateForm()){
-                var inputNameVal = $('input-name').val(),
-                    inputMobileVal = $('input-mobile').val(),
-                    inputAddressVal = $('input-address').val(),
-                    selectProvinceVal = $('select-province').val(),
-                    selectCityVal = $('select-city').val(),
-                    selectDistrictVal = $('select-district').val();
+                //name mobile province city area address
+                var inputNameVal = $('#input-name').val(),
+                    inputMobileVal = $('#input-mobile').val(),
+                    inputAddressVal = $('#input-address').val(),
+                    selectProvinceVal = $('#select-province').val(),
+                    selectCityVal = $('#select-city').val(),
+                    selectDistrictVal = $('#select-district').val();
+                console.log(inputNameVal+''+inputMobileVal+inputAddressVal+selectProvinceVal+selectCityVal+selectDistrictVal);
                 Api.submitInfo({
                     name:inputNameVal,
                     mobile:inputMobileVal,
                     province:selectProvinceVal,
                     city:selectCityVal,
-                    district:selectDistrictVal,
+                    area:selectDistrictVal,
                     address:inputAddressVal
                 },function(data){
                     if(data.status==1){
                         Common.gotoPin(2);
+                        self.prizeResult();
                     }else{
                         alert(data.msg);
                     }
@@ -143,13 +176,20 @@
             self.showDistrict(curProvinceIndex,curCityIndex);
         });
 
+        $('#select-district').on('change',function(){
+            var districtInputEle = $('#input-text-district'),
+                districtSelectEle = $('#select-district');
+            var curCityIndex = document.getElementById('select-district').selectedIndex;
+            districtInputEle.val(districtSelectEle.val());
+        });
+
 
     //    share function
         weixinshare({
-            title1: 'kenzo',
-            des: 'kenzo',
+            title1: 'KENZO关注有礼 | 睡美人面膜免费申领',
+            des: '和“好肌友”一起领取睡美人悦肤礼赠吧！',
             link: window.location.origin,
-            img: window.location.origin+'/src/dist/images/logo.png'
+            img: window.location.origin+'/src/dist/images/share.jpg'
         },function(){
             console.log('sharesuccess2');
             self.shareSuccess();
@@ -187,10 +227,12 @@
         Api.isLuckyDraw(function(result){
             //self.prizeResult(result.status,result.msg);
             if(result.status==1){
+                Cookies.set('getPrize',1);
                 //    get prize
                 $('.prize-yes').addClass('show');
                 $('.prize-no').removeClass('show');
             }else if(result.status==2){
+                Cookies.set('getPrize',2);
                 $('.prize-yes').removeClass('show');
                 $('.prize-no').addClass('show');
             }else{
@@ -246,6 +288,7 @@
         for(var k=0;k<districtJson.length;k++){
             districts = districts + '<option data-id="'+k+'" value="'+districtJson[k]+'">'+districtJson[k]+'</option>';
         }
+        cityInputEle.val(citySelectEle.val());
         districtSelectEle.html(districts);
         districtInputEle.val(districtSelectEle.val());
     };

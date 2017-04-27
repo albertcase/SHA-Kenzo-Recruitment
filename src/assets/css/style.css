@@ -888,9 +888,16 @@ body {
   color: #676763;
   font-size: 0.28rem;
   line-height: 2;
+}
+.pin-landing .des-wrap .des-1 {
   -webkit-animation: overandover 10s linear infinite;
   -moz-animation: overandover 10s linear infinite;
   animation: overandover 10s linear infinite;
+}
+.pin-landing .des-wrap .des-2 {
+  -webkit-animation: overandover 10s 5s linear infinite;
+  -moz-animation: overandover 10s 5s linear infinite;
+  animation: overandover 10s 5s linear infinite;
 }
 .pin-landing .btn {
   position: relative;
@@ -908,7 +915,7 @@ body {
 }
 .pin-landing .foreground .box-top {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   bottom: 1.4rem;
   left: 2.29rem;
   width: 2.91rem;
@@ -916,11 +923,19 @@ body {
 }
 .pin-landing .foreground .box-bottom {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   bottom: 0.5rem;
   left: 1.8rem;
   width: 3.81rem;
   height: 2.94rem;
+}
+.pin-landing .foreground .product-demo {
+  position: absolute;
+  z-index: 1;
+  bottom: 1.8rem;
+  right: -2rem;
+  width: 1.54rem;
+  height: 2.01rem;
 }
 .pin-landing .flower {
   position: absolute;
@@ -1066,24 +1081,11 @@ body {
 @keyframes outandfade {
   0% {
     bottom: 1.4rem;
-  }
-  20% {
-    bottom: 1.5rem;
-    left: 2.4rem;
-    -webkit-transform: rotate(10deg);
-    -moz-transform: rotate(10deg);
-    -ms-transform: rotate(10deg);
-    -o-transform: rotate(10deg);
-    transform: rotate(10deg);
-  }
-  40% {
-    bottom: 2rem;
-    left: 3rem;
-    -webkit-transform: rotate(30deg);
-    -moz-transform: rotate(30deg);
-    -ms-transform: rotate(30deg);
-    -o-transform: rotate(30deg);
-    transform: rotate(30deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
     bottom: 3rem;
@@ -1095,6 +1097,61 @@ body {
     transform: rotate(30deg);
   }
 }
+.pin-landing.current .foreground .product-demo {
+  -webkit-animation: fadefromright 2000ms 1000ms 1 forwards;
+  -moz-animation: fadefromright 2000ms 1000ms 1 forwards;
+  animation: fadefromright 2000ms 1000ms 1 forwards;
+}
+@-webkit-keyframes fadefromright {
+  0% {
+    bottom: 2.8rem;
+    right: -2rem;
+    -webkit-transform: rotate(15deg);
+  }
+  100% {
+    bottom: 1.8rem;
+    right: 2rem;
+    -webkit-transform: rotate(-15deg);
+  }
+}
+@-moz-keyframes fadefromright {
+  0% {
+    bottom: 2.8rem;
+    right: -2rem;
+    -moz-transform: rotate(15deg);
+  }
+  100% {
+    bottom: 1.8rem;
+    right: 2rem;
+    -moz-transform: rotate(-15deg);
+  }
+}
+@-o-keyframes fadefromright {
+  0% {
+    bottom: 2.8rem;
+    right: -2rem;
+    -o-transform: rotate(15deg);
+  }
+  100% {
+    bottom: 1.8rem;
+    right: 2rem;
+    -o-transform: rotate(-15deg);
+  }
+}
+@keyframes fadefromright {
+  0% {
+    bottom: 2.8rem;
+    right: -2rem;
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  100% {
+    bottom: 1.8rem;
+    right: 2rem;
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+  }
+}
 @keyframes overandover {
   0% {
     -webkit-transform: translateY(1.8rem);
@@ -1104,11 +1161,11 @@ body {
     transform: translateY(1.8rem);
   }
   100% {
-    -webkit-transform: translateY(-3.2rem);
-    -moz-transform: translateY(-3.2rem);
-    -ms-transform: translateY(-3.2rem);
-    -o-transform: translateY(-3.2rem);
-    transform: translateY(-3.2rem);
+    -webkit-transform: translateY(-4.8rem);
+    -moz-transform: translateY(-4.8rem);
+    -ms-transform: translateY(-4.8rem);
+    -o-transform: translateY(-4.8rem);
+    transform: translateY(-4.8rem);
   }
 }
 #pin-landing-2 .title {
@@ -1185,6 +1242,13 @@ body {
 #pin-fillform #form-contact .btn-submit {
   margin-top: 0.6rem;
 }
+#pin-fillform .foreground {
+  position: absolute;
+  left: 0rem;
+  bottom: -1rem;
+  width: 5.52rem;
+  height: 4.57rem;
+}
 
 #pin-gift .title {
   color: #6b6b6b;
@@ -1223,6 +1287,11 @@ body {
   position: absolute;
   top: -2rem;
   right: 0;
+  -webkit-transform: translate(-20px, 20px);
+  -moz-transform: translate(-20px, 20px);
+  -ms-transform: translate(-20px, 20px);
+  -o-transform: translate(-20px, 20px);
+  transform: translate(-20px, 20px);
   width: 1.1rem;
   height: 1.04rem;
   -webkit-transform-origin: 50% 0;
@@ -1230,55 +1299,42 @@ body {
   -ms-transform-origin: 50% 0;
   -o-transform-origin: 50% 0;
   transform-origin: 50% 0;
-  -webkit-animation: lefttoright 2s infinite;
-  -moz-animation: lefttoright 2s infinite;
-  animation: lefttoright 2s infinite;
+  -webkit-animation: lefttoright 2s 1 forwards;
+  -moz-animation: lefttoright 2s 1 forwards;
+  animation: lefttoright 2s 1 forwards;
 }
 @-webkit-keyframes lefttoright {
   0% {
-    -webkit-transform: rotate(10deg);
-  }
-  50% {
-    -webkit-transform: rotate(-10deg);
+    -webkit-transform: translate(-20px, 20px);
   }
   100% {
-    -webkit-transform: rotate(10deg);
+    -webkit-transform: translate(0px, 0px);
   }
 }
 @-moz-keyframes lefttoright {
   0% {
-    -moz-transform: rotate(10deg);
-  }
-  50% {
-    -moz-transform: rotate(-10deg);
+    -moz-transform: translate(-20px, 20px);
   }
   100% {
-    -moz-transform: rotate(10deg);
+    -moz-transform: translate(0px, 0px);
   }
 }
 @-o-keyframes lefttoright {
   0% {
-    -o-transform: rotate(10deg);
-  }
-  50% {
-    -o-transform: rotate(-10deg);
+    -o-transform: translate(-20px, 20px);
   }
   100% {
-    -o-transform: rotate(10deg);
+    -o-transform: translate(0px, 0px);
   }
 }
 @keyframes lefttoright {
   0% {
-    -webkit-transform: rotate(10deg);
-    transform: rotate(10deg);
-  }
-  50% {
-    -webkit-transform: rotate(-10deg);
-    transform: rotate(-10deg);
+    -webkit-transform: translate(-20px, 20px);
+    transform: translate(-20px, 20px);
   }
   100% {
-    -webkit-transform: rotate(10deg);
-    transform: rotate(10deg);
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
   }
 }
 .share-popup .right-star {

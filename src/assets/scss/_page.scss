@@ -527,8 +527,12 @@ $ani-delay-5: 5000ms;
 //for unfollow page
 #pin-follow{
   .qrcode{
-    @include size(3.27rem,4.89rem);
-    margin: 0.8rem auto;
+    @include size(3.05rem,3.06rem);
+    margin: 0.8rem auto 0.5rem;
+  }
+  .qrcode-des{
+    @include size(3.27rem,1.13rem);
+    margin: 0 auto;
   }
   .foreground{
     position: absolute;

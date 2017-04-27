@@ -1356,9 +1356,14 @@ body {
 }
 
 #pin-follow .qrcode {
+  width: 3.05rem;
+  height: 3.06rem;
+  margin: 0.8rem auto 0.5rem;
+}
+#pin-follow .qrcode-des {
   width: 3.27rem;
-  height: 4.89rem;
-  margin: 0.8rem auto;
+  height: 1.13rem;
+  margin: 0 auto;
 }
 #pin-follow .foreground {
   position: absolute;

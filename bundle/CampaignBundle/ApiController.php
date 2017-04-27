@@ -59,10 +59,10 @@ class ApiController extends Controller {
 		$data->area = $request->request->get('area');
 		$data->address = $request->request->get('address');
 		if($DatabaseAPI->saveInfo($data)) {
-			$checknew = $databaseAPI->checkOpenid($user->openid);
+			$checknew = $DatabaseAPI->checkOpenid($user->openid);
 			if (!$checknew) {
 				//新用户申领
-				$databaseAPI->setGift($user->uid);
+				$DatabaseAPI->setGift($user->uid);
 			}
 			$data = array('status' => 1);
 			$this->dataPrint($data);

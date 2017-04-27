@@ -212,6 +212,17 @@ class DatabaseAPI {
 			return FALSE;
 	}
 
+	public function setGift($uid) {
+		$sql = "INSERT INTO `gift` SET `uid` = ?"; 
+		$res = $this->connect()->prepare($sql); 
+		$res->bind_param("s", $uid);
+		if($res->execute()) 
+			return $res->insert_id;
+		else 
+			return FALSE;
+	}
+
+
 	
 
 }

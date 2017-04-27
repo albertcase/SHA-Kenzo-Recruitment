@@ -24,6 +24,7 @@ Api = {
 
     isLuckyDraw:function(callback){
         Common.msgBox.add('loading...');
+        //Common.msgBox.add('抽奖中...');
         $.ajax({
             url:'/api/lottery',
             type:'POST',

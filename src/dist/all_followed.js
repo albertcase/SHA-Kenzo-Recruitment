@@ -1598,6 +1598,7 @@ Api = {
 
     isLuckyDraw:function(callback){
         Common.msgBox.add('loading...');
+        //Common.msgBox.add('抽奖中...');
         $.ajax({
             url:'/api/lottery',
             type:'POST',
@@ -1691,7 +1692,7 @@ function weixinshare(obj,successCallBack){
 
 $(document).ready(function(){
     weixinshare({
-        title1: 'KENZO睡美人悦肤礼赠',
+        title1: 'KENZO关注有礼 | 睡美人面膜免费申领 ',
         des: '和“好肌友”一起领取睡美人悦肤礼赠吧！',
         link: window.location.origin,
         img: window.location.origin+'/src/dist/images/share.jpg'
@@ -1888,7 +1889,7 @@ $(document).ready(function(){
 
     //    share function
         weixinshare({
-            title1: 'KENZO睡美人悦肤礼赠',
+            title1: 'KENZO关注有礼 | 睡美人面膜免费申领 ',
             des: '和“好肌友”一起领取睡美人悦肤礼赠吧！',
             link: window.location.origin,
             img: window.location.origin+'/src/dist/images/share.jpg'

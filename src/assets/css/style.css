@@ -1281,6 +1281,8 @@ body {
 #pin-gift .btn-getproduct {
   width: 4.6rem;
   height: 1.4rem;
+  box-sizing: border-box;
+  padding-top: 0.22rem;
 }
 
 .guide-share {

@@ -86,7 +86,7 @@ class ApiController extends Controller {
 		}
 		
 		$rand = mt_rand(1,100);
-		if ($rand>=50) {
+		if ($rand<=30) {
 			$databaseAPI->setLottery($user->uid, 1);
 			$data = array('status' => 1, 'msg'=>'恭喜中奖');
 			$this->dataPrint($data);

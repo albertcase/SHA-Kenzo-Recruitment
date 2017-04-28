@@ -223,6 +223,16 @@ class DatabaseAPI {
 	}
 
 
+	public function setOpenid($openid) {
+		$sql = "INSERT INTO `openid` SET `openid` = ?"; 
+		$res = $this->connect()->prepare($sql); 
+		$res->bind_param("s", $openid);
+		if($res->execute()) 
+			return TRUE;
+		else 
+			return FALSE;
+	}
+
 	
 
 }

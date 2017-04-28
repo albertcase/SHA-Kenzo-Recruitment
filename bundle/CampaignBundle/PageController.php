@@ -46,17 +46,32 @@ class PageController extends Controller {
 	}
 
 	public function runopenidAction() {
-	  	$next_openid = 'oEts5uK1cNvbmoZUro_UoTvlmkVc';
-	  	$openidlist = $this->getOpenidList($next_openid);
-	  	echo '<pre>';
-	  	print_r($openidlist);
+		ini_set("display_errors", 1);
+		set_time_limit(0);
+		$count = 0;
+		$databaseAPI = new \Lib\DatabaseAPI();
+	  	$next_openid = '';
+	  	while (true) {
+	  		$openidlist = $this->getOpenidList($next_openid);
+	  		if ($openidlist['count']==0) {
+	  			break;
+	  		}
+	  		$next_openid = $openidlist['next_openid'];
+	  		$list = $openidlist['data']['openid'];
+	  		for($i=0;$i<count($list);$i++) {
+	  			if ($databaseAPI->setOpenid($list[$i])) {
+	  				$count++;
+	  			}
+	  		}
+	  	}
+	  	echo $count;
 	  	exit;
 	}
 
 	public function getOpenidList($next_openid = '') {
 		$access_token = file_get_contents("http://kenzowechat.samesamechina.com/weixin/getaccesstoken");
 		$data = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$access_token."&next_openid=".$next_openid);
-		return json_decode($data);
+		return json_decode($data,true);
 	}
 
 	public function jssdkConfig($url = '') {

@@ -467,6 +467,11 @@ $ani-delay-5: 5000ms;
     &.show{
       display: block;
     }
+    .tip{
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.22rem;
+    }
   }
   .b-img{
     position: absolute;

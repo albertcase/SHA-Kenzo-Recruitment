@@ -134,6 +134,7 @@
                     <h3 class="title">「恭喜您」</h3>
                     KENZO睡美人面膜正装（75ML）<br>
                     Miss K 将火速为您寄送礼品！
+                    <span class="tip">（每个微信ID仅限中奖一次）</span>
                 </div>
                 <div class="prize-item prize-no">
                     <div class="guide-share">

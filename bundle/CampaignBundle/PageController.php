@@ -52,14 +52,13 @@ class PageController extends Controller {
 	  	$next_openid = '';
 	  	//while (true) {
 	  		$openidlist = $this->getOpenidList($next_openid);
-	  		print_r($openidlist);exit;
 	  		// if ($openidlist['count']==0) {
 	  		// 	break;
 	  		// }
 	  		$next_openid = $openidlist['next_openid'];
 	  		$list = $openidlist['openid'];
-	  		foreach ($list as $key => $value) {
-	  			if ($databaseAPI->setOpenid($value)) {
+	  		for($i=0;$i<count($list);$i++) {
+	  			if ($databaseAPI->setOpenid($list[$i])) {
 	  				$count++;
 	  			}
 	  		}

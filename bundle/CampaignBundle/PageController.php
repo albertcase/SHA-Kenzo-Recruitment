@@ -51,22 +51,19 @@ class PageController extends Controller {
 		$count = 0;
 		$databaseAPI = new \Lib\DatabaseAPI();
 	  	$next_openid = '';
-	  	//while (true) {
+	  	while (true) {
 	  		$openidlist = $this->getOpenidList($next_openid);
-	  		var_dump($openidlist);exit;
-	  		// if ($openidlist['count']==0) {
-	  		// 	break;
-	  		// }
-	  		$next_openid = $openidlist['next_openid'];
-	  		$list = $openidlist['openid'];
-	  		var_dump($list);exit;
-	  		for($i=0;$i<count($list);$i++) {
-	  			echo $list[$i]."<br>";
-	  			// if ($databaseAPI->setOpenid($list[$i])) {
-	  			// 	$count++;
-	  			// }
+	  		if ($openidlist['data']['count']==0) {
+	  			break;
 	  		}
-	  	//}
+	  		$next_openid = $openidlist['data']['next_openid'];
+	  		$list = $openidlist['data']['openid'];
+	  		for($i=0;$i<count($list);$i++) {
+	  			if ($databaseAPI->setOpenid($list[$i])) {
+	  				$count++;
+	  			}
+	  		}
+	  	}
 	  	echo $count;
 	  	exit;
 	}

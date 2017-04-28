@@ -1786,7 +1786,7 @@ $(document).ready(function(){
         $('.preload').remove();
         $('.wrapper').addClass('fade');
 
-        self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
+        //self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
         self.getPrize = Cookies.get('getPrize')?Cookies.get('getPrize'):0;
         if(self.getPrize == 1){
             Common.gotoPin(2);
@@ -1817,22 +1817,7 @@ $(document).ready(function(){
             //Common.gotoPin(1);
             //if user has shared the link, go next page,
             //if not, show pop to guide user share
-            if(self.hasShared){
-                Api.isFillForm(function (data) {
-                    //if filled, go lucky draw page
-                    //if not,fill form first
-                    if(data.status == 1){
-                        Common.gotoPin(2);
-                        Api.isLuckyDraw(function(data){
-                            self.prizeResult(data.status,data.msg);
-                        })
-                    }else{
-                        Common.gotoPin(1);
-                    }
-                })
-            }else{
-                $('.share-popup').addClass('show');
-            }
+            $('.share-popup').addClass('show');
         });
 
         //    submit the form
@@ -1906,8 +1891,6 @@ $(document).ready(function(){
     //share success
     controller.prototype.shareSuccess = function(){
         var self = this;
-        Cookies.set('hasShared',true);
-        self.hasShared = true;
         $('.share-popup').removeClass('show');
         Api.isFillForm(function (data) {
             //if filled, go lucky draw page

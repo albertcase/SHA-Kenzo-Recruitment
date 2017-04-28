@@ -52,6 +52,7 @@ class PageController extends Controller {
 	  	$next_openid = '';
 	  	//while (true) {
 	  		$openidlist = $this->getOpenidList($next_openid);
+	  		print_r($openidlist);exit;
 	  		// if ($openidlist['count']==0) {
 	  		// 	break;
 	  		// }

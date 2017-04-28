@@ -46,10 +46,20 @@ class PageController extends Controller {
 	}
 
 	public function runopenidAction() {
-	  	$next_openid = 'oEts5uK1cNvbmoZUro_UoTvlmkVc';
-	  	$openidlist = $this->getOpenidList($next_openid);
-	  	echo '<pre>';
-	  	print_r($openidlist);
+		set_time_limit(0);
+		$databaseAPI = new \Lib\DatabaseAPI();
+	  	$next_openid = '';
+	  	while (true) {
+	  		$openidlist = $this->getOpenidList($next_openid);
+	  		if ($openidlist['count']==0) {
+	  			break;
+	  		}
+	  		$next_openid = $openidlist['next_openid'];
+	  		$list = $openidlist['openid'];
+	  		foreach ($list as $key => $value) {
+	  			$databaseAPI->setOpenid($value);
+	  		}
+	  	}
 	  	exit;
 	}
 

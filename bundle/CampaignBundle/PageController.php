@@ -46,12 +46,14 @@ class PageController extends Controller {
 	}
 
 	public function runopenidAction() {
+		ini_set("display_errors", 1);
 		set_time_limit(0);
 		$count = 0;
 		$databaseAPI = new \Lib\DatabaseAPI();
 	  	$next_openid = '';
 	  	//while (true) {
 	  		$openidlist = $this->getOpenidList($next_openid);
+	  		var_dump($openidlist);exit;
 	  		// if ($openidlist['count']==0) {
 	  		// 	break;
 	  		// }

@@ -46,9 +46,12 @@ class PageController extends Controller {
 	}
 
 	public function runopenidAction() {
-	  	echo $access_token = file_get_contents("http://kenzowechat.samesamechina.com/weixin/getaccesstoken");
+	  	$access_token = file_get_contents("http://kenzowechat.samesamechina.com/weixin/getaccesstoken");
 	  	$data = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$access_token);
-	  	print $data;
+	  	$data = json_decode($data,true);
+	  	echo $page = ceil($page['total']/10000);
+	  	$openidlist = $data['openid'];
+
 	  	exit;
 	}
 

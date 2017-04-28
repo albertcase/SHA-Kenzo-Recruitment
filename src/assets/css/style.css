@@ -1270,6 +1270,11 @@ body {
 #pin-gift .prize-item.show {
   display: block;
 }
+#pin-gift .prize-item .tip {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.22rem;
+}
 #pin-gift .b-img {
   position: absolute;
   left: 0;

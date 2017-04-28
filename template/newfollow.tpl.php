@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>KENZO</title>
+    <title>KENZO睡美人悦肤礼赠 </title>
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="x5-fullscreen" content="true">
@@ -138,7 +138,10 @@
                     （2ML）一份<br>
                     Miss K 将火速为您寄送礼品！
                 </div>
-                <p class="name">* KENZO花颜舒柔夜间修护面膜</p>
+                <p class="name">
+                    * KENZO花颜舒柔夜间修护面膜<br>
+                    （每个微信ID限领一份）
+                </p>
                 <div class="btn btn-getproduct">点击赢取睡美人面膜正装</div>
             </div>
             <div class="b-img">

@@ -99,7 +99,6 @@
                 //if not,fill form first
                 if(data.status == 1){
                     Common.gotoPin(2);
-                    //self.prizeResult();
                 }else{
                     Common.gotoPin(1);
                 }
@@ -158,58 +157,6 @@
            location.reload();
         });
 
-        //    share function
-        weixinshare({
-            title1: 'KENZO睡美人悦肤礼赠',
-            des: '和“好肌友”一起领取睡美人悦肤礼赠吧！',
-            link: window.location.origin,
-            img: window.location.origin+'/src/dist/images/share.jpg'
-        },function(){
-            console.log('sharesuccess2');
-            self.shareSuccess();
-
-        });
-
-        //    imitate share function on pc
-        $('.share-popup .guide-share').on('touchstart',function(){
-            self.shareSuccess();
-        });
-
-    };
-
-    //share success
-    controller.prototype.shareSuccess = function(){
-        var self = this;
-        $('.share-popup').removeClass('show');
-        Api.isFillForm(function (data) {
-            //if filled, go lucky draw page
-            //if not,fill form first
-            if(data.status == 1){
-                Common.gotoPin(2);
-                self.prizeResult();
-            }else{
-                Common.gotoPin(1);
-            }
-        })
-    };
-
-    //show the prize result, if prize, show prize msg, if not, show sorry msg
-    controller.prototype.prizeResult = function(){
-        Common.gotoPin(2);
-        Api.isLuckyDraw(function(result){
-            //self.prizeResult(result.status,result.msg);
-            if(result.status==1){
-                //    get prize
-                $('.prize-yes').addClass('show');
-                $('.prize-no').removeClass('show');
-            }else if(result.status==2){
-                $('.prize-yes').removeClass('show');
-                $('.prize-no').addClass('show');
-            }else{
-                Common.alertBox.add(result.msg);
-            }
-        });
-
     };
 
     //province city and district
@@ -219,9 +166,9 @@
         var provinces = '';
         var provinceSelectEle = $('#select-province'),
             provinceInputEle = $('#input-text-province');
-        for(var i=0;i<region.length;i++){
-            provinces = provinces + '<option value="'+region[i].name+'">'+region[i].name+'</option>';
-        }
+        region.forEach(function(item){
+            provinces = provinces+'<option value="'+item.name+'">'+item.name+'</option>';
+        });
         provinceSelectEle.html(provinces);
         provinceInputEle.val(provinceSelectEle.val());
         self.showCity(0);
@@ -237,9 +184,9 @@
             citySelectEle = $('#select-city'),
             cityInputEle = $('#input-text-city');
         var cityJson = region[curProvinceId].city;
-        for(var j=0;j<cityJson.length;j++){
-            cities = cities + '<option data-id="'+j+'" value="'+cityJson[j].name+'">'+cityJson[j].name+'</option>';
-        }
+        cityJson.forEach(function(item,index){
+            cities = cities + '<option data-id="'+index+'" value="'+item.name+'">'+item.name+'</option>';
+        });
         citySelectEle.html(cities);
         provinceInputEle.val(provinceSelectEle.val());
         cityInputEle.val(citySelectEle.val());
@@ -255,35 +202,14 @@
         //    show current districts
         var districts = '';
         var districtJson = region[curProvinceId].city[curCityId].area;
-        for(var k=0;k<districtJson.length;k++){
-            districts = districts + '<option data-id="'+k+'" value="'+districtJson[k]+'">'+districtJson[k]+'</option>';
-        }
+        districtJson.forEach(function(item,index){
+            districts = districts + '<option data-id="'+index+'" value="'+item+'">'+item+'</option>';
+        });
         districtSelectEle.html(districts);
         cityInputEle.val(citySelectEle.val());
         districtInputEle.val(districtSelectEle.val());
     };
 
-    //load user info and fill it
-    controller.prototype.userInfo = function(){
-        var self = this;
-        Api.isLogin(function(data){
-            var imgAvatar = data.msg.headimgurl,
-                score = data.msg.score,
-                scoreProgress = parseInt(score) / 520 * 100 + '%';
-            $('.avatar img').attr('src',imgAvatar);
-            $('.stars .progress').css('width',scoreProgress);
-            $('.total-score .num').html(score);
-
-            var info = data.info;
-            if(info){
-                //    user info
-                $('#input-name').val(info.name);
-                $('#input-mobile').val(info.cellphone);
-                $('#input-address').val(info.address);
-            }
-
-        });
-    };
 
     //validation the form
     controller.prototype.validateForm = function(){

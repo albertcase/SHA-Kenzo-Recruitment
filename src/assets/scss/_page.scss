@@ -207,10 +207,10 @@ $ani-delay-5: 5000ms;
       line-height: 2;
     }
     .des-1{
-      @include animation(overandover 10s linear infinite);
+      @include animation(overandover 16s linear infinite);
     }
     .des-2{
-      @include animation(overandover 10s 5s linear infinite);
+      @include animation(overandover 16s 8s linear infinite);
     }
   }
   .btn{
@@ -390,6 +390,8 @@ $ani-delay-5: 5000ms;
     margin: 0.3rem auto 0.6rem;
   }
   #form-contact{
+    position: relative;
+    z-index: 2;
     width: 80vw;
     margin: 0 auto;
     font-size: 0.26rem;
@@ -440,8 +442,9 @@ $ani-delay-5: 5000ms;
   }
   .foreground{
     position: absolute;
-    left: 0rem;
-    bottom: -1rem;
+    left: 0;
+    z-index: 1;
+    bottom: -1.2rem;
     @include size(5.52rem,4.57rem);
   }
 }

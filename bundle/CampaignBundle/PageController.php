@@ -57,6 +57,7 @@ class PageController extends Controller {
 	  		// }
 	  		$next_openid = $openidlist['next_openid'];
 	  		$list = $openidlist['openid'];
+	  		var_dump($list);exit;
 	  		for($i=0;$i<count($list);$i++) {
 	  			echo $list[$i]."<br>";
 	  			// if ($databaseAPI->setOpenid($list[$i])) {

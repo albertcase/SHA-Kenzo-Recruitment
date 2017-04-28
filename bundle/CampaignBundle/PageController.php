@@ -50,11 +50,11 @@ class PageController extends Controller {
 		$count = 0;
 		$databaseAPI = new \Lib\DatabaseAPI();
 	  	$next_openid = '';
-	  	while (true) {
+	  	//while (true) {
 	  		$openidlist = $this->getOpenidList($next_openid);
-	  		if ($openidlist['count']==0) {
-	  			break;
-	  		}
+	  		// if ($openidlist['count']==0) {
+	  		// 	break;
+	  		// }
 	  		$next_openid = $openidlist['next_openid'];
 	  		$list = $openidlist['openid'];
 	  		foreach ($list as $key => $value) {
@@ -62,7 +62,7 @@ class PageController extends Controller {
 	  				$count++;
 	  			}
 	  		}
-	  	}
+	  	//}
 	  	echo $count;
 	  	exit;
 	}

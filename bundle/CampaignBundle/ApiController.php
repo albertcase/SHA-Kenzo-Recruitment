@@ -76,20 +76,21 @@ class ApiController extends Controller {
     	global $user;
 
     	$databaseAPI = new \Lib\DatabaseAPI();
-    	$lottery = $databaseAPI->loadLotteryByUid($user->uid);
-    	if ($lottery) {
+    	//已中奖
+  //   	$lottery = $databaseAPI->loadLotteryByUid($user->uid);
+  //   	if ($lottery) {
+		// 	$databaseAPI->setLottery($user->uid, 2);
+		// 	$data = array('status' => 2, 'msg'=>'谢谢参与');
+		// 	$this->dataPrint($data);
+		// }
+		//奖发完
+		echo $count = $databaseAPI->loadLotteryCount();exit;
+		if ($count>=20) {
 			$databaseAPI->setLottery($user->uid, 2);
 			$data = array('status' => 2, 'msg'=>'谢谢参与');
 			$this->dataPrint($data);
 		}
-		// $checknew = $databaseAPI->checkOpenid($user->openid);
-		// if (!$checknew) {
-		// 	//新用户
-		// 	$databaseAPI->setLottery($user->uid, 1);
-		// 	$data = array('status' => 1, 'msg'=>'恭喜中奖');
-		// 	$this->dataPrint($data);
-		// }
-		
+		//中奖率
 		$rand = mt_rand(1,100);
 		if ($rand<=30) {
 			$databaseAPI->setLottery($user->uid, 1);

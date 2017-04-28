@@ -71,7 +71,7 @@ class PageController extends Controller {
 	public function getOpenidList($next_openid = '') {
 		$access_token = file_get_contents("http://kenzowechat.samesamechina.com/weixin/getaccesstoken");
 		$data = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$access_token."&next_openid=".$next_openid);
-		return json_decode($data);
+		return json_decode($data,true);
 	}
 
 	public function jssdkConfig($url = '') {

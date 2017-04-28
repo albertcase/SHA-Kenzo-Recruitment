@@ -47,6 +47,7 @@ class PageController extends Controller {
 
 	public function runopenidAction() {
 		set_time_limit(0);
+		$count = 0;
 		$databaseAPI = new \Lib\DatabaseAPI();
 	  	$next_openid = '';
 	  	while (true) {
@@ -57,9 +58,12 @@ class PageController extends Controller {
 	  		$next_openid = $openidlist['next_openid'];
 	  		$list = $openidlist['openid'];
 	  		foreach ($list as $key => $value) {
-	  			$databaseAPI->setOpenid($value);
+	  			if ($databaseAPI->setOpenid($value)) {
+	  				$count++;
+	  			}
 	  		}
 	  	}
+	  	echo $count;
 	  	exit;
 	}
 

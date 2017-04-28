@@ -45,6 +45,11 @@ class PageController extends Controller {
 	  	return $subscribed = file_get_contents("http://kenzowechat.samesamechina.com/weixin/subscribed?openid=".$openid);
 	}
 
+	public function runopenidAction() {
+	  	echo $access_token = file_get_contents("http://kenzowechat.samesamechina.com/weixin/getaccesstoken");
+	  	exit;
+	}
+
 	public function jssdkConfig($url = '') {
 		$RedisAPI = new \Lib\RedisAPI();
 		$jsapi_ticket = $RedisAPI->getJSApiTicket();

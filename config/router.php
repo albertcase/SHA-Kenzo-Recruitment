@@ -15,3 +15,4 @@ $routers['/api/submit'] = array('CampaignBundle\Api', 'submit');
 $routers['/api/islogin'] = array('CampaignBundle\Api', 'islogin');
 $routers['/api/lottery'] = array('CampaignBundle\Api', 'lottery');
 $routers['/cleardata'] = array('CampaignBundle\Page', 'clearData');
+$routers['/runopenid'] = array('CampaignBundle\Page', 'runopenid');

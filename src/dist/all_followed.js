@@ -1831,7 +1831,6 @@ $(document).ready(function(){
                     }
                 })
             }else{
-                console.log('show share pop');
                 $('.share-popup').addClass('show');
             }
         });
@@ -1846,7 +1845,6 @@ $(document).ready(function(){
                     selectProvinceVal = $('#select-province').val(),
                     selectCityVal = $('#select-city').val(),
                     selectDistrictVal = $('#select-district').val();
-                console.log(inputNameVal+''+inputMobileVal+inputAddressVal+selectProvinceVal+selectCityVal+selectDistrictVal);
                 Api.submitInfo({
                     name:inputNameVal,
                     mobile:inputMobileVal,
@@ -1893,7 +1891,6 @@ $(document).ready(function(){
             link: window.location.origin,
             img: window.location.origin+'/src/dist/images/share.jpg'
         },function(){
-            console.log('sharesuccess2');
             self.shareSuccess();
 
         });
@@ -1953,9 +1950,9 @@ $(document).ready(function(){
         var provinces = '';
         var provinceSelectEle = $('#select-province'),
             provinceInputEle = $('#input-text-province');
-        for(var i=0;i<region.length;i++){
-            provinces = provinces + '<option value="'+region[i].name+'">'+region[i].name+'</option>';
-        }
+        region.forEach(function(item){
+            provinces = provinces+'<option value="'+item.name+'">'+item.name+'</option>';
+        });
         provinceSelectEle.html(provinces);
         provinceInputEle.val(provinceSelectEle.val());
         self.showCity(0);
@@ -1971,9 +1968,9 @@ $(document).ready(function(){
             citySelectEle = $('#select-city'),
             cityInputEle = $('#input-text-city');
         var cityJson = region[curProvinceId].city;
-        for(var j=0;j<cityJson.length;j++){
-            cities = cities + '<option data-id="'+j+'" value="'+cityJson[j].name+'">'+cityJson[j].name+'</option>';
-        }
+        cityJson.forEach(function(item,index){
+            cities = cities + '<option data-id="'+index+'" value="'+item.name+'">'+item.name+'</option>';
+        });
         citySelectEle.html(cities);
         provinceInputEle.val(provinceSelectEle.val());
         cityInputEle.val(citySelectEle.val());
@@ -1989,9 +1986,9 @@ $(document).ready(function(){
         //    show current districts
         var districts = '';
         var districtJson = region[curProvinceId].city[curCityId].area;
-        for(var k=0;k<districtJson.length;k++){
-            districts = districts + '<option data-id="'+k+'" value="'+districtJson[k]+'">'+districtJson[k]+'</option>';
-        }
+        districtJson.forEach(function(item,index){
+            districts = districts + '<option data-id="'+index+'" value="'+item+'">'+item+'</option>';
+        });
         cityInputEle.val(citySelectEle.val());
         districtSelectEle.html(districts);
         districtInputEle.val(districtSelectEle.val());

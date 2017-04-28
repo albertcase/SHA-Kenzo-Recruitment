@@ -46,13 +46,17 @@ class PageController extends Controller {
 	}
 
 	public function runopenidAction() {
-	  	$access_token = file_get_contents("http://kenzowechat.samesamechina.com/weixin/getaccesstoken");
-	  	$data = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$access_token);
-	  	$data = json_decode($data,true);
-	  	echo $page = ceil($data['total']/10000);
-	  	$openidlist = $data['openid'];
-
+	  	$next_openid = 'oEts5uLYiWQiNJDd0-v_GOeCWsQo';
+	  	$openidlist = $this->getOpenidList($next_openid);
+	  	echo '<pre>';
+	  	print_r($openidlist);
 	  	exit;
+	}
+
+	public function getOpenidList($next_openid = '') {
+		$access_token = file_get_contents("http://kenzowechat.samesamechina.com/weixin/getaccesstoken");
+		$data = file_get_contents("https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$access_token."&next_openid=".$next_openid);
+		return json_decode($data);
 	}
 
 	public function jssdkConfig($url = '') {

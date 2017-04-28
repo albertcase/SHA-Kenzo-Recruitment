@@ -46,7 +46,7 @@ class PageController extends Controller {
 	}
 
 	public function runopenidAction() {
-	  	$next_openid = '';
+	  	$next_openid = 'oEts5uLYiWQiNJDd0-v_GOeCWsQo';
 	  	$openidlist = $this->getOpenidList($next_openid);
 	  	echo '<pre>';
 	  	print_r($openidlist);

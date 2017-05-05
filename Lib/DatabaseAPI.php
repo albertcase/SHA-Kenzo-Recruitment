@@ -200,6 +200,17 @@ class DatabaseAPI {
 		}
 		return 0;
 	}
+
+	public function loadLotteryCount() {
+		$sql = "SELECT count(`id`) FROM `lottery` WHERE `status` = 1"; 
+		$res = $this->connect()->prepare($sql);
+		$res->execute();
+		$res->bind_result($count);
+		if($res->fetch()) {		
+			return $count;
+		}
+		return 0;
+	}
 	
 
 	public function setLottery($uid, $status) {

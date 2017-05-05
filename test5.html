@@ -2,29 +2,6 @@
 <html>
 <head>
     <title>COACH 2017母亲节</title>
-    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8">-->
-    <!--&lt;!&ndash;<meta name="format-detection" content="telephone=no">&ndash;&gt;-->
-    <!--&lt;!&ndash; uc强制竖屏 &ndash;&gt;-->
-    <!--&lt;!&ndash;<meta name="screen-orientation" content="landscape">&ndash;&gt;-->
-    <!--&lt;!&ndash; QQ强制竖屏 &ndash;&gt;-->
-    <!--&lt;!&ndash;<meta name="x5-orientation" content="landscape">&ndash;&gt;-->
-
-    <!--&lt;!&ndash; <link rel="apple-touch-startup-image" href="/build/assets/img/bg1.png" />-->
- <!--&ndash;&gt;-->
-    <!--&lt;!&ndash;禁用手机号码链接(for iPhone)&ndash;&gt;-->
-    <!--&lt;!&ndash;<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui" />&ndash;&gt;-->
-    <!--&lt;!&ndash;自适应设备宽度&ndash;&gt;-->
-    <!--&lt;!&ndash;<meta name="apple-mobile-web-app-status-bar-style" content="black">&ndash;&gt;-->
-    <!--&lt;!&ndash;控制全屏时顶部状态栏的外，默认白色&ndash;&gt;-->
-    <!--&lt;!&ndash;<meta name="apple-mobile-web-app-capable" content="yes" />&ndash;&gt;-->
-    <!--&lt;!&ndash;<meta name="Keywords" content="">&ndash;&gt;-->
-    <!--&lt;!&ndash;<meta name="Description" content="...">&ndash;&gt;-->
-    <!-- -->
-    <!--&lt;!&ndash;<link rel="stylesheet" type="text/css" href="/build/dist/css/main.min.css">&ndash;&gt;-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>-->
-    <!--&lt;!&ndash;<script type="text/javascript" src="http://coach.samesamechina.com/api/v1/js/918fce91-ab24-42cd-9ca1-e7a86bd59fc0/wechat?debug=true"></script>&ndash;&gt;-->
-    <!--<script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite"></script>-->
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>coach test </title>
     <meta name="msapplication-tap-highlight" content="no">
@@ -34,13 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <script src="/src/assets/js/lib/zepto.min.js"></script>
     <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite"></script>
-    <script src="/src/assets/js/wxshare.js"></script>
 </head>
 
 <body>
 <p>test4</p>
 
-<script type="text/javascript">
+<script>
 //$(document).ready(function(){
 //
 ////    var shareArr = {
@@ -94,6 +70,50 @@
 //    });
 //
 //});
+
+$(document).ready(function(){
+    var obj = {
+        "title1": 'Coach 母亲节', //分享标题
+        "des": "Coach感恩母亲节，为妈妈赢取比花束更美好的礼物",    // 分享朋友圈的描述
+        "descfriend": "Coach感恩母亲节，为妈妈赢取比花束更美好的礼物",    // 分享好友的描述
+        "link": window.location.host,    //分享的连接
+        "img": "http://" + window.location.host + "/build/dist/img/share.jpg",   //分享的图片
+        "url": encodeURIComponent(window.location.href)//encodeURIComponent(window.location.href.split("#")[0]) //.replace('http%3A%2F%2F','')
+    };
+    console.log(obj);
+    wx.ready(function(){
+
+        // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+        wx.onMenuShareAppMessage({
+            title: obj.title1,
+            desc: obj.descfriend,
+            link: obj.link,
+            imgUrl: obj.img,
+            type: '',
+            dataUrl: '',
+            success: function () {
+                //_hmt.push(['_trackEvent', 'buttons', 'click', 'onMenuShareAppMessage']);
+//                successCallBack();
+
+            },
+            cancel: function () {
+
+            }
+        });
+        wx.onMenuShareTimeline({
+            title: obj.title1,
+            link: obj.link,
+            imgUrl: obj.img,
+            success: function () {
+                //_hmt.push(['_trackEvent', 'buttons', 'click', 'onMenuShareTimeline']);
+//                successCallBack();
+            },
+            cancel: function () {
+
+            }
+        });
+    });
+});
 
 </script>
 

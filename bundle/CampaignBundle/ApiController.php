@@ -85,14 +85,14 @@ class ApiController extends Controller {
 		}
 		//奖发完
 		$count = $databaseAPI->loadLotteryCount();
-		if ($count>=6) {
+		if ($count>=7) {
 			$databaseAPI->setLottery($user->uid, 2);
 			$data = array('status' => 2, 'msg'=>'谢谢参与');
 			$this->dataPrint($data);
 		}
 		//中奖率
-		$rand = mt_rand(1,100);
-		if ($rand<=1) {
+		$rand = mt_rand(1,10000);
+		if ($rand<=4) {
 			$databaseAPI->setLottery($user->uid, 1);
 			$data = array('status' => 1, 'msg'=>'恭喜中奖');
 			$this->dataPrint($data);

@@ -140,7 +140,7 @@
             </div>
         </div>
         <div class="pin pin-3" id="pin-gift">
-            <div class="des v-content">
+            <div class="des des2 v-content">
                 <div class="prize-item prize-yes">
                     <h3 class="title">「恭喜您」</h3>
                     获得KENZO睡美人面膜试用装*<br>
@@ -149,12 +149,16 @@
                 </div>
                 <div class="prize-item prize-no show">
                     <h3 class="title">「很遗憾」</h3>
-                    KENZO睡美人面膜试用装*（2ML）<br>
-                    已经全部申领完毕<br>
-                    敬请期待下一期
+                    6500份KENZO睡美人试用装*<br>
+                    已全部申领完毕<br>
+                    感谢您的参与和支持！<br>
+                     <br>
+                    请持续关注KENZO官方微信<br>
+                    下一期悦肤礼赠<br>
+                    期待与你再次相见哦!
                 </div>
                 <p class="name">
-                    * KENZO花颜舒柔夜间修护面膜<br>
+                    * KENZO花颜舒柔夜间修护面膜（2ML）<br>
                     （每个微信ID限领一份）
                 </p>
                 <div class="btn btn-getproduct">点击赢取睡美人面膜正装</div>

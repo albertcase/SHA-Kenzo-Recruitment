@@ -1263,6 +1263,9 @@ body {
   text-align: center;
   font-size: 0.26rem;
 }
+#pin-gift .des2 {
+  top: 40%;
+}
 #pin-gift .prize-item {
   display: none;
   color: #6b6b6b;

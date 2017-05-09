@@ -95,11 +95,19 @@
 
             Api.isFillForm(function (data) {
                 //if filled, go prize page
-                //if not,fill form first
                 if(data.status == 1){
+                    //get prize
                     Common.gotoPin(2);
+                    $('.prize-item').removeClass('show');
+                    $('.prize-no').addClass('show');
+                }else if(data.status==2){
+                //    no prize
+                    Common.gotoPin(2);
+                    $('.prize-item').addClass('show');
+                    $('.prize-no').removeClass('show');
                 }else{
-                    Common.gotoPin(1);
+                    //error
+                    Common.alertBox(data.msg);
                 }
             });
         });

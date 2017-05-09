@@ -29,7 +29,7 @@ define("REDIS_PORT", '6379');
 //Database config info
 define("DBHOST", '127.0.0.1');
 define("DBUSER", 'root');
-define("DBPASS", '1q2w3e');
+define("DBPASS", '');
 define("DBNAME", 'kenzo_recruitment');
 
 //Wechat Authorize
@@ -53,6 +53,8 @@ define("ENCRYPT_KEY", '29FB77CB8E94B358');
 define("ENCRYPT_IV", '6E4CAB2EAAF32E90');
 
 define("WECHAT_TOKEN_PREFIX", 'wechat:token:');
+
+define("GIFT_QUOTA", '6');
 
 
 

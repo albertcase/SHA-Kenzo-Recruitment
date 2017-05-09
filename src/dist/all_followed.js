@@ -1756,10 +1756,9 @@ $(document).ready(function(){
             baseurl + 'landing-1.png',
             baseurl + 'pop-bg.png',
             baseurl + 'preload-bg.jpg',
-            baseurl + 'preload-flower.jpg',
+            baseurl + 'preload-flower.jpg'
         ];
 
-        imagesArray = imagesArray.concat(self.loadingImg);
         var i = 0,j= 0;
         new preLoader(imagesArray, {
             onProgress: function(){

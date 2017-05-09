@@ -47,7 +47,6 @@
             baseurl + 'preload-flower.jpg',
         ];
 
-        imagesArray = imagesArray.concat(self.loadingImg);
         var i = 0,j= 0;
         new preLoader(imagesArray, {
             onProgress: function(){

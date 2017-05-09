@@ -150,7 +150,8 @@
                 <div class="prize-item prize-no show">
                     <h3 class="title">「很遗憾」</h3>
                     KENZO睡美人面膜试用装*（2ML）<br>
-                    已经全部申领完毕
+                    已经全部申领完毕<br>
+                    敬请期待下一期
                 </div>
                 <p class="name">
                     * KENZO花颜舒柔夜间修护面膜<br>

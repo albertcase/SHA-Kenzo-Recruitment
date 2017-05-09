@@ -1641,17 +1641,17 @@ $(document).ready(function(){
                 if(data.status == 1){
                     //get prize
                     Common.gotoPin(2);
-                    //$('.prize-item').removeClass('show');
-                    //$('.prize-yes').addClass('show');
+                    $('.prize-item').removeClass('show');
+                    $('.prize-yes').addClass('show');
                 }else if(data.status==2){
                 //    no prize
                     Common.gotoPin(2);
-                    //$('.prize-item').removeClass('show');
-                    //$('.prize-no').addClass('show');
+                    $('.prize-item').removeClass('show');
+                    $('.prize-no').addClass('show');
                 }else{
                     //error
-                    //Common.alertBox(data.msg);
-                    Common.gotoPin(2);
+                    Common.alertBox.add(data.msg);
+                    //Common.gotoPin(2);
                 }
             });
         });

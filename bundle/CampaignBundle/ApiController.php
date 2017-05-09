@@ -14,7 +14,7 @@ class ApiController extends Controller {
 
         if(!$user->uid) {
 	        $this->statusPrint('100', 'access deny!');
-        } 
+        }
     }
 
     public function isloginAction() {
@@ -38,7 +38,7 @@ class ApiController extends Controller {
     	global $user;
     	if(!$user->uid) {
 	        $this->statusPrint('100', 'access deny!');
-        } 
+        }
     	$request = $this->request;
     	$fields = array(
 			'name' => array('notnull', '120'),
@@ -62,7 +62,11 @@ class ApiController extends Controller {
 			$checknew = $DatabaseAPI->checkOpenid($user->openid);
 			if (!$checknew) {
 				//新用户申领
-				$DatabaseAPI->setGift($user->uid);
+                //判断是否已经领取完$this->statusPrint('2', '礼品已经领取完！');
+//                if(!$this->checkGiftNum($DatabaseAPI, GIFT_QUOTA)) {
+//                    $this->statusPrint('2', '礼品已经领取完！');
+//                }
+                //$DatabaseAPI->setGift($user->uid);
 			}
 			$data = array('status' => 1);
 			$this->dataPrint($data);
@@ -102,5 +106,15 @@ class ApiController extends Controller {
 		$this->dataPrint($data);
 		
     }
+
+//    //判断小样是否已经领取没了
+//    private function checkGiftNum($db, $quota) {
+//        $count = $db->hasGift();
+//        if($count == $quota) {
+//            return FALSE;
+//        } else {
+//            return TRUE;
+//        }
+//    }
 
 }

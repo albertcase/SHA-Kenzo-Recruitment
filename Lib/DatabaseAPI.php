@@ -233,6 +233,15 @@ class DatabaseAPI {
 			return FALSE;
 	}
 
+//    public function hasGift() {
+//        $sql = "SELECT count(`id`) AS count FROM `gift`";
+//        $res = $this->connect()->query($sql);
+//        $count = $res->fetch_all($resulttype = MYSQLI_ASSOC);
+//        if($count) {
+//            return $count[0]['count'];
+//        }
+//        return 0;
+//    }
 
 	public function setOpenid($openid) {
 		$sql = "INSERT INTO `openid` SET `openid` = ?"; 

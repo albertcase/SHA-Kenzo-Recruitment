@@ -1637,7 +1637,24 @@ $(document).ready(function(){
         $('.btn-getprize').on('touchstart',function(){
 
             Api.isFillForm(function (data) {
+
                 Common.gotoPin(2);
+                if filled, go prize page
+                if(data.status == 1){
+                    //get prize
+                    Common.gotoPin(2);
+                    $('.prize-item').removeClass('show');
+                    $('.prize-yes').addClass('show');
+                }else if(data.status==2){
+                //    no prize
+                    Common.gotoPin(2);
+                    $('.prize-item').removeClass('show');
+                    $('.prize-no').addClass('show');
+                }else{
+                    //error
+                    Common.alertBox.add(data.msg);
+                    //Common.gotoPin(2);
+                }
                 //if filled, go prize page
                 //if(data.status == 1){
                 //    //get prize

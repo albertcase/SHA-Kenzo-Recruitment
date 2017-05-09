@@ -94,7 +94,14 @@
         $('.btn-getprize').on('touchstart',function(){
 
             Api.isFillForm(function (data) {
-                Common.gotoPin(2);
+                if(data.status == 1){
+                    //get prize
+                    Common.gotoPin(2);
+                }else{
+                    //error
+                    Common.alertBox.add(data.msg);
+                    //Common.gotoPin(2);
+                }
                 //if filled, go prize page
                 //if(data.status == 1){
                 //    //get prize

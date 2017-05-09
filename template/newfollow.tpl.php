@@ -141,13 +141,13 @@
         </div>
         <div class="pin pin-3" id="pin-gift">
             <div class="des v-content">
-                <div class="prize-item prize-yes show">
+                <div class="prize-item prize-yes">
                     <h3 class="title">「恭喜您」</h3>
                     获得KENZO睡美人面膜试用装*<br>
                     （2ML）一份<br>
                     Miss K 将火速为您寄送礼品！
                 </div>
-                <div class="prize-item prize-no">
+                <div class="prize-item prize-no show">
                     <h3 class="title">「很遗憾」</h3>
                     KENZO睡美人面膜试用装*（2ML）<br>
                     已经全部申领完毕

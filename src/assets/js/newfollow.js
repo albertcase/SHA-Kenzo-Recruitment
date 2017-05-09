@@ -99,7 +99,7 @@
                     Common.gotoPin(2);
                 }else{
                     //error
-                    Common.alertBox.add(data.msg);
+                    Common.gotoPin(1);
                     //Common.gotoPin(2);
                 }
                 //if filled, go prize page

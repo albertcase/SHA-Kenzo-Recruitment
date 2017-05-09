@@ -19,15 +19,20 @@ class PageController extends Controller {
 		}
 		//关注
 		$databaseAPI = new \Lib\DatabaseAPI();
-		$checknew = $databaseAPI->checkOpenid($user->openid);
-		if ($checknew) {
-			$this->render('followed');
-		}
-		$info = $databaseAPI->findInfoByUid($user->uid);
-		if (!$info) {
-			$this->render('newfollow');
-		}
-		$this->render('followed');
+        $isOld = $databaseAPI->checkOpenid($user->openid);
+        if (!$isOld) {
+            $this->render('newfollow');
+        }
+        $this->render('followed');
+//		$checknew = $databaseAPI->checkOpenid($user->openid);
+//		if ($checknew) {
+//			$this->render('followed');
+//		}
+//		$info = $databaseAPI->findInfoByUid($user->uid);
+//		if (!$info) {
+//			$this->render('newfollow');
+//		}
+//		$this->render('followed');
 	}
 
 	public function jssdkConfigJsAction() {

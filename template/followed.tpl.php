@@ -10,7 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
     <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite"></script>
-<script src="../src/dist/js/all_followed.min.js"></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f60c5af227048e276b4e4d768cdfb959";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <script src="../src/dist/js/all_followed.min.js"></script>
 </head>
 <body class="page-home">
 <div id="orientLayer" class="mod-orient-layer">

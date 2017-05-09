@@ -147,6 +147,11 @@
                     （2ML）一份<br>
                     Miss K 将火速为您寄送礼品！
                 </div>
+                <div class="prize-item prize-no">
+                    <h3 class="title">「很遗憾」</h3>
+                    KENZO睡美人面膜试用装*（2ML）<br>
+                    已经全部申领完毕
+                </div>
                 <p class="name">
                     * KENZO花颜舒柔夜间修护面膜<br>
                     （每个微信ID限领一份）

@@ -11,13 +11,13 @@
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
     <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite"></script>
     <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?f60c5af227048e276b4e4d768cdfb959";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?f60c5af227048e276b4e4d768cdfb959";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
     <script src="../src/dist/js/all_followed.min.js"></script>
 </head>
@@ -30,7 +30,7 @@
 </div>
 <div class="preload">
     <div class="animate-flower">
-        <img src="../src/dist/images/preload-flower.jpg" alt="kenzo"/>
+        <!--<img src="../src/dist/images/preload-flower.jpg" alt="kenzo"/>-->
     </div>
     <div class="loading-num">
         ...<span class="num">10</span>%
@@ -58,22 +58,21 @@
             </div>
             <div class="des-wrap">
                 <div class="des des-1">
-                    感悟白莲精粹的呵护<br>
-                    安然悠享整夜青春修护<br>
-                    云朵般的慕斯质地轻而柔软<br>
-                    清晨梦醒时肌肤紧致、光滑<br>
-                    ···身心亦是焕然一新
+                    高度锁水滋润，持续哑光控油<br>
+                    动人美肌，不见油光，只现水润<br>
+                    肌肤舒缓娇嫩，尽显清爽润泽<br>
+                    ...身心亦是焕然一新
                 </div>
-                <div class="des des-2">
-                    感悟白莲精粹的呵护<br>
-                    安然悠享整夜青春修护<br>
-                    云朵般的慕斯质地轻而柔软<br>
-                    清晨梦醒时肌肤紧致、光滑<br>
-                    ···身心亦是焕然一新
-                </div>
+                <!--<div class="des des-2">-->
+                <!--感悟白莲精粹的呵护<br>-->
+                <!--安然悠享整夜青春修护<br>-->
+                <!--云朵般的慕斯质地轻而柔软<br>-->
+                <!--清晨梦醒时肌肤紧致、光滑<br>-->
+                <!--···身心亦是焕然一新-->
+                <!--</div>-->
             </div>
 
-            <div class="btn btn-luckydraw">即刻开启悦肤之旅</div>
+            <div class="btn btn-luckydraw">即刻赢取礼赠</div>
             <div class="terms-link">*规则与条款</div>
             <div class="foreground">
                 <div class="box">
@@ -85,7 +84,15 @@
                     </div>
                 </div>
                 <div class="flower">
-                    <img src="../src/dist/images/ani-5.png" alt="kenzo"/>
+                    <img src="../src/dist/images/f-1.png" alt="kenzo"/>
+                </div>
+                <div class="fleurs">
+                    <div class="top-flower">
+                        <img src="../src/dist/images/fleurs.png" alt="kenzo"/>
+                    </div>
+                    <div class="bottom-flower">
+                        <img src="../src/dist/images/fleurs-2.png" alt="kenzo"/>
+                    </div>
                 </div>
                 <!--<img src="../src/dist/images/foreground-1.png" alt="kenzo"/>-->
             </div>

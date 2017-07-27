@@ -23,8 +23,6 @@ class UserAPI extends Base {
         $data = new \stdClass();
         $data->uid = $_user->uid;
         $data->openid = $_user->openid;
-        // $data->nickname = $_user->nickname;
-        // $data->headimgurl = $_user->headimgurl;
         // if($re = $this->_db->findInfoByUid($_user->uid)) {
         //   $data->info = $re;
         // }
@@ -49,12 +47,12 @@ class UserAPI extends Base {
     // $r->openid = 'asf';
     // return $r;
     if(USER_STORAGE == 'COOKIE') {
-      if(isset($_COOKIE['_user0206'])) {
-        return json_decode($_COOKIE['_user0206']);
+      if(isset($_COOKIE['_user'])) {
+        return $this->decodeUser($_COOKIE['_user']);
       }
     } else {
-      if(isset($_SESSION['_user0206'])) {
-        return json_decode($_SESSION['_user0206']);
+      if(isset($_SESSION['_user'])) {
+        return json_decode($_SESSION['_user']);
       }
     }
     return FALSE;
@@ -62,9 +60,9 @@ class UserAPI extends Base {
 
   public function userLoginFinalize($user) {
     if(USER_STORAGE == 'COOKIE') {
-      setcookie('_user0206', json_encode($user), time() + 3600 * 24 * 100, '/');
+      setcookie('_user', $this->encodeUser($user), time() + 3600 * 24 * 100, '/');
     } else {
-      $_SESSION['_user0206'] = json_encode($user);
+      $_SESSION['_user'] = json_encode($user);
     }
     return $user;
   }
@@ -76,11 +74,6 @@ class UserAPI extends Base {
     return $this->userLoginFinalize($user);
   }
 
-  public function userRegisterOauth($info){
-    $user = $this->_db->insertUser($info);
-    return $this->userLoginFinalize($user);
-  }
-
   public function oauthAction($scope, $redirect_uri) {
     $wechatUserAPI = new \Lib\WechatAPI();
     $param['redirect_uri'] = $redirect_uri;
@@ -88,6 +81,34 @@ class UserAPI extends Base {
     $url = $wechatUserAPI->getAuthorizeUrl(APPID, $callback, $scope);
     $response = new Response();
     $response->redirect($url);  
+  }
+
+  public function encodeUser($data) {
+    $data = base64_encode($this->aes128_cbc_encrypt(ENCRYPT_KEY, json_encode($data), ENCRYPT_IV));
+    return $data;
+  }
+
+  public function decodeUser($string) {
+    $string = base64_decode($string, TRUE);
+    $data = $this->aes128_cbc_decrypt(ENCRYPT_KEY, $string, ENCRYPT_IV);
+    $user = json_decode($data);
+    return $user;
+  }
+
+  public function aes128_cbc_encrypt($key, $data, $iv) {
+    if(16 !== strlen($key)) $key = hash('MD5', $key, true);
+    if(16 !== strlen($iv)) $iv = hash('MD5', $iv, true);
+    $padding = 16 - (strlen($data) % 16);
+    $data .= str_repeat(chr($padding), $padding);
+    return mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_CBC, $iv);
+  }
+
+  public function aes128_cbc_decrypt($key, $data, $iv) {
+    if(16 !== strlen($key)) $key = hash('MD5', $key, true);
+    if(16 !== strlen($iv)) $iv = hash('MD5', $iv, true);
+    $data = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_CBC, $iv);
+    $padding = ord($data[strlen($data) - 1]);
+    return substr($data, 0, -$padding);
   }
 
 }

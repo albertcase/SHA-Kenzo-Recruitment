@@ -17,6 +17,14 @@ class ApiController extends Controller {
         }
     }
 
+    /**
+     * 获取图片验证码
+     */
+    public function pictureCodeAction()
+    {
+    	echo 111;exit;
+    }
+
     public function isloginAction() {
 
     	global $user;

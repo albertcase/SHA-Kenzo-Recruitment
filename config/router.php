@@ -14,5 +14,6 @@ $routers['/login'] = array('CampaignBundle\Page', 'login');
 $routers['/api/submit'] = array('CampaignBundle\Api', 'submit');
 $routers['/api/islogin'] = array('CampaignBundle\Api', 'islogin');
 $routers['/api/lottery'] = array('CampaignBundle\Api', 'lottery');
+$routers['/api/picturecode'] = array('CampaignBundle\Api', 'pictureCode');
 $routers['/cleardata'] = array('CampaignBundle\Page', 'clearData');
 //$routers['/runopenid'] = array('CampaignBundle\Page', 'runopenid');

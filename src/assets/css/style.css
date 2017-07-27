@@ -926,6 +926,12 @@ body {
   width: 1.54rem;
   height: 2.01rem;
 }
+.pin-landing .foreground .product-name {
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  width: 100%;
+}
 .pin-landing .flower {
   position: absolute;
   left: 0.4rem;

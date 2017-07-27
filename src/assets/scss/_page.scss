@@ -255,6 +255,12 @@ $ani-delay-5: 5000ms;
       //transform: rotate(-15deg);
       @include size(1.54rem,2.01rem);
     }
+    .product-name{
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 100%;
+    }
   }
   .flower{
     position: absolute;

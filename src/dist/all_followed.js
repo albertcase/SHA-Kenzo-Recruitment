@@ -1854,7 +1854,7 @@ $(document).ready(function(){
         //test
         Common.hashRoute();
     };
-    
+
     //bind Events
     controller.prototype.bindEvent = function(){
         var self = this;
@@ -1951,7 +1951,7 @@ $(document).ready(function(){
         //Get message validate code
         $('.btn-get-msg-code').on('touchstart', function(){
             Api.checkValidateCode({
-                sp8l:$('#input-validate-code').val()
+                picture:$('#input-validate-code').val()
             },function(data){
                 console.log(data);
             });

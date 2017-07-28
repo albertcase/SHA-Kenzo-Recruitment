@@ -1,6 +1,5 @@
 <?php
-
-namespace CodeRider\Captcher;
+namespace Lib;
 
 class Captcher {
 
@@ -68,7 +67,8 @@ class Captcher {
    * Path to folder with fonts
    * @var string
    */
-  protected $fontsPath = '../fonts/';
+  protected $fontsPath = '/vagrant/Lib/fonts/';
+  // protected $fontsPath = '../fonts/';
 
   
   /**

@@ -18,11 +18,38 @@ class ApiController extends Controller {
     }
 
     /**
+     * 验证验证码是否正确
+     */
+    public function checkPictureAction()
+    {
+    	$request = $this->request;
+    	$fields = array(
+			'picture' => array('notnull', '120'),
+			);
+		$request->validation($fields);
+		$picture = $request->request->get('picture');
+		if($picture == $_SESSION['captcha-protection']) {
+			$data = array('status' => 0, 'msg' => 'picture code is failed');
+		} else {
+			$data = array('status' => 1, 'msg' => 'success');
+		}
+		$this->dataPrint($data);
+    }
+
+    /**
      * 获取图片验证码
      */
     public function pictureCodeAction()
     {
-    	echo 111;exit;
+		$captcha = new \Lib\Captcher(250, 50);
+		$captchaImage = $captcha->generate();
+		$captchaText = $captcha->getCaptchaText();
+		$_SESSION['captcha-protection'] = $captchaText;
+		$picture = base64_encode($captchaImage);
+		$data = array('status' => 1, 'picture' => $picture);
+		$this->dataPrint($data);
+		// return base64_encode($captchaImage);
+		// echo "<img src='data:image/jpeg;base64," . base64_encode($captchaImage) . "'>";
     }
 
     public function isloginAction() {

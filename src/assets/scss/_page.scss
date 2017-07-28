@@ -501,6 +501,45 @@ $ani-delay-5: 5000ms;
     .btn-submit{
       margin-top: 0.6rem;
     }
+    .input-box-validate-code{
+      #input-validate-code{
+        width: 2.8rem;
+        display: inline-block;
+        margin-right: 0.2rem;
+      }
+      .validate-code{
+        position: relative;
+        width: 2.4rem;
+        display: inline-block;
+        span{
+          display: block;
+        }
+      }
+      .code-text{
+        position: absolute;
+        bottom: -0.4rem;
+        width: 100%;
+        color: #686c6d;
+        font-size: 0.18rem;
+      }
+    }
+    .input-box-validate-message-code{
+      #input-validate-message-code{
+        width: 2.8rem;
+        margin-right: 0.2rem;
+        display: inline-block;
+      }
+      .btn-get-msg-code{
+        position: relative;
+        width: 2.8rem;
+        display: inline-block;
+        font-size: 0.26rem;
+        background-size: 100% 100%;
+        span{
+          display: block;
+        }
+      }
+    }
   }
   .foreground{
     position: absolute;

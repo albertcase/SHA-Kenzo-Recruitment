@@ -11,13 +11,13 @@
     <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css"/>
     <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite"></script>
     <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?f60c5af227048e276b4e4d768cdfb959";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?f60c5af227048e276b4e4d768cdfb959";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
     <script src="../src/dist/js/all_newfollow.min.js"></script>
 </head>
@@ -108,6 +108,19 @@
                     </div>
                     <div class="input-box input-box-mobile">
                         <input type="tel" maxlength="11" id="input-mobile" placeholder="电话"/>
+                    </div>
+                    <div class="input-box input-box-validate-code">
+                        <input type="text" id="input-validate-code" placeholder="输入验证码"/>
+                        <div class="validate-code">
+                            <span class="validate-code-img"></span>
+                            <span class="code-text">看不清楚？换张图片</span>
+                        </div>
+                    </div>
+                    <div class="input-box input-box-validate-message-code">
+                        <input type="text" id="input-validate-message-code" placeholder="输入短信验证码"/>
+                        <div class="btn btn-get-msg-code">
+                            获取验证码（60s）
+                        </div>
                     </div>
                     <div class="input-box input-box-province select-box">
                         <input type="text" id="input-text-province" placeholder="省份"/>

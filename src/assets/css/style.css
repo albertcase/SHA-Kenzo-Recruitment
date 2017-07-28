@@ -1370,6 +1370,41 @@ body {
 #pin-fillform #form-contact .btn-submit {
   margin-top: 0.6rem;
 }
+#pin-fillform #form-contact .input-box-validate-code #input-validate-code {
+  width: 2.8rem;
+  display: inline-block;
+  margin-right: 0.2rem;
+}
+#pin-fillform #form-contact .input-box-validate-code .validate-code {
+  position: relative;
+  width: 2.4rem;
+  display: inline-block;
+}
+#pin-fillform #form-contact .input-box-validate-code .validate-code span {
+  display: block;
+}
+#pin-fillform #form-contact .input-box-validate-code .code-text {
+  position: absolute;
+  bottom: -0.4rem;
+  width: 100%;
+  color: #686c6d;
+  font-size: 0.18rem;
+}
+#pin-fillform #form-contact .input-box-validate-message-code #input-validate-message-code {
+  width: 2.8rem;
+  margin-right: 0.2rem;
+  display: inline-block;
+}
+#pin-fillform #form-contact .input-box-validate-message-code .btn-get-msg-code {
+  position: relative;
+  width: 2.8rem;
+  display: inline-block;
+  font-size: 0.26rem;
+  background-size: 100% 100%;
+}
+#pin-fillform #form-contact .input-box-validate-message-code .btn-get-msg-code span {
+  display: block;
+}
 #pin-fillform .foreground {
   position: absolute;
   left: 0;

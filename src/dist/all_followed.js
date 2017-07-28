@@ -1296,6 +1296,18 @@ var region = [
 
 			return '?'+newQuery;
 		},
+        hashRoute:function(){
+            var hasTag = location.hash;
+            if(hasTag.indexOf('#page=')>-1){
+                var hashArr = hasTag.split('=');
+                //console.log()
+                if(hashArr[1] < $('.pin').length){
+                    Common.gotoPin(hashArr[1]);
+                }else{
+                    Common.gotoPin(0);
+                }
+            }
+        },
 		msgBox:{
 			add:function(msg,long){
 				if(long){
@@ -1838,9 +1850,11 @@ $(document).ready(function(){
         //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
+
         //test
-        //Common.gotoPin(1);
+        Common.hashRoute();
     };
+    
     //bind Events
     controller.prototype.bindEvent = function(){
         var self = this;

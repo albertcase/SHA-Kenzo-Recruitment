@@ -89,9 +89,11 @@
         //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
+
         //test
-        //Common.gotoPin(1);
+        Common.hashRoute();
     };
+
     //bind Events
     controller.prototype.bindEvent = function(){
         var self = this;

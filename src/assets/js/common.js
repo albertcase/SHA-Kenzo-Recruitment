@@ -26,6 +26,18 @@
 
 			return '?'+newQuery;
 		},
+        hashRoute:function(){
+            var hasTag = location.hash;
+            if(hasTag.indexOf('#page=')>-1){
+                var hashArr = hasTag.split('=');
+                //console.log()
+                if(hashArr[1] < $('.pin').length){
+                    Common.gotoPin(hashArr[1]);
+                }else{
+                    Common.gotoPin(0);
+                }
+            }
+        },
 		msgBox:{
 			add:function(msg,long){
 				if(long){

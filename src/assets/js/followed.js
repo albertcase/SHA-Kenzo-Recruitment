@@ -90,7 +90,7 @@
         self.bindEvent();
         self.showAllProvince();
         //test
-        Common.gotoPin(1);
+        //Common.gotoPin(1);
     };
     //bind Events
     controller.prototype.bindEvent = function(){
@@ -364,7 +364,7 @@
     $(document).ready(function(){
 //    show form
         var newFollow = new controller();
-        newFollow.startUp();
+        newFollow.init();
 
     });
 

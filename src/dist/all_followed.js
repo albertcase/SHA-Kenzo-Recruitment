@@ -1646,6 +1646,47 @@ Api = {
 
     },
 
+    getValidateCode:function(callback){
+        Common.msgBox.add('loading...');
+        $.ajax({
+            url:'/api/picturecode',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                Common.msgBox.remove();
+                return callback(data);
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'提交成功'
+        //});
+
+
+    },
+
+    checkValidateCode:function(obj,callback){
+        Common.msgBox.add('loading...');
+        $.ajax({
+            url:'/api/checkpicture',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                Common.msgBox.remove();
+                return callback(data);
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'提交成功'
+        //});
+
+
+    },
+
 
 };
 //;(function(){
@@ -1797,6 +1838,8 @@ $(document).ready(function(){
         //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
+        //test
+        Common.gotoPin(1);
     };
     //bind Events
     controller.prototype.bindEvent = function(){
@@ -1884,7 +1927,36 @@ $(document).ready(function(){
             self.shareSuccess();
         });
 
+        self.getValidateCode();
 
+        //switch validate code
+        $('.validate-code').on('touchstart', function(){
+            self.getValidateCode();
+        });
+
+        //Get message validate code
+        $('.btn-get-msg-code').on('touchstart', function(){
+            Api.checkValidateCode({
+                sp8l:$('#input-validate-code').val()
+            },function(data){
+                console.log(data);
+            });
+        });
+
+    };
+
+    controller.prototype.getValidateCode = function(){
+        Api.getValidateCode(function(data){
+            console.log(data);
+            if(data.status==1){
+                $('.validate-code-img').html('<img src="data:image/jpeg;base64,'+data.picture+'" />');
+                //var codeImg = new Image();
+                //codeImg.onload = function(){
+                //
+                //}
+                //codeImg.src = data.picture;
+            }
+        })
     };
 
     //share success
@@ -2041,7 +2113,7 @@ $(document).ready(function(){
     $(document).ready(function(){
 //    show form
         var newFollow = new controller();
-        newFollow.init();
+        newFollow.startUp();
 
     });
 

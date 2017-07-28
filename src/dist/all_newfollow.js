@@ -1481,6 +1481,47 @@ Api = {
 
     },
 
+    getValidateCode:function(callback){
+        Common.msgBox.add('loading...');
+        $.ajax({
+            url:'/api/picturecode',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                Common.msgBox.remove();
+                return callback(data);
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'提交成功'
+        //});
+
+
+    },
+
+    checkValidateCode:function(obj,callback){
+        Common.msgBox.add('loading...');
+        $.ajax({
+            url:'/api/checkpicture',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                Common.msgBox.remove();
+                return callback(data);
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'提交成功'
+        //});
+
+
+    },
+
 
 };
 //;(function(){

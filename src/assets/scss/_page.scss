@@ -561,7 +561,7 @@ $ani-delay-5: 5000ms;
   top: -2rem;
   right: 0;
   @include transform(translate(-20px,20px));
-  @include size(1.10rem,1.04rem);
+  @include size(1.59rem,1.39rem);
   @include transform-origin(50% 0);
   @include animation(lefttoright 2s 1 forwards);
   @include keyframes(lefttoright){

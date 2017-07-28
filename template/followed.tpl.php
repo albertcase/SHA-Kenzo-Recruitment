@@ -94,6 +94,9 @@
                         <img src="../src/dist/images/fleurs-2.png" alt="kenzo"/>
                     </div>
                 </div>
+                <div class="product-name">
+                    <img src="../src/dist/images/text.png" alt="kenzo"/>
+                </div>
                 <!--<img src="../src/dist/images/foreground-1.png" alt="kenzo"/>-->
             </div>
             <div class="ani-petal">
@@ -113,6 +116,19 @@
                     </div>
                     <div class="input-box input-box-mobile">
                         <input type="tel" maxlength="11" id="input-mobile" placeholder="电话"/>
+                    </div>
+                    <div class="input-box input-box-validate-code">
+                        <input type="text" id="input-validate-code" placeholder="输入验证码"/>
+                        <div class="validate-code">
+                            <span class="validate-code-img"></span>
+                            <span>看不清楚？换张图片</span>
+                        </div>
+                    </div>
+                    <div class="input-box input-box-validate-message-code">
+                        <input type="text" id="input-validate-message-code" placeholder="输入短信验证码"/>
+                        <div class="btn btn-get-msg-code">
+                            获取验证码（60s）
+                        </div>
                     </div>
                     <div class="input-box input-box-province select-box">
                         <input type="text" id="input-text-province" placeholder="省份"/>
@@ -174,9 +190,9 @@
         <img src="../src/dist/images/guide-share.png" alt=""/>
     </div>
     <div class="des">
-        <span class="bigfont">·向好友传递睡美人悦肤礼赠·</span>
+        <span class="bigfont">·向好友传递清爽礼赠·</span>
         即刻获得一次<br>
-        KENZO睡美人面膜正装（75ML）<br>
+        KENZO白莲果冻霜正装（50ML）<br>
         抽奖机会
     </div>
 </div>

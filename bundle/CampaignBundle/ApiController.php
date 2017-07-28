@@ -28,10 +28,10 @@ class ApiController extends Controller {
 			);
 		$request->validation($fields);
 		$picture = $request->request->get('picture');
-		if($picture == $_SESSION['captcha-protection']) {
-			$data = array('status' => 0, 'msg' => 'picture code is failed');
+		if(strtolower($picture) == strtolower($_SESSION['captcha-protection'])) {
+            $data = array('status' => 1, 'msg' => 'success');
 		} else {
-			$data = array('status' => 1, 'msg' => 'success');
+            $data = array('status' => 0, 'msg' => 'picture code is failed');
 		}
 		$this->dataPrint($data);
     }
@@ -41,7 +41,7 @@ class ApiController extends Controller {
      */
     public function pictureCodeAction()
     {
-		$captcha = new \Lib\Captcher(250, 50);
+		$captcha = new \Lib\Captcher(150, 65);
 		$captchaImage = $captcha->generate();
 		$captchaText = $captcha->getCaptchaText();
 		$_SESSION['captcha-protection'] = $captchaText;
@@ -98,10 +98,10 @@ class ApiController extends Controller {
 			if (!$checknew) {
 				//新用户申领
                 //判断是否已经领取完$this->statusPrint('2', '礼品已经领取完！');
-//                if(!$this->checkGiftNum($DatabaseAPI, GIFT_QUOTA)) {
-//                    $this->statusPrint('2', '礼品已经领取完！');
-//                }
-                //$DatabaseAPI->setGift($user->uid);
+                if(!$this->checkGiftNum($DatabaseAPI, GIFT_QUOTA)) {
+                    $this->statusPrint('2', '礼品已经领取完！');
+                }
+                $DatabaseAPI->setGift($user->uid);
 			}
 			$data = array('status' => 1);
 			$this->dataPrint($data);
@@ -142,14 +142,20 @@ class ApiController extends Controller {
 		
     }
 
-//    //判断小样是否已经领取没了
-//    private function checkGiftNum($db, $quota) {
-//        $count = $db->hasGift();
-//        if($count == $quota) {
-//            return FALSE;
-//        } else {
-//            return TRUE;
-//        }
-//    }
+   //判断小样是否已经领取没了
+   private function checkGiftNum($db, $quota) {
+       $count = $db->hasGift();
+       if($count == $quota) {
+           return FALSE;
+       } else {
+           return TRUE;
+       }
+   }
+
+   //查库存
+   private function getGiftQuota($db, $date)
+   {
+
+   }
 
 }

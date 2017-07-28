@@ -27,17 +27,6 @@ class DatabaseAPI {
 			return FALSE;
 	}
 
-	// public function insertUser($userinfo){
-	// 	$nowtime = NOWTIME;
-	// 	$sql = "INSERT INTO `user` SET `openid` = ?, `nickname` = ?, `headimgurl` = ?, `created` = ?, `updated` = ?"; 
-	// 	$res = $this->connect()->prepare($sql); 
-	// 	$res->bind_param("sssss", $userinfo->openid, $userinfo->nickname, $userinfo->headimgurl, $nowtime, $nowtime);
-	// 	if($res->execute()) 
-	// 		return $this->findUserByOpenid($userinfo->openid);
-	// 	else 
-	// 		return FALSE;
-	// }
-
 	public function updateUser($data) {
 		if ($this->findUserByOauth($data->openid)) {
 			return TRUE;
@@ -81,26 +70,6 @@ class DatabaseAPI {
 		}
 		return NULL;
 	}
-
-	/**
-	 * Create user in database
-	 */
-	// public function findUserByOpenid($openid){
-	// 	$sql = "SELECT `uid`, `openid`, `nickname`, `headimgurl` FROM `user` WHERE `openid` = ?"; 
-	// 	$res = $this->connect()->prepare($sql);
-	// 	$res->bind_param("s", $openid);
-	// 	$res->execute();
-	// 	$res->bind_result($uid, $openid, $nickname, $headimgurl);
-	// 	if($res->fetch()) {
-	// 		$user = new \stdClass();
-	// 		$user->uid = $uid;
-	// 		$user->openid = $openid;
-	// 		$user->nickname = $nickname;
-	// 		$user->headimgurl = $headimgurl;
-	// 		return $user;
-	// 	}
-	// 	return NULL;
-	// }
 
 	/**
 	 * 
@@ -233,15 +202,15 @@ class DatabaseAPI {
 			return FALSE;
 	}
 
-//    public function hasGift() {
-//        $sql = "SELECT count(`id`) AS count FROM `gift`";
-//        $res = $this->connect()->query($sql);
-//        $count = $res->fetch_all($resulttype = MYSQLI_ASSOC);
-//        if($count) {
-//            return $count[0]['count'];
-//        }
-//        return 0;
-//    }
+   public function hasGift() {
+       $sql = "SELECT count(`id`) AS count FROM `gift`";
+       $res = $this->connect()->query($sql);
+       $count = $res->fetch_all($resulttype = MYSQLI_ASSOC);
+       if($count) {
+           return $count[0]['count'];
+       }
+       return 0;
+   }
 
 	public function setOpenid($openid) {
 		$sql = "INSERT INTO `openid` SET `openid` = ?"; 

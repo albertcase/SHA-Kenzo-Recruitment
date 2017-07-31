@@ -190,7 +190,7 @@ $ani-delay-5: 5000ms;
   .des-wrap{
     position: relative;
     z-index: 2;
-    height: 2rem;
+    //height: 2rem;
     margin: 0.6rem auto;
     //mask-image: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 70%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     //-webkit-mask-image: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 70%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */;
@@ -425,11 +425,6 @@ $ani-delay-5: 5000ms;
   }
 }
 
-#pin-landing-2{
-  .title{
-    @include size(4.97rem,0.84rem);
-  }
-}
 
 /*
   For pin-fillform

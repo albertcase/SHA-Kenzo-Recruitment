@@ -121,13 +121,13 @@
                         <input type="text" id="input-validate-code" placeholder="输入验证码"/>
                         <div class="validate-code">
                             <span class="validate-code-img"></span>
-                            <span>看不清楚？换张图片</span>
+                            <span class="code-text">看不清楚？换张图片</span>
                         </div>
                     </div>
                     <div class="input-box input-box-validate-message-code">
                         <input type="text" id="input-validate-message-code" placeholder="输入短信验证码"/>
                         <div class="btn btn-get-msg-code">
-                            获取验证码（60s）
+                            获取验证码（<span class="second">60s</span>）
                         </div>
                     </div>
                     <div class="input-box input-box-province select-box">
@@ -226,3 +226,4 @@
 </div>
 </body>
 </html>
+

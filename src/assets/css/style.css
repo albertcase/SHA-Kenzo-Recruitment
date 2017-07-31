@@ -867,7 +867,6 @@ body {
 .pin-landing .des-wrap {
   position: relative;
   z-index: 2;
-  height: 2rem;
   margin: 0.6rem auto;
 }
 .pin-landing .des-wrap .des {
@@ -1294,11 +1293,6 @@ body {
     transform: translateY(-4.8rem);
   }
 }
-#pin-landing-2 .title {
-  width: 4.97rem;
-  height: 0.84rem;
-}
-
 /*
   For pin-fillform
 */

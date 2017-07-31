@@ -1888,7 +1888,7 @@ $(document).ready(function(){
     $(document).ready(function(){
 //    show form
         var newFollow = new controller();
-        newFollow.init();
+        newFollow.startUp();
 
     });
 

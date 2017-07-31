@@ -54,23 +54,22 @@
     <div class="container">
         <div class="pin pin-1 pin-landing" id="pin-landing-2">
             <div class="title">
-                <img src="../src/dist/images/landing2-1.png" alt="kenzo"/>
+                <img src="../src/dist/images/landing-1.png" alt="kenzo"/>
             </div>
             <div class="des-wrap">
                 <div class="des des-1">
-                    感悟白莲精粹的呵护<br>
-                    安然悠享整夜青春修护<br>
-                    云朵般的慕斯质地轻而柔软<br>
-                    清晨梦醒时肌肤紧致、光滑<br>
-                    ···身心亦是焕然一新
+                    高度锁水滋润，持续哑光控油<br>
+                    动人美肌，不见油光，只现水润<br>
+                    肌肤舒缓娇嫩，尽显清爽润泽<br>
+                    ...身心亦是焕然一新
                 </div>
-                <div class="des des-2">
-                    感悟白莲精粹的呵护<br>
-                    安然悠享整夜青春修护<br>
-                    云朵般的慕斯质地轻而柔软<br>
-                    清晨梦醒时肌肤紧致、光滑<br>
-                    ···身心亦是焕然一新
-                </div>
+                <!--<div class="des des-2">-->
+                <!--感悟白莲精粹的呵护<br>-->
+                <!--安然悠享整夜青春修护<br>-->
+                <!--云朵般的慕斯质地轻而柔软<br>-->
+                <!--清晨梦醒时肌肤紧致、光滑<br>-->
+                <!--···身心亦是焕然一新-->
+                <!--</div>-->
             </div>
 
             <div class="btn btn-getprize">即刻领取睡美人试用装</div>
@@ -85,11 +84,20 @@
                     </div>
                 </div>
                 <div class="flower">
-                    <img src="../src/dist/images/ani-5.png" alt="kenzo"/>
+                    <img src="../src/dist/images/f-1.png" alt="kenzo"/>
                 </div>
-                <div class="product-demo">
-                    <img src="../src/dist/images/product-demo.png" alt="kenzo"/>
+                <div class="fleurs">
+                    <div class="top-flower">
+                        <img src="../src/dist/images/fleurs.png" alt="kenzo"/>
+                    </div>
+                    <div class="bottom-flower">
+                        <img src="../src/dist/images/fleurs-2.png" alt="kenzo"/>
+                    </div>
                 </div>
+                <div class="product-name">
+                    <img src="../src/dist/images/text.png" alt="kenzo"/>
+                </div>
+                <!--<img src="../src/dist/images/foreground-1.png" alt="kenzo"/>-->
             </div>
             <div class="ani-petal">
                 <img src="../src/dist/images/ani-1.png" alt="kenzo"/>

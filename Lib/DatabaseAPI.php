@@ -146,6 +146,30 @@ class DatabaseAPI {
 		return 0;
 	}
 
+	public function checkGift($uid) {
+        $sql = "SELECT `id` FROM `gift` WHERE `uid` = ?";
+        $res = $this->connect()->prepare($sql);
+        $res->bind_param("s", $uid);
+        $res->execute();
+        $res->bind_result($id);
+        if($res->fetch()) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public function checkSubmit($uid) {
+        $sql = "SELECT `id` FROM `info` WHERE `uid` = ?";
+        $res = $this->connect()->prepare($sql);
+        $res->bind_param("s", $uid);
+        $res->execute();
+        $res->bind_result($id);
+        if($res->fetch()) {
+            return 1;
+        }
+        return 0;
+    }
+
 	public function loadLotteryByUid($uid) {
 		$sql = "SELECT `id` FROM `lottery` WHERE `uid` = ? and `status` = 1"; 
 		$res = $this->connect()->prepare($sql);
@@ -159,7 +183,7 @@ class DatabaseAPI {
 	}
 
 	public function loadLotteryCountByUid($uid) {
-		$sql = "SELECT `id` FROM `lottery` WHERE `uid` = ?"; 
+		$sql = "SELECT `id` FROM `lottery` WHERE `uid` = ?";
 		$res = $this->connect()->prepare($sql);
 		$res->bind_param("s", $uid);
 		$res->execute();
@@ -170,9 +194,10 @@ class DatabaseAPI {
 		return 0;
 	}
 
-	public function loadLotteryCount() {
-		$sql = "SELECT count(`id`) FROM `lottery` WHERE `status` = 1"; 
+	public function loadLotteryCount($date) {
+		$sql = "SELECT count(`id`) FROM `lottery` WHERE `status` = 1 AND `created` LIKE ?";
 		$res = $this->connect()->prepare($sql);
+        $res->bind_param("s", $date);
 		$res->execute();
 		$res->bind_result($count);
 		if($res->fetch()) {		
@@ -222,6 +247,15 @@ class DatabaseAPI {
 			return FALSE;
 	}
 
-	
-
+    public function checkGiftQuota($date, $type) {
+        $sql = "SELECT `num` FROM `quota` WHERE `date` = ? AND `type` = ?";
+        $res = $this->connect()->prepare($sql);
+        $res->bind_param("ss", $date, $type);
+        $res->execute();
+        $res->bind_result($count);
+        if($res->fetch()) {
+            return $count;
+        }
+        return 0;
+    }
 }

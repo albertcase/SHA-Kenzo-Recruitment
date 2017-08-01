@@ -23,6 +23,12 @@ class UserAPI extends Base {
         $data = new \stdClass();
         $data->uid = $_user->uid;
         $data->openid = $_user->openid;
+        $data->status = array(
+            'isold' => $this->_db->checkOpenid($_user->openid),
+            'isgift' => $this->_db->checkGift($_user->uid),
+            'issubmit' => $this->_db->checkSubmit($_user->uid),
+            'isluckydraw' => $this->_db->loadLotteryByUid($_user->uid),
+        );
         // if($re = $this->_db->findInfoByUid($_user->uid)) {
         //   $data->info = $re;
         // }

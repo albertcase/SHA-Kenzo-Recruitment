@@ -5,35 +5,52 @@ use Core\Controller;
 
 class PageController extends Controller {
 
-	public function indexAction() {	
-		// ini_set("display_errors", 1);
-		global $user;
+//	public function indexAction() {
+//		// ini_set("display_errors", 1);
+//		global $user;
+//		if (!$user->uid) {
+//			$this->redirect('/wechat/curio/callback');
+//		}
+//		//var_dump($user);exit;
+//		$subscribed = $this->subscribed($user->openid);
+//		if (!$subscribed) {
+//			//未关注
+//			$this->render('unfollow');
+//		}
+//		//关注
+//		$databaseAPI = new \Lib\DatabaseAPI();
+//        $isOld = $databaseAPI->checkOpenid($user->openid);
+//        if (!$isOld) {
+//            $this->render('newfollow');
+//        }
+//        $this->render('followed');
+//		$checknew = $databaseAPI->checkOpenid($user->openid);
+//		if ($checknew) {
+//			$this->render('followed');
+//		}
+//		$info = $databaseAPI->findInfoByUid($user->uid);
+//		if (!$info) {
+//			$this->render('newfollow');
+//		}
+//		$this->render('followed');
+//	}
+
+    /**
+     * 入口
+     */
+    public function indexAction()
+    {
+        global $user;
 		if (!$user->uid) {
 			$this->redirect('/wechat/curio/callback');
 		}
-		//var_dump($user);exit;
-		$subscribed = $this->subscribed($user->openid);
-		if (!$subscribed) {
-			//未关注
-			$this->render('unfollow');
-		}
-		//关注
-		$databaseAPI = new \Lib\DatabaseAPI();
+        $databaseAPI = new \Lib\DatabaseAPI();
         $isOld = $databaseAPI->checkOpenid($user->openid);
         if (!$isOld) {
-            $this->render('newfollow');
+            $this->render('unfollow');
         }
         $this->render('followed');
-		$checknew = $databaseAPI->checkOpenid($user->openid);
-		if ($checknew) {
-			$this->render('followed');
-		}
-		$info = $databaseAPI->findInfoByUid($user->uid);
-		if (!$info) {
-			$this->render('newfollow');
-		}
-		$this->render('followed');
-	}
+    }
 
 	public function jssdkConfigJsAction() {
 		$request = $this->Request();

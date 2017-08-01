@@ -3,11 +3,17 @@
  * */
 ;(function(){
     var controller = function(){
-        this.hasShared = false;
-        //if getPrize is 0, no lottery
-        //if getPrize is 1, lottery and get prize
-        //if getPrize is 2, lottery and no prize
-        this.getPrize = 0;
+        //get userflow status from backend
+
+        //var userInfo = {
+        //    isOld: false, /*是否是老用户*/
+        //    isSubmit: false, /*是否提交了用户详细信息表单*/
+        //    isGift: false, /*是否领取了小样*/
+        //    isLuckyDraw: false /*是否抽奖*/
+        //};
+
+        this.user = userInfo;
+        this.isTransformedOld = userInfo.isOld; //For new follow user, if operate the gift page, then transform Old user and display old page view
     };
     //init
     controller.prototype.init = function(){
@@ -77,21 +83,41 @@
         $('.preload').remove();
         $('.wrapper').addClass('fade');
 
-        //self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
-        self.getPrize = Cookies.get('getPrize')?Cookies.get('getPrize'):0;
-        if(self.getPrize == 1){
-            Common.gotoPin(2);
-            $('.prize-yes').addClass('show');
-            $('.prize-no').removeClass('show');
+        /* if the isOld is true and isLuckyDraw is true, directly go to the luckydraw result page */
+        if(self.user.isOld && self.user.isLuckyDraw){
+            Common.gotoPin(2); /*directly go to the luckydraw result page*/
         }else{
-            Common.gotoPin(0);
+            Common.gotoPin(0); // landing page
+            if(self.user.isOld){
+                self.showLandingPage(2);
+            }else{
+                self.showLandingPage(1);
+            }
         }
+        //if(self.user.isOld){
+        //    if(self.user.isLuckyDraw){
+        //        Common.gotoPin(2);
+        //    }else{
+        //        Common.gotoPin(0);
+        //    }
+        //}
+
         //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
 
         //test
         Common.hashRoute();
+    };
+
+    controller.prototype.showLandingPage = function(page){
+        if(page == 1){
+            $('.btn-luckydraw').text('即刻领取体验装');
+            $('.limit-quantity').removeClass('hide');
+        }else if(page == 2){
+            $('.btn-luckydraw').text('即刻赢取礼赠');
+            $('.limit-quantity').addClass('hide');
+        }
     };
 
     //bind Events
@@ -104,15 +130,47 @@
         });
         //    show terms pop
         $('.terms-link').on('touchstart',function(){
+            /**/
+            var termContent = [
+                {
+                    time:'2017年X月X日至2017年X月X日',
+                    condition:'活动期间，首次关注KenzoParfums凯卓官方微信的<br>用户即可参与申领，每个微信ID仅限申领一次，<br>奖品限量5000份。每天份额限量，详情请见活动主页<br>（先到先得）',
+                    prize:'奖品为KENZO舒缓白莲清爽保湿霜体验装（2ml）<br>根据用户填写的邮寄地址在中奖后的30个工作日内寄送'
+                },
+                {
+                    time:'2017年X月X日至2017年X月X日',
+                    condition:'活动期间，关注KenzoParfums凯卓官方微信的<br>用户将活动分享给好友，即可参与抽奖（随机抽取）<br>每个微信ID仅限中奖一次，奖品限量100份',
+                    prize:'奖品为KENZO舒缓白莲清爽保湿霜正装（50ml）<br>根据用户填写的邮寄地址在中奖后的30个工作日内寄送'
+                }
+            ];
+            if(self.isTransformedOld){
+                $('.activity-time').html(termContent[1].time);
+                $('.activity-requirement').html(termContent[1].condition);
+                $('.activity-prize').html(termContent[1].prize);
+            }else{
+                $('.activity-time').html(termContent[0].time);
+                $('.activity-requirement').html(termContent[0].condition);
+                $('.activity-prize').html(termContent[0].prize);
+            }
             $('.terms-pop').addClass('show');
+
         });
 
-        //    receive the prize
+        /*
+        * If isTransformedOld is true, show share popup
+        * If isTransformedOld is false and not fill form, you need fill form first
+        * If isTransformedOld is false and filled form, you directly go result page
+        * */
         $('.btn-luckydraw').on('touchstart',function(){
-            //Common.gotoPin(1);
-            //if user has shared the link, go next page,
-            //if not, show pop to guide user share
-            $('.share-popup').addClass('show');
+            if(self.isTransformedOld){
+                $('.share-popup').addClass('show');
+            }else{
+                if(self.user.isSubmit){
+                    Common.gotoPin(2); //go result page
+                }else{
+                    Common.gotoPin(1); //go fill form page
+                }
+            }
         });
 
         //    submit the form

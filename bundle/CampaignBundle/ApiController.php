@@ -41,6 +41,8 @@ class ApiController extends Controller {
         $json_data = curl_exec($ch);
         $array = json_decode($json_data,true);
 //        echo '<pre>';print_r($array);exit;
+        $data = array('status' => 1, 'msg' => 'send ok');
+        $this->dataPrint($data);
     }
 
     /**

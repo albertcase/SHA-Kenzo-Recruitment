@@ -19,22 +19,12 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
-<<<<<<< HEAD
     <script type="text/javascript">
         var userInfo = {
             isOld: <?php echo $userStatus['isold'];?>, /*是否是老用户*/
             isSubmit: <?php echo $userStatus['issubmit'];?>, /*是否提交了用户详细信息表单*/
             isGift: <?php echo $userStatus['isgift'];?>, /*是否领取了小样*/
             isLuckyDraw: <?php echo $userStatus['isluckydraw'];?> /*是否抽奖*/
-=======
-    <!-- userflow-->
-    <script type="text/javascript">
-        var userInfo = {
-            isOld: false, /*是否是老用户*/
-            isSubmit: false, /*是否提交了用户详细信息表单*/
-            isGift: false, /*是否领取了小样*/
-            isLuckyDraw: false /*是否抽奖*/
->>>>>>> b4ea5915148c1b83f31343a293805c89f77f5f9e
         };
     </script>
     <script src="../src/dist/js/all_followed.min.js"></script>

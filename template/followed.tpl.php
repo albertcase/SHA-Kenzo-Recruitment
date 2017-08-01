@@ -163,22 +163,10 @@
             </div>
         </div>
         <!-- result page-->
-        <div class="pin pin-3" id="pin-luckydraw">
+        <div class="pin pin-3" id="pin-result">
             <div class="des v-content">
-                <div class="prize-item prize-yes">
-                    <h3 class="title">「恭喜您」</h3>
-                    KENZO睡美人面膜正装（75ML）<br>
-                    Miss K 将火速为您寄送礼品！
-                    <span class="tip">（每个微信ID仅限中奖一次）</span>
-                </div>
-                <div class="prize-item prize-no">
-                    <div class="guide-share">
-                        <img src="../src/dist/images/guide-share.png" alt=""/>
-                    </div>
-                    <h3 class="title">「很遗憾」</h3>
-                    您没有中奖<br>
-                    点击右上角，向好友发出幸运邀请<br>
-                    即可获得再一次的抽奖机会哦！
+                <div class="prize-item">
+
                 </div>
             </div>
             <div class="b-img">

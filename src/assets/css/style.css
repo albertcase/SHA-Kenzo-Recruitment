@@ -1422,43 +1422,42 @@ body {
   height: 4.57rem;
 }
 
-#pin-gift .title {
+#pin-result .title {
   color: #6b6b6b;
   font-size: 0.4rem;
 }
-#pin-gift .des {
+#pin-result .des {
   top: 35%;
-  width: 4.6rem;
+  width: 100%;
   text-align: center;
   font-size: 0.26rem;
 }
-#pin-gift .des2 {
+#pin-result .des2 {
   top: 40%;
 }
-#pin-gift .prize-item {
-  display: none;
+#pin-result .prize-item {
   color: #6b6b6b;
 }
-#pin-gift .prize-item.show {
+#pin-result .prize-item.show {
   display: block;
 }
-#pin-gift .prize-item .tip {
+#pin-result .prize-item .tip {
   display: block;
   margin-top: 0.5rem;
   font-size: 0.22rem;
 }
-#pin-gift .b-img {
+#pin-result .b-img {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
 }
-#pin-gift .name {
+#pin-result .name {
   margin-top: 0.8rem;
   font-size: 0.22rem;
   color: #6b6b6b;
 }
-#pin-gift .btn-getproduct {
+#pin-result .btn-getproduct {
   width: 4.6rem;
   height: 1.4rem;
   box-sizing: border-box;

@@ -49,7 +49,7 @@ class PageController extends Controller {
         if (!$isOld) {
             $this->render('unfollow');
         }
-        $this->render('followed');
+        $this->render('followed',  array('userStatus' => $user->status));
     }
 
 	public function jssdkConfigJsAction() {

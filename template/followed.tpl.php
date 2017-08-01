@@ -19,6 +19,14 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
+    <script type="text/javascript">
+        var userInfo = {
+            isOld: <?php echo $userStatus['isold'];?>, /*是否是老用户*/
+            isSubmit: <?php echo $userStatus['issubmit'];?>, /*是否提交了用户详细信息表单*/
+            isGift: <?php echo $userStatus['isgift'];?>, /*是否领取了小样*/
+            isLuckyDraw: <?php echo $userStatus['isluckydraw'];?> /*是否抽奖*/
+        };
+    </script>
     <script src="../src/dist/js/all_followed.min.js"></script>
 </head>
 <body class="page-home">

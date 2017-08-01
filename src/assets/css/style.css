@@ -864,6 +864,11 @@ body {
   height: 1.31rem;
   margin: 0.3rem auto 0;
 }
+.pin-landing .limit-quantity {
+  text-align: center;
+  color: #6b6b6b;
+  font-size: 0.26rem;
+}
 .pin-landing .des-wrap {
   position: relative;
   z-index: 2;
@@ -871,7 +876,6 @@ body {
 }
 .pin-landing .des-wrap .des {
   width: 100%;
-  height: 2.8rem;
   text-align: center;
   color: #676763;
   font-size: 0.28rem;

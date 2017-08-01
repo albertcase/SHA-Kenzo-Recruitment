@@ -19,12 +19,22 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
+<<<<<<< HEAD
     <script type="text/javascript">
         var userInfo = {
             isOld: <?php echo $userStatus['isold'];?>, /*是否是老用户*/
             isSubmit: <?php echo $userStatus['issubmit'];?>, /*是否提交了用户详细信息表单*/
             isGift: <?php echo $userStatus['isgift'];?>, /*是否领取了小样*/
             isLuckyDraw: <?php echo $userStatus['isluckydraw'];?> /*是否抽奖*/
+=======
+    <!-- userflow-->
+    <script type="text/javascript">
+        var userInfo = {
+            isOld: false, /*是否是老用户*/
+            isSubmit: false, /*是否提交了用户详细信息表单*/
+            isGift: false, /*是否领取了小样*/
+            isLuckyDraw: false /*是否抽奖*/
+>>>>>>> b4ea5915148c1b83f31343a293805c89f77f5f9e
         };
     </script>
     <script src="../src/dist/js/all_followed.min.js"></script>
@@ -60,6 +70,7 @@
     </div>
     <!-- z-index is low-->
     <div class="container">
+        <!--加载的第一个页面 landing-->
         <div class="pin pin-1 pin-landing" id="pin-landing-1">
             <div class="title">
                 <img src="../src/dist/images/landing-1.png" alt="kenzo"/>
@@ -71,15 +82,8 @@
                     肌肤舒缓娇嫩，尽显清爽润泽<br>
                     ...身心亦是焕然一新
                 </div>
-                <!--<div class="des des-2">-->
-                <!--感悟白莲精粹的呵护<br>-->
-                <!--安然悠享整夜青春修护<br>-->
-                <!--云朵般的慕斯质地轻而柔软<br>-->
-                <!--清晨梦醒时肌肤紧致、光滑<br>-->
-                <!--···身心亦是焕然一新-->
-                <!--</div>-->
             </div>
-
+            <div class="limit-quantity hide">（今日限量XXX份）</div>
             <div class="btn btn-luckydraw">即刻赢取礼赠</div>
             <div class="terms-link">*规则与条款</div>
             <div class="foreground">
@@ -168,7 +172,8 @@
                 <img src="../src/dist/images/foreground-1.png" alt="kenzo"/>
             </div>
         </div>
-        <div class="pin pin-3" id="pin-gift">
+        <!-- result page-->
+        <div class="pin pin-3" id="pin-luckydraw">
             <div class="des v-content">
                 <div class="prize-item prize-yes">
                     <h3 class="title">「恭喜您」</h3>
@@ -211,21 +216,20 @@
         <h3 class="title">活动条款</h3>
         <div class="pcontent">
             <h4 class="subtitle">活动时间</h4>
-            <p class="des">
-                2017年5月9日至2017年7月1日
+            <p class="des activity-time">
+                2017年X月X日至2017年X月X日
             </p>
             <h4 class="subtitle">参与条件</h4>
-            <p class="des">
-                活动期间，关注KenzoParfums凯卓官方微信的<br>
-                用户将活动分享给好友<br>
-                即可参与抽奖（随机抽取）<br>
-                每个微信ID仅限中奖一次；奖品限量20份
+            <p class="des activity-requirement">
+                活动期间，首次关注KenzoParfums凯卓官方微信的<br>
+                用户即可参与申领，每个微信ID仅限申领一次，<br>
+                奖品限量5000份。每天份额限量，详情请见活动主页<br>
+                （先到先得）
             </p>
             <h4 class="subtitle">奖品内容</h4>
-            <p class="des">
-                奖品为KENZO睡美人面膜*（75ML）<br>
-                根据用户填写的邮寄地址<br>
-                在中奖后的30个工作日内寄送
+            <p class="des activity-prize">
+                奖品为KENZO舒缓白莲清爽保湿霜体验装（2ml）<br>
+                根据用户填写的邮寄地址在中奖后的30个工作日内寄送
             </p>
             <p class="product-name">* KENZO花颜舒柔夜间修护面膜</p>
         </div>
@@ -234,4 +238,3 @@
 </div>
 </body>
 </html>
-

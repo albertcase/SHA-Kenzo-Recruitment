@@ -1586,13 +1586,22 @@ $(document).ready(function(){
 
 /*All the api collection*/
 Api = {
-    //is fill form
-    isFillForm:function(callback){
+    //submit user info
+    //{
+    //    name: '张三',
+    //        tel: '13112345678',
+    //    province: '上海',
+    //    city: '上海',
+    //    area: '黄浦区',
+    //    address: '湖滨路'
+    //}
+    submitForm:function(obj,callback){
         Common.msgBox.add('loading...');
         $.ajax({
-            url:'/api/islogin',
+            url:'/api/submit',
             type:'POST',
             dataType:'json',
+            data:obj,
             success:function(data){
                 Common.msgBox.remove();
                 return callback(data);
@@ -1608,22 +1617,15 @@ Api = {
 
     },
 
-    isLuckyDraw:function(callback){
-        //Common.msgBox.add('loading...');
+    getGift:function(callback){
         Common.msgBox.add('抽奖中...');
         $.ajax({
-            url:'/api/lottery',
+            url:'/api/gift',
             type:'POST',
             dataType:'json',
             success:function(data){
-                var aaa = setTimeout(function(){
-
-                    Common.msgBox.remove();
-                    clearTimeout(aaa);
-                    return callback(data);
-                },3000);
-
-                //status=1 有库存
+                Common.msgBox.remove();
+                return callback(data);
             }
         });
 
@@ -1634,16 +1636,13 @@ Api = {
 
 
     },
-    //submit form
-    // name  info
-///api/submit    name mobile province city area address
-    submitInfo:function(obj,callback){
+    //抽奖API
+    lottery:function(callback){
         Common.msgBox.add('loading...');
         $.ajax({
-            url:'/api/submit',
+            url:'/api/lottery',
             type:'POST',
             dataType:'json',
-            data:obj,
             success:function(data){
                 Common.msgBox.remove();
                 return callback(data);
@@ -1658,7 +1657,7 @@ Api = {
 
     },
 
-    getValidateCode:function(callback){
+    getImgValidateCode:function(callback){
         Common.msgBox.add('loading...');
         $.ajax({
             url:'/api/picturecode',
@@ -1678,10 +1677,34 @@ Api = {
 
     },
 
-    checkValidateCode:function(obj,callback){
+    checkImgValidateCode:function(obj,callback){
         Common.msgBox.add('loading...');
         $.ajax({
             url:'/api/checkpicture',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                Common.msgBox.remove();
+                return callback(data);
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'提交成功'
+        //});
+
+
+    },
+
+
+    //sent message validate code
+    //mobile
+    sendMsgValidateCode:function(obj,callback){
+        Common.msgBox.add('loading...');
+        $.ajax({
+            url:'/api/phonecode',
             type:'POST',
             dataType:'json',
             data:obj,
@@ -1764,11 +1787,17 @@ $(document).ready(function(){
  * */
 ;(function(){
     var controller = function(){
-        this.hasShared = false;
-        //if getPrize is 0, no lottery
-        //if getPrize is 1, lottery and get prize
-        //if getPrize is 2, lottery and no prize
-        this.getPrize = 0;
+        //get userflow status from backend
+
+        //var userInfo = {
+        //    isOld: false, /*是否是老用户*/
+        //    isSubmit: false, /*是否提交了用户详细信息表单*/
+        //    isGift: false, /*是否领取了小样*/
+        //    isLuckyDraw: false /*是否抽奖*/
+        //};
+
+        this.user = userInfo;
+        this.isTransformedOld = userInfo.isOld; //For new follow user, if operate the gift page, then transform Old user and display old page view
     };
     //init
     controller.prototype.init = function(){
@@ -1838,21 +1867,41 @@ $(document).ready(function(){
         $('.preload').remove();
         $('.wrapper').addClass('fade');
 
-        //self.hasShared = Cookies.get('hasShared')?Cookies.get('hasShared'):false;
-        self.getPrize = Cookies.get('getPrize')?Cookies.get('getPrize'):0;
-        if(self.getPrize == 1){
-            Common.gotoPin(2);
-            $('.prize-yes').addClass('show');
-            $('.prize-no').removeClass('show');
+        /* if the isOld is true and isLuckyDraw is true, directly go to the luckydraw result page */
+        if(self.user.isOld && self.user.isLuckyDraw){
+            Common.gotoPin(2); /*directly go to the luckydraw result page*/
         }else{
-            Common.gotoPin(0);
+            Common.gotoPin(0); // landing page
+            if(self.user.isOld){
+                self.showLandingPage(2);
+            }else{
+                self.showLandingPage(1);
+            }
         }
+        //if(self.user.isOld){
+        //    if(self.user.isLuckyDraw){
+        //        Common.gotoPin(2);
+        //    }else{
+        //        Common.gotoPin(0);
+        //    }
+        //}
+
         //console.log(self.hasShared);
         self.bindEvent();
         self.showAllProvince();
 
         //test
         Common.hashRoute();
+    };
+
+    controller.prototype.showLandingPage = function(page){
+        if(page == 1){
+            $('.btn-luckydraw').text('即刻领取体验装');
+            $('.limit-quantity').removeClass('hide');
+        }else if(page == 2){
+            $('.btn-luckydraw').text('即刻赢取礼赠');
+            $('.limit-quantity').addClass('hide');
+        }
     };
 
     //bind Events
@@ -1865,18 +1914,54 @@ $(document).ready(function(){
         });
         //    show terms pop
         $('.terms-link').on('touchstart',function(){
+            /**/
+            var termContent = [
+                {
+                    time:'2017年X月X日至2017年X月X日',
+                    condition:'活动期间，首次关注KenzoParfums凯卓官方微信的<br>用户即可参与申领，每个微信ID仅限申领一次，<br>奖品限量5000份。每天份额限量，详情请见活动主页<br>（先到先得）',
+                    prize:'奖品为KENZO舒缓白莲清爽保湿霜体验装（2ml）<br>根据用户填写的邮寄地址在中奖后的30个工作日内寄送'
+                },
+                {
+                    time:'2017年X月X日至2017年X月X日',
+                    condition:'活动期间，关注KenzoParfums凯卓官方微信的<br>用户将活动分享给好友，即可参与抽奖（随机抽取）<br>每个微信ID仅限中奖一次，奖品限量100份',
+                    prize:'奖品为KENZO舒缓白莲清爽保湿霜正装（50ml）<br>根据用户填写的邮寄地址在中奖后的30个工作日内寄送'
+                }
+            ];
+            if(self.isTransformedOld){
+                $('.activity-time').html(termContent[1].time);
+                $('.activity-requirement').html(termContent[1].condition);
+                $('.activity-prize').html(termContent[1].prize);
+            }else{
+                $('.activity-time').html(termContent[0].time);
+                $('.activity-requirement').html(termContent[0].condition);
+                $('.activity-prize').html(termContent[0].prize);
+            }
             $('.terms-pop').addClass('show');
+
         });
 
-        //    receive the prize
+        /*
+        * If isTransformedOld is true, show share popup
+        * If isTransformedOld is false and not fill form, you need fill form first
+        * If isTransformedOld is false and filled form, you directly go result page
+        * */
         $('.btn-luckydraw').on('touchstart',function(){
-            //Common.gotoPin(1);
-            //if user has shared the link, go next page,
-            //if not, show pop to guide user share
-            $('.share-popup').addClass('show');
+            if(self.isTransformedOld){
+                $('.share-popup').addClass('show');
+            }else{
+                if(self.user.isSubmit){
+                    Common.gotoPin(2); //go result page
+                }else{
+                    Common.gotoPin(1); //go fill form page
+                }
+            }
         });
 
-        //    submit the form
+        /*
+        * submit the form
+        * if isTransformedOld is true, submit it and then call lottery api
+        * if isTransformedOld is false, submit it and then call gift api
+        * */
         $('.btn-submit').on('touchstart',function(){
             if(self.validateForm()){
                 //name mobile province city area address
@@ -1886,7 +1971,7 @@ $(document).ready(function(){
                     selectProvinceVal = $('#select-province').val(),
                     selectCityVal = $('#select-city').val(),
                     selectDistrictVal = $('#select-district').val();
-                Api.submitInfo({
+                Api.submitForm({
                     name:inputNameVal,
                     mobile:inputMobileVal,
                     province:selectProvinceVal,
@@ -1895,10 +1980,19 @@ $(document).ready(function(){
                     address:inputAddressVal
                 },function(data){
                     if(data.status==1){
-                        Common.gotoPin(2);
-                        self.prizeResult();
+                        if(self.isTransformedOld){
+                            //Call lottery
+                            Api.lottery(function(json){
+                                console.log(json);
+                            });
+                        }else{
+                            //Call gift
+                            Api.getGift(function(json){
+                                console.log(json);
+                            });
+                        }
                     }else{
-                        alert(data.msg);
+                        Common.alertBox.add(data.msg);
                     }
                 });
             }
@@ -1941,7 +2035,7 @@ $(document).ready(function(){
             self.shareSuccess();
         });
 
-        self.getValidateCode();
+        //self.getValidateCode();
 
         //switch validate code
         $('.validate-code').on('touchstart', function(){

@@ -44,9 +44,9 @@ class PageController extends Controller {
 		if (!$user->uid) {
 			$this->redirect('/wechat/curio/callback');
 		}
-        $databaseAPI = new \Lib\DatabaseAPI();
-        $isOld = $databaseAPI->checkOpenid($user->openid);
-        if (!$isOld) {
+
+        $subscribed = $this->subscribed($user->openid);
+		if (!$subscribed) {
             $this->render('unfollow');
         }
         $this->render('followed',  array('userStatus' => $user->status));

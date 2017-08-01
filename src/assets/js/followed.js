@@ -173,7 +173,11 @@
             }
         });
 
-        //    submit the form
+        /*
+        * submit the form
+        * if isTransformedOld is true, submit it and then call lottery api
+        * if isTransformedOld is false, submit it and then call gift api
+        * */
         $('.btn-submit').on('touchstart',function(){
             if(self.validateForm()){
                 //name mobile province city area address
@@ -183,7 +187,7 @@
                     selectProvinceVal = $('#select-province').val(),
                     selectCityVal = $('#select-city').val(),
                     selectDistrictVal = $('#select-district').val();
-                Api.submitInfo({
+                Api.submitForm({
                     name:inputNameVal,
                     mobile:inputMobileVal,
                     province:selectProvinceVal,
@@ -192,10 +196,19 @@
                     address:inputAddressVal
                 },function(data){
                     if(data.status==1){
-                        Common.gotoPin(2);
-                        self.prizeResult();
+                        if(self.isTransformedOld){
+                            //Call lottery
+                            Api.lottery(function(json){
+                                console.log(json);
+                            });
+                        }else{
+                            //Call gift
+                            Api.getGift(function(json){
+                                console.log(json);
+                            });
+                        }
                     }else{
-                        alert(data.msg);
+                        Common.alertBox.add(data.msg);
                     }
                 });
             }
@@ -238,7 +251,7 @@
             self.shareSuccess();
         });
 
-        self.getValidateCode();
+        //self.getValidateCode();
 
         //switch validate code
         $('.validate-code').on('touchstart', function(){

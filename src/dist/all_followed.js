@@ -1586,13 +1586,22 @@ $(document).ready(function(){
 
 /*All the api collection*/
 Api = {
-    //is fill form
-    isFillForm:function(callback){
+    //submit user info
+    //{
+    //    name: '张三',
+    //        tel: '13112345678',
+    //    province: '上海',
+    //    city: '上海',
+    //    area: '黄浦区',
+    //    address: '湖滨路'
+    //}
+    submitForm:function(obj,callback){
         Common.msgBox.add('loading...');
         $.ajax({
-            url:'/api/islogin',
+            url:'/api/submit',
             type:'POST',
             dataType:'json',
+            data:obj,
             success:function(data){
                 Common.msgBox.remove();
                 return callback(data);
@@ -1608,22 +1617,15 @@ Api = {
 
     },
 
-    isLuckyDraw:function(callback){
-        //Common.msgBox.add('loading...');
+    getGift:function(callback){
         Common.msgBox.add('抽奖中...');
         $.ajax({
-            url:'/api/lottery',
+            url:'/api/gift',
             type:'POST',
             dataType:'json',
             success:function(data){
-                var aaa = setTimeout(function(){
-
-                    Common.msgBox.remove();
-                    clearTimeout(aaa);
-                    return callback(data);
-                },3000);
-
-                //status=1 有库存
+                Common.msgBox.remove();
+                return callback(data);
             }
         });
 
@@ -1634,16 +1636,13 @@ Api = {
 
 
     },
-    //submit form
-    // name  info
-///api/submit    name mobile province city area address
-    submitInfo:function(obj,callback){
+    //抽奖API
+    lottery:function(callback){
         Common.msgBox.add('loading...');
         $.ajax({
-            url:'/api/submit',
+            url:'/api/lottery',
             type:'POST',
             dataType:'json',
-            data:obj,
             success:function(data){
                 Common.msgBox.remove();
                 return callback(data);
@@ -1658,7 +1657,7 @@ Api = {
 
     },
 
-    getValidateCode:function(callback){
+    getImgValidateCode:function(callback){
         Common.msgBox.add('loading...');
         $.ajax({
             url:'/api/picturecode',
@@ -1678,10 +1677,34 @@ Api = {
 
     },
 
-    checkValidateCode:function(obj,callback){
+    checkImgValidateCode:function(obj,callback){
         Common.msgBox.add('loading...');
         $.ajax({
             url:'/api/checkpicture',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                Common.msgBox.remove();
+                return callback(data);
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'提交成功'
+        //});
+
+
+    },
+
+
+    //sent message validate code
+    //mobile
+    sendMsgValidateCode:function(obj,callback){
+        Common.msgBox.add('loading...');
+        $.ajax({
+            url:'/api/phonecode',
             type:'POST',
             dataType:'json',
             data:obj,
@@ -1934,7 +1957,11 @@ $(document).ready(function(){
             }
         });
 
-        //    submit the form
+        /*
+        * submit the form
+        * if isTransformedOld is true, submit it and then call lottery api
+        * if isTransformedOld is false, submit it and then call gift api
+        * */
         $('.btn-submit').on('touchstart',function(){
             if(self.validateForm()){
                 //name mobile province city area address
@@ -1944,7 +1971,7 @@ $(document).ready(function(){
                     selectProvinceVal = $('#select-province').val(),
                     selectCityVal = $('#select-city').val(),
                     selectDistrictVal = $('#select-district').val();
-                Api.submitInfo({
+                Api.submitForm({
                     name:inputNameVal,
                     mobile:inputMobileVal,
                     province:selectProvinceVal,
@@ -1953,10 +1980,19 @@ $(document).ready(function(){
                     address:inputAddressVal
                 },function(data){
                     if(data.status==1){
-                        Common.gotoPin(2);
-                        self.prizeResult();
+                        if(self.isTransformedOld){
+                            //Call lottery
+                            Api.lottery(function(json){
+                                console.log(json);
+                            });
+                        }else{
+                            //Call gift
+                            Api.getGift(function(json){
+                                console.log(json);
+                            });
+                        }
                     }else{
-                        alert(data.msg);
+                        Common.alertBox.add(data.msg);
                     }
                 });
             }
@@ -1999,7 +2035,7 @@ $(document).ready(function(){
             self.shareSuccess();
         });
 
-        self.getValidateCode();
+        //self.getValidateCode();
 
         //switch validate code
         $('.validate-code').on('touchstart', function(){

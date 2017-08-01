@@ -1,12 +1,21 @@
 /*All the api collection*/
 Api = {
-    //is fill form
-    isFillForm:function(callback){
+    //submit user info
+    //{
+    //    name: '张三',
+    //        tel: '13112345678',
+    //    province: '上海',
+    //    city: '上海',
+    //    area: '黄浦区',
+    //    address: '湖滨路'
+    //}
+    submitForm:function(obj,callback){
         Common.msgBox.add('loading...');
         $.ajax({
-            url:'/api/islogin',
+            url:'/api/submit',
             type:'POST',
             dataType:'json',
+            data:obj,
             success:function(data){
                 Common.msgBox.remove();
                 return callback(data);
@@ -22,22 +31,15 @@ Api = {
 
     },
 
-    isLuckyDraw:function(callback){
-        //Common.msgBox.add('loading...');
+    getGift:function(callback){
         Common.msgBox.add('抽奖中...');
         $.ajax({
-            url:'/api/lottery',
+            url:'/api/gift',
             type:'POST',
             dataType:'json',
             success:function(data){
-                var aaa = setTimeout(function(){
-
-                    Common.msgBox.remove();
-                    clearTimeout(aaa);
-                    return callback(data);
-                },3000);
-
-                //status=1 有库存
+                Common.msgBox.remove();
+                return callback(data);
             }
         });
 
@@ -48,16 +50,13 @@ Api = {
 
 
     },
-    //submit form
-    // name  info
-///api/submit    name mobile province city area address
-    submitInfo:function(obj,callback){
+    //抽奖API
+    lottery:function(callback){
         Common.msgBox.add('loading...');
         $.ajax({
-            url:'/api/submit',
+            url:'/api/lottery',
             type:'POST',
             dataType:'json',
-            data:obj,
             success:function(data){
                 Common.msgBox.remove();
                 return callback(data);
@@ -72,7 +71,7 @@ Api = {
 
     },
 
-    getValidateCode:function(callback){
+    getImgValidateCode:function(callback){
         Common.msgBox.add('loading...');
         $.ajax({
             url:'/api/picturecode',
@@ -92,10 +91,34 @@ Api = {
 
     },
 
-    checkValidateCode:function(obj,callback){
+    checkImgValidateCode:function(obj,callback){
         Common.msgBox.add('loading...');
         $.ajax({
             url:'/api/checkpicture',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                Common.msgBox.remove();
+                return callback(data);
+            }
+        });
+
+        //return callback({
+        //    status:1,
+        //    msg:'提交成功'
+        //});
+
+
+    },
+
+
+    //sent message validate code
+    //mobile
+    sendMsgValidateCode:function(obj,callback){
+        Common.msgBox.add('loading...');
+        $.ajax({
+            url:'/api/phonecode',
             type:'POST',
             dataType:'json',
             data:obj,

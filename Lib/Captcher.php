@@ -77,7 +77,7 @@ class Captcher {
    * @param int $height
    * @throws Exception
    */
-  function __construct(int $width, int $height) {
+  function __construct($width, $height) {
     
     if (!extension_loaded('gd') || !function_exists('gd_info')) {
       throw new \Exception("Where's GD library? [by Captcher]");
@@ -112,7 +112,7 @@ class Captcher {
    * Set if horizontal lines should be used
    * @param bool $do
    */
-  public function setHorizontalLines(bool $do) {
+  public function setHorizontalLines($do) {
     
     $this->drawHorizontalLines = $do;
     
@@ -122,7 +122,7 @@ class Captcher {
    * Set if vertical lines should be used
    * @param bool $do
    */
-  public function setVerticalLines(bool $do) {
+  public function setVerticalLines($do) {
     
     $this->drawVerticallLines = $do;
     
@@ -132,7 +132,7 @@ class Captcher {
    * Set if dots lines should be used
    * @param bool $do
    */
-  public function setDots(bool $do) {
+  public function setDots($do) {
     
     $this->drawDots = $do;
     
@@ -142,7 +142,7 @@ class Captcher {
    * Set amount of letters on image
    * @param int $amount
    */
-  public function setLettersAmount(int $amount) {
+  public function setLettersAmount($amount) {
     
     $this->lettersAmount = $amount;
     

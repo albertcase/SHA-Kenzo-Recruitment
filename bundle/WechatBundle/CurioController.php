@@ -5,31 +5,34 @@ use Core\Controller;
 
 class CurioController extends Controller {
 
-	public function callbackAction() {
-		ini_set("display_errors", 0);
-		$request = $this->request;
-		$fields = array(
-			'openid' => array('notnull', '120'),
-		);
-		$request->validation($fields);
-		$userAPI = new \Lib\UserAPI();
-		$user = $userAPI->userLogin($request->query->get('openid'));
-		if(!$user) {
-			$userAPI->userRegister($request->query->get('openid'));
-		}
-		$url = $request->getSourcetUrl();
-		$this->redirect($url);
-	}
+    public function callbackAction() {
+        $request = $this->request;
+        if ($url = $request->getSourcetUrl()) {
+            $fields = array(
+                'openid' => array('notnull', '120'),
+            );
+            $request->validation($fields);
+            $userAPI = new \Lib\UserAPI();
+            $openid = $request->query->get('openid');
+            $user = $userAPI->userLogin($openid);
+            if(!$user) {
+                $userAPI->userRegister($openid);
+            }
+            $this->redirect($url);
+        } else {
+            $this->statusPrint('error');
+        }
+    }
 
-	public function receiveUserInfoAction() {
-		$data = $GLOBALS['HTTP_RAW_POST_DATA'];	
-		$data = json_decode($data);
-		if($data->code = 200) {
-			$DatabaseAPI = new \Lib\DatabaseAPI();
-			$DatabaseAPI->updateUser($data->data);
-		} else {
-			$this->statusPrint('error');
-		}
-	}
+    public function receiveUserInfoAction() {
+        $data = file_get_contents("php://input");
+        $data = json_decode($data);
+        if($data->code = 200) {
+            $DatabaseAPI = new \Lib\DatabaseAPI();
+            $DatabaseAPI->updateUser($data->data);
+        } else {
+            $this->statusPrint('error');
+        }
+    }
 
 }

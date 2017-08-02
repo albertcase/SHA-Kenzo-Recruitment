@@ -82,16 +82,23 @@ class Request {
 		}	
 		$this->validation = $data;
 	}
-
+	
 	public function setSourceUrl($url, $type = 'cookie') {
 		if($type == 'cookie') {
-			setcookie("redirect_url", $url);
+			setcookie("redirect_url", $url, time() + 3600*8, '/');
 		}
 	}
 
 	public function getSourcetUrl($type = 'cookie') {
-		if($type == 'cookie') {
-			return $_COOKIE['redirect_url'];
+		if (MODE == 'dev') {
+			return '/';
 		}
+		
+		if($type == 'cookie') {
+			if(isset($_COOKIE['redirect_url'])) {
+				return $_COOKIE['redirect_url'];
+			} 
+		}
+		return null;
 	}
 }

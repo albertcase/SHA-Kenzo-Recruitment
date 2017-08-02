@@ -1983,7 +1983,7 @@ $(document).ready(function(){
                     if(data.status==1){
                         if(self.isTransformedOld){
                             //Call lottery
-                            self.callGiftApi();
+                            self.callLotteryApi();
                         }else{
                             //Call gift
                             self.callGiftApi();
@@ -2119,37 +2119,58 @@ $(document).ready(function(){
     controller.prototype.shareSuccess = function(){
         var self = this;
         $('.share-popup').removeClass('show');
-        Api.isFillForm(function (data) {
-            //if filled, go lucky draw page
-            //if not,fill form first
-            if(data.status == 1){
-                Common.gotoPin(2);
-                self.prizeResult();
-            }else{
-                Common.gotoPin(1);
-            }
-        })
+        if(self.user.isSubmit){
+            self.callLotteryApi();
+        }else{
+            Common.gotoPin(1);
+        }
     };
 
     //show the prize result, if prize, show prize msg, if not, show sorry msg
-    controller.prototype.prizeResult = function(){
-        Common.gotoPin(2);
-        $('.prize-item').removeClass('show');
-        Api.isLuckyDraw(function(result){
-            //self.prizeResult(result.status,result.msg);
-            if(result.status==1){
-                Cookies.set('getPrize',1);
-                //    get prize
-                $('.prize-yes').addClass('show');
-                $('.prize-no').removeClass('show');
-            }else if(result.status==2){
-                Cookies.set('getPrize',2);
-                $('.prize-yes').removeClass('show');
-                $('.prize-no').addClass('show');
-            }else{
-                Common.alertBox.add(result.msg);
+    controller.prototype.callLotteryApi = function(){
+        var self = this;
+        var resultHtmlObj = [
+            {
+                name:'',
+                rhtml:'<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限中奖一次）</span>'
+            },
+            {
+                name:'您没有中奖',
+                rhtml:'<h3 class="title">「很遗憾」</h3>您没有中奖<br>点击右上角，向好友发出幸运邀请<br>即可获得再一次的抽奖机会哦！'
+            },
+            {
+                name:'小样已经全部领空',
+                rhtml:'本次KENZO果冻霜正装（共100份）<br>的抽奖活动已结束<br>请持续关注KENZO官方微信，更多福利等着你！<br>'
+            }
+        ];
+
+        Api.lottery(function(json){
+            Common.gotoPin(2); //go result page
+            $('.btn-getbigprize').addClass('hide');
+            //self.isTransformedOld = 1;
+            switch (json.status){
+                case 0:
+                    //msg: '遗憾未中奖',
+                    $('#pin-result .prize-item').html(resultHtmlObj[1].rhtml);
+                    break;
+                case 1:
+                    //msg: '恭喜中奖'
+                    $('#pin-result .prize-item').html(resultHtmlObj[0].rhtml);
+
+                    break;
+                case 2:
+                    //msg: '今天的奖品已经发没，请明天再来！',
+                    $('#pin-result .prize-item').html(resultHtmlObj[2].rhtml);
+                    break;
+                case 3:
+                    //msg: '您已获奖',
+                    $('#pin-result .prize-item').html(resultHtmlObj[0].rhtml);
+                    break;
+                default :
+                    Common.alertBox.add(json.msg);
             }
         });
+
 
     };
 

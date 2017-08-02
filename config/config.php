@@ -7,6 +7,9 @@ define("VENDOR_ROOT", dirname(__FILE__) . '/../vendor');
 //User
 define("USER_STORAGE", 'COOKIE');
 
+//Mode
+define("MODE", 'prod');
+
 //Wechat Vendor
 define("WECHAT_VENDOR", 'curio'); // default | curio
 

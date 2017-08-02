@@ -546,7 +546,8 @@ $ani-delay-5: 5000ms;
         padding-left: 0.14rem;
         box-sizing: border-box;
         span{
-          display: block;
+          display: inline-block;
+          font-size: 0.2rem;
         }
       }
     }

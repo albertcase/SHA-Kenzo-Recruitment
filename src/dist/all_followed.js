@@ -1798,6 +1798,7 @@ $(document).ready(function(){
 
         this.user = userInfo;
         this.isTransformedOld = userInfo.isOld; //For new follow user, if operate the gift page, then transform Old user and display old page view
+        this.disableClick = false;
     };
     //init
     controller.prototype.init = function(){
@@ -1953,7 +1954,7 @@ $(document).ready(function(){
                 if(self.user.isSubmit){
                     self.callGiftApi() //go result page
                 }else{
-                    Common.gotoPin(1); //go fill form page
+                    self.gotoFormPage();
                 }
             }
         });
@@ -2032,20 +2033,49 @@ $(document).ready(function(){
             self.shareSuccess();
         });
 
-        //self.getValidateCode();
-
         //switch validate code
         $('.validate-code').on('touchstart', function(){
             self.getValidateCode();
         });
 
-        //Get message validate code
+        /*
+        * validate phonenumber first
+        * Get message validate code,check image validate code
+        * if image validate code is right
+        * */
         $('.btn-get-msg-code').on('touchstart', function(){
-            Api.checkValidateCode({
-                picture:$('#input-validate-code').val()
-            },function(data){
-                console.log(data);
-            });
+            if(self.disableClick) return;
+            if(!$('#input-mobile').val()){
+                Common.errorMsgBox.add('手机号码不能为空');
+            }else{
+                var reg=/^1\d{10}$/;
+                if(!(reg.test($('#input-mobile').val()))){
+                    validate = false;
+                    Common.errorMsgBox.add('手机号格式错误，请重新输入');
+                }else{
+                    Api.checkImgValidateCode({
+                        picture:$('#input-validate-code').val()
+                    },function(data){
+                        if(data.status == 1){
+                            //start to count down and sent message to your phone
+                            Api.sendMsgValidateCode({
+                                mobile:$('#input-mobile').val()
+                            },function(json){
+                                if(json.status==1){
+                                    console.log('开始倒计时');
+                                    self.countDown();
+                                    self.disableClick = true;
+                                }else{
+                                    Common.alertBox.add(json.msg);
+                                }
+                            });
+                        }else{
+                            self.getValidateCode();
+                        }
+                    });
+                }
+            }
+
         });
 
         /*If the user get the gift, then go to the lottery page*/
@@ -2055,6 +2085,31 @@ $(document).ready(function(){
             }
         });
 
+    //    for test
+        self.gotoFormPage();
+
+    };
+
+    /*
+    * Countdown
+    * Disabled click the button untill the end the countdown
+    * */
+    controller.prototype.countDown = function(){
+        var self = this;
+        self.disableClick = true;
+        $('.btn-get-msg-code').addClass('disabled');
+        var maxSeconds = 60;
+        var ele = $('.btn-get-msg-code .second');
+        var aaa = setInterval(function(){
+            maxSeconds--;
+            ele.text(maxSeconds+'s');
+            if(maxSeconds<1){
+                self.disableClick = false;
+                ele.text('60s');
+                $('.btn-get-msg-code').removeClass('disabled');
+                clearInterval(aaa);
+            }
+        },1000);
     };
 
     //call gift api and show different view
@@ -2101,8 +2156,9 @@ $(document).ready(function(){
             }
         });
     }
+
     controller.prototype.getValidateCode = function(){
-        Api.getValidateCode(function(data){
+        Api.getImgValidateCode(function(data){
             console.log(data);
             if(data.status==1){
                 $('.validate-code-img').html('<img src="data:image/jpeg;base64,'+data.picture+'" />');
@@ -2112,8 +2168,14 @@ $(document).ready(function(){
                 //}
                 //codeImg.src = data.picture;
             }
-        })
+        });
     };
+
+    controller.prototype.gotoFormPage = function(){
+        var self = this;
+        Common.gotoPin(1);
+        self.getValidateCode();
+    }
 
     //share success
     controller.prototype.shareSuccess = function(){
@@ -2122,7 +2184,7 @@ $(document).ready(function(){
         if(self.user.isSubmit){
             self.callLotteryApi();
         }else{
-            Common.gotoPin(1);
+            self.gotoFormPage();
         }
     };
 

@@ -186,6 +186,7 @@
                 var inputNameVal = $('#input-name').val(),
                     inputMobileVal = $('#input-mobile').val(),
                     inputAddressVal = $('#input-address').val(),
+                    inputMsgCodeVal = $('#input-validate-message-code').val(),
                     selectProvinceVal = $('#select-province').val(),
                     selectCityVal = $('#select-city').val(),
                     selectDistrictVal = $('#select-district').val();
@@ -194,6 +195,7 @@
                     mobile:inputMobileVal,
                     province:selectProvinceVal,
                     city:selectCityVal,
+                    msgCode:inputMsgCodeVal,
                     area:selectDistrictVal,
                     address:inputAddressVal
                 },function(data){
@@ -302,7 +304,7 @@
         });
 
     //    for test
-        self.gotoFormPage();
+    //    self.gotoFormPage();
 
     };
 

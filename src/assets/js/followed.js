@@ -115,17 +115,6 @@
         Common.hashRoute();
     };
 
-    controller.prototype.showLandingPage = function(page){
-        Common.gotoPin(0);
-        if(page == 1){
-            $('.btn-luckydraw').text('即刻领取体验装');
-            $('.limit-quantity').removeClass('hide');
-        }else if(page == 2){
-            $('.btn-luckydraw').text('即刻赢取礼赠');
-            $('.limit-quantity').addClass('hide');
-        }
-    };
-
     //bind Events
     controller.prototype.bindEvent = function(){
         var self = this;
@@ -285,7 +274,7 @@
                                 mobile:$('#input-mobile').val()
                             },function(json){
                                 if(json.status==1){
-                                    console.log('开始倒计时');
+                                    //console.log('开始倒计时');
                                     self.countDown();
                                     self.disableClick = true;
                                 }else{
@@ -310,6 +299,16 @@
 
     };
 
+    controller.prototype.showLandingPage = function(page){
+        Common.gotoPin(0);
+        if(page == 1){
+            $('.btn-luckydraw').text('即刻领取体验装');
+            $('.limit-quantity').removeClass('hide');
+        }else if(page == 2){
+            $('.btn-luckydraw').text('即刻赢取礼赠');
+            $('.limit-quantity').addClass('hide');
+        }
+    };
     /*
     * Countdown
     * Disabled click the button untill the end the countdown
@@ -350,7 +349,7 @@
             }
         ];
         Api.getGift(function(json){
-            console.log(json);
+            //console.log(json);
             Common.gotoPin(2); //go result page
             self.isTransformedOld = 1;
             self.user.isSubmit = json.userStatus.issubmit;
@@ -377,38 +376,6 @@
             }
         });
     }
-
-    controller.prototype.getValidateCode = function(){
-        Api.getImgValidateCode(function(data){
-            console.log(data);
-            if(data.status==1){
-                $('.validate-code-img').html('<img src="data:image/jpeg;base64,'+data.picture+'" />');
-                //var codeImg = new Image();
-                //codeImg.onload = function(){
-                //
-                //}
-                //codeImg.src = data.picture;
-            }
-        });
-    };
-
-    controller.prototype.gotoFormPage = function(){
-        var self = this;
-        Common.gotoPin(1);
-        self.getValidateCode();
-    }
-
-    //share success
-    controller.prototype.shareSuccess = function(){
-        var self = this;
-        $('.share-popup').removeClass('show');
-        if(self.user.isSubmit){
-            self.callLotteryApi();
-        }else{
-            self.gotoFormPage();
-        }
-    };
-
     //show the prize result, if prize, show prize msg, if not, show sorry msg
     controller.prototype.callLotteryApi = function(){
         var self = this;
@@ -455,6 +422,37 @@
         });
 
 
+    };
+
+    controller.prototype.getValidateCode = function(){
+        Api.getImgValidateCode(function(data){
+            //console.log(data);
+            if(data.status==1){
+                $('.validate-code-img').html('<img src="data:image/jpeg;base64,'+data.picture+'" />');
+                //var codeImg = new Image();
+                //codeImg.onload = function(){
+                //
+                //}
+                //codeImg.src = data.picture;
+            }
+        });
+    };
+
+    controller.prototype.gotoFormPage = function(){
+        var self = this;
+        Common.gotoPin(1);
+        self.getValidateCode();
+    }
+
+    //share success
+    controller.prototype.shareSuccess = function(){
+        var self = this;
+        $('.share-popup').removeClass('show');
+        if(self.user.isSubmit){
+            self.callLotteryApi();
+        }else{
+            self.gotoFormPage();
+        }
     };
 
     //province city and district

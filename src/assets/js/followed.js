@@ -200,6 +200,7 @@
                     address:inputAddressVal
                 },function(data){
                     if(data.status==1){
+                        //self.user = data.userStatus;
                         if(self.isTransformedOld){
                             //Call lottery
                             self.callLotteryApi();
@@ -303,9 +304,6 @@
             }
         });
 
-    //    for test
-    //    self.gotoFormPage();
-
     };
 
     /*
@@ -351,6 +349,7 @@
             console.log(json);
             Common.gotoPin(2); //go result page
             self.isTransformedOld = 1;
+            self.user.isSubmit = json.userStatus.issubmit;
             switch (json.status){
                 case 1:
                     //msg: '小样领取成功'

@@ -6,7 +6,7 @@ use Core\Controller;
 class CurioController extends Controller {
 
 	public function callbackAction() {
-		ini_set("display_errors", 1);
+		ini_set("display_errors", 0);
 		$request = $this->request;
 		$fields = array(
 			'openid' => array('notnull', '120'),

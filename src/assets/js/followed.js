@@ -49,12 +49,16 @@
             baseurl + 'ani-5.png',
             baseurl + 'bg.jpg',
             baseurl + 'btn.png',
+            baseurl + 'f-1.png',
+            baseurl + 'fleurs-2.png',
+            baseurl + 'fleurs.png',
             baseurl + 'foreground-1.png',
             baseurl + 'gift-flower.png',
             baseurl + 'guide-share.png',
             baseurl + 'landing-1.png',
             baseurl + 'pop-bg.png',
             baseurl + 'preload-bg.jpg',
+            baseurl + 'text.png',
             baseurl + 'preload-flower.jpg'
         ];
 
@@ -439,7 +443,7 @@
                     break;
                 case 2:
                     //msg: '今天的奖品已经发没，请明天再来！',
-                    $('#pin-result .prize-item').html(resultHtmlObj[2].rhtml);
+                    $('#pin-result .prize-item').html(resultHtmlObj[1].rhtml);
                     break;
                 case 3:
                     //msg: '您已获奖',
@@ -569,7 +573,7 @@
     $(document).ready(function(){
 //    show form
         var newFollow = new controller();
-        newFollow.startUp();
+        newFollow.init();
 
     });
 

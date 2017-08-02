@@ -1,6 +1,6 @@
 <?php
 
-define("BASE_URL", 'http://kenzoki.samesamechina.com/');
+define("BASE_URL", 'http://kenzokitest.samesamechina.com/');
 define("TEMPLATE_ROOT", dirname(__FILE__) . '/../template');
 define("VENDOR_ROOT", dirname(__FILE__) . '/../vendor');
 

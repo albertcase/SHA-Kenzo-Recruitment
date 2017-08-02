@@ -32,7 +32,8 @@ class ApiController extends Controller {
         $apikey = "b42c77ce5a2296dcc0199552012a4bd9";
         $mobile = $request->request->get('mobile');
         $code = rand(1000, 9999);
-        $_SESSION['phone-code'] = $code;
+        $RedisAPI = new \Lib\RedisAPI();
+        $RedisAPI->set($mobile, $code, '3600');
         $text = "【Kenzo凯卓】您的验证码是{$code}";
         $data = array('text'=>$text,'apikey'=>$apikey,'mobile'=>$mobile);
         curl_setopt ($ch, CURLOPT_URL, 'https://sms.yunpian.com/v2/sms/single_send.json');
@@ -64,6 +65,15 @@ class ApiController extends Controller {
         $this->dataPrint($data);
     }
 
+    private function checkMsgCode($mobile, $msgCode) {
+        $RedisAPI = new \Lib\RedisAPI();
+        $code = $RedisAPI->set($mobile);
+        if($code == $msgCode) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /**
      * 验证验证码是否正确
@@ -79,6 +89,7 @@ class ApiController extends Controller {
 		if(strtolower($picture) == strtolower($_SESSION['captcha-protection'])) {
             $data = array('status' => 1, 'msg' => 'success');
 		} else {
+		    unset($_SESSION['captcha-protection']);
             $data = array('status' => 0, 'msg' => 'picture code is failed');
 		}
 		$this->dataPrint($data);
@@ -126,6 +137,7 @@ class ApiController extends Controller {
     	$fields = array(
 			'name' => array('notnull', '120'),
 			'mobile' => array('cellphone', '121'),
+			'msgCode' => array('notnull', '120'),
 			'province' => array('notnull', '120'),
 			'city' => array('notnull', '120'),
 			'area' => array('notnull', '120'),
@@ -137,6 +149,11 @@ class ApiController extends Controller {
 		$data->uid = $user->uid;
 		$data->name = $request->request->get('name');
 		$data->mobile = $request->request->get('mobile');
+        $msgCode = $request->request->get('msgCode');
+        if(!$this->checkMsgCode($data->mobile, $msgCode)) {
+            $data = array('status' => 2, 'msg'=> '手机验证码错误', 'userStatus' => $user->status);
+            $this->dataPrint($data);
+        }
 		$data->province = $request->request->get('province');
 		$data->city = $request->request->get('city');
 		$data->area = $request->request->get('area');
@@ -200,7 +217,7 @@ class ApiController extends Controller {
 		}
 		//奖发完
         $sum = $databaseAPI->checkGiftQuota($date, 2);
-		$count = $databaseAPI->loadLotteryCount();
+		$count = $databaseAPI->loadLotteryCount($date);
 		if ($count>=$sum) {
 //			$databaseAPI->setLottery($user->uid, 2);
             $data = array('status' => 2, 'msg'=> '今天的奖品已经发没，请明天再来！', 'userStatus' => $user->status);

@@ -5,7 +5,7 @@ define("TEMPLATE_ROOT", dirname(__FILE__) . '/../template');
 define("VENDOR_ROOT", dirname(__FILE__) . '/../vendor');
 
 //User
-define("USER_STORAGE", 'SESSION');
+define("USER_STORAGE", 'COOKIE');
 
 //Wechat Vendor
 define("WECHAT_VENDOR", 'curio'); // default | curio

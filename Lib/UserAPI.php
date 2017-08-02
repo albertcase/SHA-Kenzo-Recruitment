@@ -29,9 +29,6 @@ class UserAPI extends Base {
             'issubmit' => $this->_db->checkSubmit($_user->uid),
             'isluckydraw' => $this->_db->loadLotteryByUid($_user->uid),
         );
-        // if($re = $this->_db->findInfoByUid($_user->uid)) {
-        //   $data->info = $re;
-        // }
         return $data;
       } else {
         return (object) array('uid' => '0', 'openid' => '0');
@@ -48,10 +45,6 @@ class UserAPI extends Base {
   }
 
   public function isUserLogin() {
-    // $r = new \stdClass();
-    // $r->uid = '1';
-    // $r->openid = 'asf';
-    // return $r;
     if(USER_STORAGE == 'COOKIE') {
       if(isset($_COOKIE['_user'])) {
         return $this->decodeUser($_COOKIE['_user']);

@@ -41,9 +41,6 @@ class PageController extends Controller {
     public function indexAction()
     {
         global $user;
-		if (!$user->uid) {
-			$this->redirect('/wechat/curio/callback');
-		}
 
         $subscribed = $this->subscribed($user->openid);
 		if (!$subscribed) {
@@ -152,7 +149,7 @@ class PageController extends Controller {
 	}
 
 	public function clearCookieAction() {
-		setcookie('_user', json_encode($user), time(), '/');
+		setcookie('_user', '', time(), '/');
 		$this->statusPrint('success');
 	}
 

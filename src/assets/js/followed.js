@@ -111,6 +111,7 @@
     };
 
     controller.prototype.showLandingPage = function(page){
+        Common.gotoPin(0);
         if(page == 1){
             $('.btn-luckydraw').text('即刻领取体验装');
             $('.limit-quantity').removeClass('hide');
@@ -263,10 +264,18 @@
             });
         });
 
+        /*If the user get the gift, then go to the lottery page*/
+        $('.btn-getbigprize').on('touchstart', function(){
+            if(self.isTransformedOld){
+                self.showLandingPage(2);
+            }
+        });
+
     };
 
     //call gift api and show different view
     controller.prototype.callGiftApi = function(){
+        var self = this;
         var resultHtmlObj = [
             {
                 name:'小样领取成功',
@@ -284,10 +293,12 @@
         Api.getGift(function(json){
             console.log(json);
             Common.gotoPin(2); //go result page
+            self.isTransformedOld = 1;
             switch (json.status){
                 case 1:
                     //msg: '小样领取成功'
                     $('#pin-result .prize-item').html(resultHtmlObj[0].rhtml);
+
                     break;
                 case 2:
                     //msg: '今天小样已经领取完毕，请明天再来。',
@@ -303,7 +314,6 @@
                     break;
                 default :
                     Common.alertBox.add(json.msg);
-
             }
         });
     }

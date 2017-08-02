@@ -1446,6 +1446,9 @@ body {
   margin-top: 0.5rem;
   font-size: 0.22rem;
 }
+#pin-result .btn-getbigprize {
+  margin-top: 1.5rem;
+}
 #pin-result .b-img {
   position: absolute;
   left: 0;

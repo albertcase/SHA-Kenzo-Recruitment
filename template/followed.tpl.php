@@ -168,6 +168,9 @@
                 <div class="prize-item">
 
                 </div>
+                <div class="btn btn-getbigprize">
+                    赢取果冻霜正装
+                </div>
             </div>
             <div class="b-img">
                 <img src="../src/dist/images/gift-flower.png" alt=""/>

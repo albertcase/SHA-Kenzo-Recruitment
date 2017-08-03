@@ -461,11 +461,13 @@
     //share success
     controller.prototype.shareSuccess = function(){
         var self = this;
-        $('.share-popup').removeClass('show');
-        if(self.user.isSubmit){
-            self.callLotteryApi();
-        }else{
-            self.gotoFormPage();
+        if(self.isTransformedOld){
+            $('.share-popup').removeClass('show');
+            if(self.user.isSubmit){
+                self.callLotteryApi();
+            }else{
+                self.gotoFormPage();
+            }
         }
     };
 

@@ -1833,6 +1833,7 @@ $(document).ready(function(){
             baseurl + 'ani-5.png',
             baseurl + 'bg.jpg',
             baseurl + 'btn.png',
+            baseurl + 'tag-new.png',
             baseurl + 'f-1.png',
             baseurl + 'fleurs-2.png',
             baseurl + 'fleurs.png',

@@ -184,8 +184,15 @@ $ani-delay-4: 4000ms;
 $ani-delay-5: 5000ms;
 .pin-landing{
   .title{
+    position: relative;
     @include size(3.49rem,1.31rem);
-    margin: 0.3rem auto 0;
+    margin: 0.5rem auto 0;
+  }
+  .tag-new{
+    position: absolute;
+    left: -1rem;
+    top: -0.8rem;
+    @include size(1.67rem,1.26rem);
   }
   .limit-quantity{
     text-align: center;

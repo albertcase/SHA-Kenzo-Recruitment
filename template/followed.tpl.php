@@ -63,6 +63,9 @@
         <!--加载的第一个页面 landing-->
         <div class="pin pin-1 pin-landing" id="pin-landing-1">
             <div class="title">
+                <div class="tag-new">
+                    <img src="../src/dist/images/tag-new.png" alt="kenzo"/>
+                </div>
                 <img src="../src/dist/images/landing-1.png" alt="kenzo"/>
             </div>
             <div class="des-wrap">

@@ -860,9 +860,17 @@ body {
 }
 
 .pin-landing .title {
+  position: relative;
   width: 3.49rem;
   height: 1.31rem;
-  margin: 0.3rem auto 0;
+  margin: 0.5rem auto 0;
+}
+.pin-landing .tag-new {
+  position: absolute;
+  left: -1rem;
+  top: -0.8rem;
+  width: 1.67rem;
+  height: 1.26rem;
 }
 .pin-landing .limit-quantity {
   text-align: center;

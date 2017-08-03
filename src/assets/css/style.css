@@ -895,7 +895,7 @@ body {
 }
 .pin-landing .terms-link {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 3rem;
   text-align: center;
   margin: -0.2rem auto 0;

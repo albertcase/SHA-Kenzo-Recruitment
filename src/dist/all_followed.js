@@ -1805,7 +1805,7 @@ $(document).ready(function(){
         var self = this;
 
         var timeStart = 0,
-            step= 5,
+            step= 1,
             isTrueNext = false,
             isFalseNext = false;
         var loadingAni = setInterval(function(){
@@ -1822,7 +1822,7 @@ $(document).ready(function(){
             }
             $('.loading-num .num').html(timeStart);
             timeStart += step;
-        },200);
+        },50);
 
         var baseurl = ''+'/src/dist/images/';
         var imagesArray = [

@@ -227,15 +227,15 @@ class DatabaseAPI {
 			return FALSE;
 	}
 
-   public function hasGift() {
-       $sql = "SELECT count(`id`) AS count FROM `gift`";
-       $res = $this->connect()->query($sql);
-       $count = $res->fetch_all($resulttype = MYSQLI_ASSOC);
-       if($count) {
-           return $count[0]['count'];
-       }
-       return 0;
-   }
+   // public function hasGift() {
+   //     $sql = "SELECT count(`id`) AS count FROM `gift`";
+   //     $res = $this->connect()->query($sql);
+   //     $count = $res->fetch_all($resulttype = MYSQLI_ASSOC);
+   //     if($count) {
+   //         return $count[0]['count'];
+   //     }
+   //     return 0;
+   // }
 
 	public function setOpenid($openid) {
 		$sql = "INSERT INTO `openid` SET `openid` = ?"; 
@@ -259,9 +259,20 @@ class DatabaseAPI {
         return 0;
     }
 
+    public function getGift() {
+    	$sql = "SELECT count(`id`) AS count FROM `gift`";
+    	$res = $this->connect()->prepare($sql);
+	    $res->execute();
+        $res->bind_result($count);
+        if($res->fetch()) {
+            return $count;
+        }
+        return 0;
+    }
+
     public function getGiftQuota($date) {
     	$sumQuota = $this->checkGiftQuota($date, 1);
-    	$nowQuota = $this->hasGift();
+    	$nowQuota = $this->getGift();
     	if($sumQuota == 0) {
     		return 0;
     	}

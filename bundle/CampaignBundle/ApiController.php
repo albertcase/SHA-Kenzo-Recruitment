@@ -260,7 +260,7 @@ class ApiController extends Controller {
    //查奖品的数量
    private function getLotteryQuota($db, $date) {
        $quota = $db->checkGiftQuota($date, 2);
-       if($quota >= 0) {
+       if($quota > 0) {
            return true;
        } else {
            return false;

@@ -197,7 +197,7 @@
                     address:inputAddressVal
                 },function(data){
                     if(data.status==1){
-                        //self.user = data.userStatus;
+                        self.user.isSubmit = data.userStatus.issubmit;
                         if(self.isTransformedOld){
                             //Call lottery
                             self.callLotteryApi();

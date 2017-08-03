@@ -33,7 +33,7 @@ class ApiController extends Controller {
         $mobile = $request->request->get('mobile');
         $code = rand(1000, 9999);
         $RedisAPI = new \Lib\RedisAPI();
-        $RedisAPI->set($mobile, $code, '3600');
+        $RedisAPI->setPhoneCode($mobile, $code, '3600');
         $text = "【Kenzo凯卓】您的验证码是{$code}";
         $data = array('text'=>$text,'apikey'=>$apikey,'mobile'=>$mobile);
         curl_setopt ($ch, CURLOPT_URL, 'https://sms.yunpian.com/v2/sms/single_send.json');
@@ -67,7 +67,7 @@ class ApiController extends Controller {
 
     private function checkMsgCode($mobile, $msgCode) {
         $RedisAPI = new \Lib\RedisAPI();
-        $code = $RedisAPI->set($mobile);
+        $code = $RedisAPI->get($mobile);
         if($code == $msgCode) {
             return true;
         } else {

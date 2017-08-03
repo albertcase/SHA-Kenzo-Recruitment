@@ -58,7 +58,7 @@ class RedisAPI {
   		}
 	}
 
-	public function set($key, $value, $expires_in) {
+	public function setPhoneCode($key, $value, $expires_in) {
         $this->_redis->set($key, serialize($value));
         $this->_redis->setTimeout($key, $expires_in);
     }

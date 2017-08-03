@@ -272,10 +272,11 @@ class DatabaseAPI {
 
     public function getGiftQuota($date) {
     	$sumQuota = $this->checkGiftQuota($date, 1);
-    	$nowQuota = $this->getGift();
-    	if($sumQuota == 0) {
-    		return 0;
-    	}
-    	return $sumQuota - $nowQuota;
+    	return $sumQuota;
+    	// $nowQuota = $this->getGift();
+    	// if($sumQuota == 0) {
+    	// 	return 0;
+    	// }
+    	// return $sumQuota - $nowQuota;
     }
 }

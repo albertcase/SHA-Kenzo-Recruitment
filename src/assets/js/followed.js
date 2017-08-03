@@ -92,6 +92,8 @@
         /* if the isOld is true and isLuckyDraw is true, directly go to the luckydraw result page */
         if(self.user.isOld && self.user.isLuckyDraw){
             Common.gotoPin(2); /*directly go to the luckydraw result page*/
+            $('#pin-result .prize-item').html('<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限中奖一次）</span>');
+            $('.btn-getbigprize').addClass('hide');
         }else{
             Common.gotoPin(0); // landing page
             if(self.user.isOld){
@@ -293,9 +295,16 @@
 
         /*If the user get the gift, then go to the lottery page*/
         $('.btn-getbigprize').on('touchstart', function(){
-            if(self.isTransformedOld){
-                self.showLandingPage(2);
+            if(self.user.isLuckyDraw){
+                Common.gotoPin(2); /*directly go to the luckydraw result page*/
+                $('#pin-result .prize-item').html('<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限中奖一次）</span>');
+                $('.btn-getbigprize').addClass('hide');
+            }else{
+                if(self.isTransformedOld){
+                    self.showLandingPage(2);
+                }
             }
+
         });
 
     };

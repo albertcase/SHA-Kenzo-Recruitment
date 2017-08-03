@@ -1947,11 +1947,12 @@ $(document).ready(function(){
             if(self.isTransformedOld){
                 $('.share-popup').addClass('show');
             }else{
-                if(self.user.isSubmit){
-                    self.callGiftApi() //go result page
-                }else{
-                    self.gotoFormPage();
-                }
+                //if(self.user.isSubmit){
+                //
+                //}else{
+                //    self.gotoFormPage();
+                //}
+                self.callGiftApi(); //go result page
             }
         });
 
@@ -1986,7 +1987,8 @@ $(document).ready(function(){
                             self.callLotteryApi();
                         }else{
                             //Call gift
-                            self.callGiftApi();
+                            //self.callGiftApi();
+                            Common.gotoPin(2);
                         }
                     }else{
                         Common.alertBox.add(data.msg);
@@ -2079,14 +2081,13 @@ $(document).ready(function(){
 
         /*If the user get the gift, then go to the lottery page*/
         $('.btn-getbigprize').on('touchstart', function(){
+            self.isTransformedOld = 1;
             if(self.user.isLuckyDraw){
                 Common.gotoPin(2); /*directly go to the luckydraw result page*/
                 $('#pin-result .prize-item').html('<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限中奖一次）</span>');
                 $('.btn-getbigprize').addClass('hide');
             }else{
-                if(self.isTransformedOld){
-                    self.showLandingPage(2);
-                }
+                self.showLandingPage(2);
             }
 
         });
@@ -2145,13 +2146,14 @@ $(document).ready(function(){
         Api.getGift(function(json){
             //console.log(json);
             Common.gotoPin(2); //go result page
-            self.isTransformedOld = 1;
             self.user.isSubmit = json.userStatus.issubmit;
             switch (json.status){
                 case 1:
                     //msg: '小样领取成功'
                     $('#pin-result .prize-item').html(resultHtmlObj[0].rhtml);
-
+                    if(!self.user.isSubmit){
+                        self.gotoFormPage();
+                    }
                     break;
                 case 2:
                     //msg: '今天小样已经领取完毕，请明天再来。',
@@ -2164,6 +2166,9 @@ $(document).ready(function(){
                 case 4:
                     //msg: '对不起，您已经领取过小样！',
                     $('#pin-result .prize-item').html(resultHtmlObj[0].rhtml);
+                    if(!self.user.isSubmit){
+                        self.gotoFormPage();
+                    }
                     break;
                 default :
                     Common.alertBox.add(json.msg);
@@ -2191,7 +2196,6 @@ $(document).ready(function(){
         Api.lottery(function(json){
             Common.gotoPin(2); //go result page
             $('.btn-getbigprize').addClass('hide');
-            //self.isTransformedOld = 1;
             switch (json.status){
                 case 0:
                     //msg: '遗憾未中奖',

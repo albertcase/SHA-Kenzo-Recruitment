@@ -76,7 +76,7 @@
                     ...身心亦是焕然一新
                 </div>
             </div>
-            <div class="limit-quantity hide">（今日限量XXX份）</div>
+            <div class="limit-quantity hide">（今日限量<?php echo $quota;?>份）</div>
             <div class="btn btn-luckydraw">即刻赢取礼赠</div>
             <div class="terms-link">*规则与条款</div>
             <div class="foreground">

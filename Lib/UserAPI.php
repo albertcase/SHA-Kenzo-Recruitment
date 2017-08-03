@@ -29,6 +29,7 @@ class UserAPI extends Base {
             'issubmit' => $this->_db->checkSubmit($_user->uid),
             'isluckydraw' => $this->_db->loadLotteryByUid($_user->uid),
         );
+        $data->quota = $this->_db->getGiftQuota(date('Y-m-d'));
         return $data;
       } else {
         return (object) array('uid' => '0', 'openid' => '0');

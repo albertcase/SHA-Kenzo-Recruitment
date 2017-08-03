@@ -41,12 +41,11 @@ class PageController extends Controller {
     public function indexAction()
     {
         global $user;
-
         $subscribed = $this->subscribed($user->openid);
 		if (!$subscribed) {
             $this->render('unfollow');
         }
-        $this->render('followed',  array('userStatus' => $user->status));
+        $this->render('followed',  array('userStatus' => $user->status, 'quota' => $user->quota));
     }
 
 	public function jssdkConfigJsAction() {

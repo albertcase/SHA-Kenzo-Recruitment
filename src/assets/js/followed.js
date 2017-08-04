@@ -116,6 +116,7 @@
 
         //test
         Common.hashRoute();
+        self.gotoFormPage();
     };
 
     //bind Events
@@ -270,6 +271,10 @@
                     validate = false;
                     Common.errorMsgBox.add('手机号格式错误，请重新输入');
                 }else{
+                    if(!$('#input-validate-code').val()){
+                        Common.alertBox.add('你的验证码不能为空');
+                        return;
+                    }
                     Api.checkImgValidateCode({
                         picture:$('#input-validate-code').val()
                     },function(data){
@@ -287,6 +292,7 @@
                                 }
                             });
                         }else{
+                            Common.alertBox.add('验证码输入错误，请重新输入');
                             self.getValidateCode();
                         }
                     });

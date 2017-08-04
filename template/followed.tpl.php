@@ -172,6 +172,7 @@
 
                 </div>
                 <div class="btn btn-getbigprize">
+                    <span class="product-name-2 hide"> * KENZO舒缓白莲清爽保湿霜 </span>
                     赢取果冻霜正装
                 </div>
             </div>

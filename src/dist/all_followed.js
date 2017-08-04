@@ -1876,6 +1876,7 @@ $(document).ready(function(){
         /* if the isOld is true and isLuckyDraw is true, directly go to the luckydraw result page */
         if(self.user.isOld && self.user.isLuckyDraw && self.user.isSubmit){
             Common.gotoPin(2); /*directly go to the luckydraw result page*/
+            $('.product-name-2').removeClass('hide');
             $('#pin-result .prize-item').html('<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限中奖一次）</span>');
             $('.btn-getbigprize').addClass('hide');
         }else{
@@ -1900,7 +1901,6 @@ $(document).ready(function(){
 
         //test
         Common.hashRoute();
-        //self.gotoFormPage();
     };
 
     //bind Events
@@ -1988,7 +1988,6 @@ $(document).ready(function(){
                             self.callLotteryApi();
                         }else{
                             //Call gift
-                            //self.callGiftApi();
                             Common.gotoPin(2);
                         }
                     }else{
@@ -2147,7 +2146,7 @@ $(document).ready(function(){
         var resultHtmlObj = [
             {
                 name:'小样领取成功',
-                rhtml:'<h3 class="title">「恭喜您」</h3>获得KENZO果冻霜* 体验装（2ml）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限中奖一次）</span>'
+                rhtml:'<h3 class="title">「恭喜您」</h3>获得KENZO果冻霜* 体验装（2ml）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限申领一次）</span>'
             },
             {
                 name:'今天小样已经领取完毕，请明天再来',
@@ -2158,6 +2157,7 @@ $(document).ready(function(){
                 rhtml:'本次体验装申领活动（共5000份）已全部发放完毕！<br>没申领到的小伙伴们别心急~<br>请持续关注KENZO官方微信，更多福利等着你！<br>'
             }
         ];
+        $('.product-name-2').addClass('hide');
         Api.getGift(function(json){
             //console.log(json);
             Common.gotoPin(2); //go result page
@@ -2166,6 +2166,7 @@ $(document).ready(function(){
                 case 1:
                     //msg: '小样领取成功'
                     $('#pin-result .prize-item').html(resultHtmlObj[0].rhtml);
+                    $('.product-name-2').removeClass('hide');
                     if(!self.user.isSubmit){
                         self.gotoFormPage();
                     }
@@ -2181,6 +2182,7 @@ $(document).ready(function(){
                 case 4:
                     //msg: '对不起，您已经领取过小样！',
                     $('#pin-result .prize-item').html(resultHtmlObj[0].rhtml);
+                    $('.product-name-2').removeClass('hide');
                     if(!self.user.isSubmit){
                         self.gotoFormPage();
                     }
@@ -2196,7 +2198,7 @@ $(document).ready(function(){
         var resultHtmlObj = [
             {
                 name:'',
-                rhtml:'<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限申领一次）</span>'
+                rhtml:'<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限中奖一次）</span>'
             },
             {
                 name:'您没有中奖',
@@ -2211,6 +2213,7 @@ $(document).ready(function(){
         Api.lottery(function(json){
             Common.gotoPin(2); //go result page
             $('.btn-getbigprize').addClass('hide');
+            $('.product-name-2').addClass('hide');
             switch (json.status){
                 case 0:
                     //msg: '遗憾未中奖',
@@ -2386,7 +2389,7 @@ $(document).ready(function(){
     $(document).ready(function(){
 //    show form
         var newFollow = new controller();
-        newFollow.init();
+        newFollow.startUp();
 
     });
 

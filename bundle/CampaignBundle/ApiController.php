@@ -273,7 +273,7 @@ class ApiController extends Controller {
 
    //判断小样是否是都没了
    private function checkLastQuota($date) {
-       $lastDate = '2017-08-04';
+       $lastDate = '2017-08-05';
        if($lastDate == $date) {
            return true;
        } else {

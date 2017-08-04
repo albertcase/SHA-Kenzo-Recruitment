@@ -1900,7 +1900,7 @@ $(document).ready(function(){
 
         //test
         Common.hashRoute();
-        self.gotoFormPage();
+        //self.gotoFormPage();
     };
 
     //bind Events

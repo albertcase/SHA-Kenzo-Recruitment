@@ -116,7 +116,6 @@
 
         //test
         Common.hashRoute();
-        self.gotoFormPage();
     };
 
     //bind Events

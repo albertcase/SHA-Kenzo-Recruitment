@@ -274,8 +274,7 @@ class ApiController extends Controller {
    private function checkLastQuota($date) {
        $dateArr = array(
            '2017-08-03',
-           '2017-08-04',
-           '2017-08-05'
+           '2017-08-04'
        );
        if(!in_array($date, $dateArr)) {
            return true;

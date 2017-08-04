@@ -1874,7 +1874,7 @@ $(document).ready(function(){
         $('.wrapper').addClass('fade');
 
         /* if the isOld is true and isLuckyDraw is true, directly go to the luckydraw result page */
-        if(self.user.isOld && self.user.isLuckyDraw){
+        if(self.user.isOld && self.user.isLuckyDraw && self.user.isSubmit){
             Common.gotoPin(2); /*directly go to the luckydraw result page*/
             $('#pin-result .prize-item').html('<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限中奖一次）</span>');
             $('.btn-getbigprize').addClass('hide');

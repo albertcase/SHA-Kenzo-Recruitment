@@ -182,7 +182,9 @@ class ApiController extends Controller {
                 $this->dataPrint($data);
             }
             //今天的小样领取完毕
-            if(!$this->getGiftQuota($DatabaseAPI, $date)) {
+            $sum = $DatabaseAPI->checkGiftQuota($date, 1);
+            $count = $DatabaseAPI->loadGiftCount($date . '%');
+            if($count>=$sum) {
                 $data = array('status' => 2, 'msg'=> '今天小样已经领取完毕，请明天再来。', 'userStatus' => $user->status);
                 $this->dataPrint($data);
             }
@@ -217,7 +219,7 @@ class ApiController extends Controller {
 		}
 		//奖发完
         $sum = $databaseAPI->checkGiftQuota($date, 2);
-		$count = $databaseAPI->loadLotteryCount($date);
+		$count = $databaseAPI->loadLotteryCount($date . '%');
 		if ($count>=$sum) {
 //			$databaseAPI->setLottery($user->uid, 2);
             $data = array('status' => 2, 'msg'=> '今天的奖品已经发没，请明天再来！', 'userStatus' => $user->status);
@@ -250,6 +252,7 @@ class ApiController extends Controller {
    //查小样的数量
    private function getGiftQuota($db, $date) {
         $quota = $db->checkGiftQuota($date, 1);
+        $num = $db->getGift();
         if($quota >= 0) {
             return true;
         } else {

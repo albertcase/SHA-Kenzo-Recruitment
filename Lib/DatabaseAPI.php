@@ -195,7 +195,7 @@ class DatabaseAPI {
 	}
 
 	public function loadLotteryCount($date) {
-		$sql = "SELECT count(`id`) FROM `lottery` WHERE `status` = 1 AND `created` LIKE ?";
+		$sql = "SELECT count(`id`) FROM `lottery` WHERE `status` = 1 AND `created` like ?";
 		$res = $this->connect()->prepare($sql);
         $res->bind_param("s", $date);
 		$res->execute();
@@ -270,6 +270,17 @@ class DatabaseAPI {
         return 0;
     }
 
+    public function getLottery() {
+    	$sql = "SELECT count(`id`) AS count FROM `lottery`";
+    	$res = $this->connect()->prepare($sql);
+	    $res->execute();
+        $res->bind_result($count);
+        if($res->fetch()) {
+            return $count;
+        }
+        return 0;
+    }
+
     public function getGiftQuota($date) {
     	$sumQuota = $this->checkGiftQuota($date, 1);
     	return $sumQuota;
@@ -279,4 +290,16 @@ class DatabaseAPI {
     	// }
     	// return $sumQuota - $nowQuota;
     }
+
+    public function loadGiftCount($date) {
+		$sql = "SELECT count(`id`) FROM `gift` WHERE `createtime` like ?";
+		$res = $this->connect()->prepare($sql);
+        $res->bind_param("s", $date);
+		$res->execute();
+		$res->bind_result($count);
+		if($res->fetch()) {		
+			return $count;
+		}
+		return 0;
+	}
 }

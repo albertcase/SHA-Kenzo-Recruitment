@@ -2092,6 +2092,15 @@ $(document).ready(function(){
 
         });
 
+        /*
+        * For share tips overlay,click will disappear
+        * */
+        $('.share-popup').on('touchstart', function(e){
+            if(e.target.className.indexOf('.share-popup')){
+                $('.share-popup').removeClass('show');
+            }
+        });
+
     };
 
     controller.prototype.showLandingPage = function(page){
@@ -2181,7 +2190,7 @@ $(document).ready(function(){
         var resultHtmlObj = [
             {
                 name:'',
-                rhtml:'<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限领取一次）</span>'
+                rhtml:'<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限申领一次）</span>'
             },
             {
                 name:'您没有中奖',

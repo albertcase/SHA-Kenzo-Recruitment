@@ -397,7 +397,7 @@
         var resultHtmlObj = [
             {
                 name:'',
-                rhtml:'<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限中奖一次）</span>'
+                rhtml:'<h3 class="title">「恭喜您」</h3>KENZO果冻霜正装（50ML）一份<br> Miss K 将火速为您寄送礼品！<span class="tip">（每个微信ID仅限领取一次）</span>'
             },
             {
                 name:'您没有中奖',

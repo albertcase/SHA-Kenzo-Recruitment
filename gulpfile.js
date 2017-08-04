@@ -122,11 +122,10 @@ gulp.task("tinypng", function(){
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
     gulp.watch(path.css,['css']);
-    gulp.watch(path.newFollowJs,['scripts_newfollow']);
     gulp.watch(path.followedJs,['scripts_followed']);
 });
 
 // Default Task
-gulp.task('default', ['watch', 'css','scripts_newfollow','scripts_followed','browser-sync']);
+gulp.task('default', ['watch', 'css','scripts_followed','browser-sync']);
 
 

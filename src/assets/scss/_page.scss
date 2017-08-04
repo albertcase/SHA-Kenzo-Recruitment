@@ -64,6 +64,7 @@ body{
     background-size: 100%;
     box-sizing: border-box;
     padding-top: 1rem;
+    background-position: -0.05rem 0;
   }
   .title{
     background: transparent;
@@ -72,8 +73,9 @@ body{
     padding: 0;
   }
   .pcontent{
+    width: 6rem;
+    margin: 0 auto;
     text-align: center;
-    margin: 0;
     padding: 0;
     .subtitle{
       display: inline-block;

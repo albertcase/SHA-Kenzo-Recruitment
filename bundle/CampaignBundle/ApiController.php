@@ -176,17 +176,18 @@ class ApiController extends Controller {
         if (!$checknew) {
             $date = date('Y-m-d');
             //新用户申领
-            //小样全部领取完毕
-            if($this->checkLastQuota($date)) {
-                $data = array('status' => 3, 'msg'=> '小样已经全部领空。', 'userStatus' => $user->status);
-                $this->dataPrint($data);
-            }
             //今天的小样领取完毕
             $sum = $DatabaseAPI->checkGiftQuota($date, 1);
             $count = $DatabaseAPI->loadGiftCount($date . '%');
             if($count>=$sum) {
-                $data = array('status' => 2, 'msg'=> '今天小样已经领取完毕，请明天再来。', 'userStatus' => $user->status);
-                $this->dataPrint($data);
+                //小样全部领取完毕
+                if($this->checkLastQuota($date)) {
+                    $data = array('status' => 3, 'msg'=> '小样已经全部领空。', 'userStatus' => $user->status);
+                    $this->dataPrint($data);
+                } else {
+                    $data = array('status' => 2, 'msg'=> '今天小样已经领取完毕，请明天再来。', 'userStatus' => $user->status);
+                    $this->dataPrint($data);
+                }
             }
             //已经领取过小样
             if($DatabaseAPI->checkGift($user->uid)) {
@@ -272,11 +273,8 @@ class ApiController extends Controller {
 
    //判断小样是否是都没了
    private function checkLastQuota($date) {
-       $dateArr = array(
-           '2017-08-03',
-           '2017-08-04'
-       );
-       if(!in_array($date, $dateArr)) {
+       $lastDate = '2017-08-04';
+       if($lastDate == $date) {
            return true;
        } else {
            return false;

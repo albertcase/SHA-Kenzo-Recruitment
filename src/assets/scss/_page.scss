@@ -602,11 +602,14 @@ $ani-delay-5: 5000ms;
     margin-top: 1.5rem;
     .product-name-2{
       position: absolute;
-      top: -0.5rem;
+      bottom: -0.22rem;
       left: 0;
       width: 100%;
       text-align: center;
       color: #6b6b6b;
+      font-size: 0.22rem;
+    }
+    .num{
       font-size: 0.22rem;
     }
   }

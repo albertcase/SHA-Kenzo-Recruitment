@@ -20,4 +20,4 @@ $routers['/api/checkpicture'] = array('CampaignBundle\Api', 'checkPicture');
 $routers['/api/phonecode'] = array('CampaignBundle\Api', 'phoneCode');
 $routers['/api/checkphonecode'] = array('CampaignBundle\Api', 'heckPhoneCode');
 $routers['/cleardata'] = array('CampaignBundle\Page', 'clearData');
-//$routers['/runopenid'] = array('CampaignBundle\Page', 'runopenid');
+$routers['/runopenid'] = array('CampaignBundle\Page', 'runopenid');

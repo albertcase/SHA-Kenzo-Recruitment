@@ -248,13 +248,13 @@ class DatabaseAPI {
 	}
 
     public function checkGiftQuota($date, $type) {
-        $sql = "SELECT `num` FROM `quota` WHERE `date` = ? AND `type` = ?";
+        $sql = "SELECT `num`, `last_num` FROM `quota` WHERE `date` = ? AND `type` = ?";
         $res = $this->connect()->prepare($sql);
         $res->bind_param("ss", $date, $type);
         $res->execute();
-        $res->bind_result($count);
+        $res->bind_result($sum, $num);
         if($res->fetch()) {
-            return $count;
+            return $sum + $num;
         }
         return 0;
     }
@@ -301,5 +301,16 @@ class DatabaseAPI {
 			return $count;
 		}
 		return 0;
+	}
+
+	public function setLastNum($date, $type, $num) {
+		$nowtime = NOWTIME;
+		$sql = "UPDATE `quota` SET `last_num` = ?, `updated` = ? WHERE `date` = ? AND `type` = ?"; 
+		$res = $this->connect()->prepare($sql); 
+		$res->bind_param("ssss", $num, $nowtime, $date, $type);
+		if($res->execute()) 
+			return TRUE;
+		else 
+			return FALSE;
 	}
 }

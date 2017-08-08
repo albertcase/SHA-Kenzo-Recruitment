@@ -1908,10 +1908,12 @@ $(document).ready(function(){
         //show and hide terms pop
             //close terms popup
         $('body').on('touchstart','.btn-close',function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'closeTermsPop']);
             $('.terms-pop').removeClass('show');
         });
         //    show terms pop
         $('.terms-link').on('touchstart',function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'showTermsPop']);
             /**/
             var termContent = [
                 {
@@ -1944,6 +1946,7 @@ $(document).ready(function(){
         * If isTransformedOld is false and filled form, you directly go result page
         * */
         $('.btn-luckydraw').on('touchstart',function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'btnForLuckyDraw']);
             if(self.isTransformedOld){
                 $('.share-popup').addClass('show');
             }else{
@@ -1962,6 +1965,7 @@ $(document).ready(function(){
         * if isTransformedOld is false, submit it and then call gift api
         * */
         $('.btn-submit').on('touchstart',function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'btnForSubmitForm']);
             if(self.validateForm()){
                 //name mobile province city area address
                 var inputNameVal = $('#input-name').val(),
@@ -2035,6 +2039,7 @@ $(document).ready(function(){
 
         //switch validate code
         $('.validate-code').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'getValidateCode']);
             self.getValidateCode();
         });
 
@@ -2044,6 +2049,7 @@ $(document).ready(function(){
         * if image validate code is right
         * */
         $('.btn-get-msg-code').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'getMsgValidateCode']);
             if(self.disableClick) return;
             if(!$('#input-mobile').val()){
                 Common.errorMsgBox.add('手机号码不能为空');
@@ -2085,6 +2091,7 @@ $(document).ready(function(){
 
         /*If the user get the gift, then go to the lottery page*/
         $('.btn-getbigprize').on('touchstart', function(){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'btnGoLuckydraw']);
             self.isTransformedOld = 1;
             if(self.user.isLuckyDraw){
                 Common.gotoPin(2); /*directly go to the luckydraw result page*/
@@ -2100,6 +2107,7 @@ $(document).ready(function(){
         * For share tips overlay,click will disappear
         * */
         $('.share-popup').on('touchstart', function(e){
+            _hmt.push(['_trackEvent', 'buttons', 'click', 'ShowSharePop']);
             if(e.target.className.indexOf('.share-popup')){
                 $('.share-popup').removeClass('show');
             }

@@ -177,6 +177,11 @@ class ApiController extends Controller {
             $date = date('Y-m-d');
             //新用户申领
             //今天的小样领取完毕
+            //已经领取过小样
+            if($DatabaseAPI->checkGift($user->uid)) {
+                $data = array('status' => 4, 'msg'=> '对不起，您已经领取过小样！', 'userStatus' => $user->status);
+                $this->dataPrint($data);
+            }
             $sum = $DatabaseAPI->checkGiftQuota($date, 1);
             $count = $DatabaseAPI->loadGiftCount($date . '%');
             if($count>=$sum) {
@@ -188,11 +193,6 @@ class ApiController extends Controller {
                     $data = array('status' => 2, 'msg'=> '今天小样已经领取完毕，请明天再来。', 'userStatus' => $user->status);
                     $this->dataPrint($data);
                 }
-            }
-            //已经领取过小样
-            if($DatabaseAPI->checkGift($user->uid)) {
-                $data = array('status' => 4, 'msg'=> '对不起，您已经领取过小样！', 'userStatus' => $user->status);
-                $this->dataPrint($data);
             }
             //领取小样
             $DatabaseAPI->setGift($user->uid);

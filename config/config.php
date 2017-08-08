@@ -33,7 +33,7 @@ define("REDIS_PORT", '6379');
 define("DBHOST", '127.0.0.1');
 define("DBUSER", 'root');
 define("DBPASS", '');
-define("DBNAME", 'kenzo_recruitment');
+define("DBNAME", 'kenzo_recruitment2');
 
 //Wechat Authorize
 define("CALLBACK", 'wechat/callback');

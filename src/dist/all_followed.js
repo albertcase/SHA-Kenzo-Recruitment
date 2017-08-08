@@ -1899,7 +1899,8 @@ $(document).ready(function(){
         self.showAllProvince();
 
         //test
-        Common.hashRoute();
+        //Common.hashRoute();
+        //self.gotoFormPage();
     };
 
     //bind Events
@@ -2032,10 +2033,10 @@ $(document).ready(function(){
 
         });
 
-    //    imitate share function on pc
-        $('.share-popup .guide-share').on('touchstart',function(){
-            self.shareSuccess();
-        });
+    //    imitate share function on pc====test
+    //    $('.share-popup .guide-share').on('touchstart',function(){
+    //        self.shareSuccess();
+    //    });
 
         //switch validate code
         $('.validate-code').on('touchstart', function(){
@@ -2137,10 +2138,10 @@ $(document).ready(function(){
         var ele = $('.btn-get-msg-code .second');
         var aaa = setInterval(function(){
             maxSeconds--;
-            ele.text(maxSeconds+'s');
+            ele.text('('+maxSeconds+'s'+')');
             if(maxSeconds<1){
                 self.disableClick = false;
-                ele.text('60s');
+                ele.text('');
                 $('.btn-get-msg-code').removeClass('disabled');
                 clearInterval(aaa);
             }

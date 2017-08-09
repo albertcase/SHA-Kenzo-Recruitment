@@ -170,6 +170,10 @@ class ApiController extends Controller {
     }
 
     public function giftAction() {
+        if(!$this->checkQuotaTime()) {
+            $data = array('status' => 5, 'msg'=> '活动未开始，！');
+            $this->dataPrint($data);
+        }
         global $user;
         $DatabaseAPI = new \Lib\DatabaseAPI();
         $checknew = $DatabaseAPI->checkOpenid($user->openid);
@@ -206,6 +210,10 @@ class ApiController extends Controller {
     }
 
     public function lotteryAction() {
+        if(!$this->checkQuotaTime()) {
+            $data = array('status' => 4, 'msg'=> '活动未开始，！');
+            $this->dataPrint($data);
+        }
 
     	global $user;
 
@@ -228,7 +236,8 @@ class ApiController extends Controller {
 		}
 		//中奖率
 		$rand = mt_rand(1,10000);
-		if ($rand<=4) {
+		if ($rand<=4 ，没·
+            ) {
 			$databaseAPI->setLottery($user->uid, 1);
             $user->status['isluckydraw'] = 1;
             $data = array('status' => 1, 'msg'=> '恭喜中奖', 'userStatus' => $user->status);
@@ -280,5 +289,15 @@ class ApiController extends Controller {
            return false;
        }
    }
+
+   // 每天十点放库存
+   private function checkQuotaTime() {
+        $time = date("H:i:s");
+        if($time == '10:00:00') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

@@ -170,12 +170,12 @@ class ApiController extends Controller {
     }
 
     public function giftAction() {
-        // if(!$this->checkQuotaTime()) {
-        //     $data = array('status' => 5, 'msg'=> '活动未开始，！');
-        //     $this->dataPrint($data);
-        // }
         global $user;
         $DatabaseAPI = new \Lib\DatabaseAPI();
+        if(!$this->checkQuotaTime()) {
+            $data = array('status' => 5, 'msg'=> '活动未开始，！', 'userStatus' => $user->status);
+            $this->dataPrint($data);
+        }
         $checknew = $DatabaseAPI->checkOpenid($user->openid);
         if (!$checknew) {
             $date = date('Y-m-d');
@@ -210,11 +210,12 @@ class ApiController extends Controller {
     }
 
     public function lotteryAction() {
-        // if(!$this->checkQuotaTime()) {
-        //     $data = array('status' => 4, 'msg'=> '活动未开始，！');
-        //     $this->dataPrint($data);
-        // }
     	global $user;
+
+        if(!$this->checkQuotaTime()) {
+            $data = array('status' => 5, 'msg'=> '活动未开始，！', 'userStatus' => $user->status);
+            $this->dataPrint($data);
+        }
 
     	$databaseAPI = new \Lib\DatabaseAPI();
     	$date = date('Y-m-d');
@@ -290,8 +291,8 @@ class ApiController extends Controller {
 
    // 每天十点放库存
    private function checkQuotaTime() {
-        $time = date("H:i:s");
-        if($time == '10:00:00') {
+        $time = date("H");
+        if($time >= 10) {
             return true;
         } else {
             return false;

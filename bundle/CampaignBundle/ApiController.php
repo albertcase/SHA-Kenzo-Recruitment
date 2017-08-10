@@ -170,10 +170,10 @@ class ApiController extends Controller {
     }
 
     public function giftAction() {
-        if(!$this->checkQuotaTime()) {
-            $data = array('status' => 5, 'msg'=> '活动未开始，！');
-            $this->dataPrint($data);
-        }
+        // if(!$this->checkQuotaTime()) {
+        //     $data = array('status' => 5, 'msg'=> '活动未开始，！');
+        //     $this->dataPrint($data);
+        // }
         global $user;
         $DatabaseAPI = new \Lib\DatabaseAPI();
         $checknew = $DatabaseAPI->checkOpenid($user->openid);
@@ -210,11 +210,10 @@ class ApiController extends Controller {
     }
 
     public function lotteryAction() {
-        if(!$this->checkQuotaTime()) {
-            $data = array('status' => 4, 'msg'=> '活动未开始，！');
-            $this->dataPrint($data);
-        }
-
+        // if(!$this->checkQuotaTime()) {
+        //     $data = array('status' => 4, 'msg'=> '活动未开始，！');
+        //     $this->dataPrint($data);
+        // }
     	global $user;
 
     	$databaseAPI = new \Lib\DatabaseAPI();
@@ -235,8 +234,8 @@ class ApiController extends Controller {
 			$this->dataPrint($data);
 		}
 		//中奖率
-		$rand = mt_rand(1,10000);
-		if ($rand<=4) {
+		$rand = mt_rand(1,100);
+		if ($rand<=50) {
 			$databaseAPI->setLottery($user->uid, 1);
             $user->status['isluckydraw'] = 1;
             $data = array('status' => 1, 'msg'=> '恭喜中奖', 'userStatus' => $user->status);

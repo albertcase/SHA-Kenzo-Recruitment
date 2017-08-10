@@ -236,8 +236,7 @@ class ApiController extends Controller {
 		}
 		//中奖率
 		$rand = mt_rand(1,10000);
-		if ($rand<=4 ，没·
-            ) {
+		if ($rand<=4) {
 			$databaseAPI->setLottery($user->uid, 1);
             $user->status['isluckydraw'] = 1;
             $data = array('status' => 1, 'msg'=> '恭喜中奖', 'userStatus' => $user->status);

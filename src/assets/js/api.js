@@ -32,7 +32,7 @@ Api = {
     },
 
     getGift:function(callback){
-        Common.msgBox.add('抽奖中...');
+        Common.msgBox.add('loading...');
         $.ajax({
             url:'/api/gift',
             type:'POST',
@@ -52,7 +52,7 @@ Api = {
     },
     //抽奖API
     lottery:function(callback){
-        Common.msgBox.add('loading...');
+        Common.msgBox.add('抽奖中...');
         $.ajax({
             url:'/api/lottery',
             type:'POST',

@@ -1618,7 +1618,7 @@ Api = {
     },
 
     getGift:function(callback){
-        Common.msgBox.add('抽奖中...');
+        Common.msgBox.add('loading...');
         $.ajax({
             url:'/api/gift',
             type:'POST',
@@ -1638,7 +1638,7 @@ Api = {
     },
     //抽奖API
     lottery:function(callback){
-        Common.msgBox.add('loading...');
+        Common.msgBox.add('抽奖中...');
         $.ajax({
             url:'/api/lottery',
             type:'POST',
@@ -1918,12 +1918,12 @@ $(document).ready(function(){
             /**/
             var termContent = [
                 {
-                    time:'2017年8月9日至2017年8月13日',
+                    time:'2017年8月15日到2017年8月19日',
                     condition:'活动期间，首次关注KenzoParfums凯卓官方微信的用户即可参与申领，每个微信ID仅限申领一次，奖品共5000份。活动期间，每日上午10点起限量申领，每日份额详见活动主页（先到先得）',
                     prize:'奖品为KENZO舒缓白莲清爽保湿霜体验装（2ml）<br>根据用户填写的邮寄地址在中奖后的30个工作日内寄送'
                 },
                 {
-                    time:'2017年8月9日至2017年8月13日',
+                    time:'2017年8月15日到2017年8月19日',
                     condition:'活动期间，关注KenzoParfums凯卓官方微信的用户将活动分享给好友，即可参与抽奖（随机抽取）。每个微信ID仅限中奖一次，奖品限量100份。中奖名单将于活动结束后公布。',
                     prize:'奖品为KENZO舒缓白莲清爽保湿霜正装（50ml）<br>根据用户填写的邮寄地址在中奖后的30个工作日内寄送'
                 }

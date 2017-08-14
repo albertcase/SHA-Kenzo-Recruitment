@@ -292,7 +292,7 @@ class ApiController extends Controller {
    // 每天十点放库存
    private function checkQuotaTime() {
         $time = date("H");
-        if($time >= 13) {
+        if($time >= 10) {
             return true;
         } else {
             return false;

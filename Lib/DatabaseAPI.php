@@ -259,7 +259,7 @@ class DatabaseAPI {
         return 0;
     }
 
-    public function checkGiftQuota($date, $type) {
+    public function checkTdGiftQuota($date, $type) {
         $sql = "SELECT `num` FROM `quota` WHERE `date` = ? AND `type` = ?";
         $res = $this->connect()->prepare($sql);
         $res->bind_param("ss", $date, $type);
@@ -298,7 +298,7 @@ class DatabaseAPI {
     	return $sumQuota;
     }
 
-    public function getTdGiftQuota() {
+    public function getTdGiftQuota($date) {
     	$sumQuota = $this->checkTdGiftQuota($date, 1);
     	return $sumQuota;
     }

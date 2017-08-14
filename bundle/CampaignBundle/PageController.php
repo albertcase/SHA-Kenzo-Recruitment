@@ -45,7 +45,7 @@ class PageController extends Controller {
 		if (!$subscribed) {
             $this->render('unfollow');
         }
-        $this->render('followed',  array('userStatus' => $user->status, 'quota' => $user->quota));
+        $this->render('followed',  array('userStatus' => $user->status, 'quota' => $user->tdQuota));
     }
 
 	public function jssdkConfigJsAction() {

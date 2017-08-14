@@ -281,7 +281,7 @@ class ApiController extends Controller {
 
    //判断小样是否是都没了
    private function checkLastQuota($date) {
-       $lastDate = '2017-08-13';
+       $lastDate = '2017-08-15';
        if($lastDate == $date) {
            return true;
        } else {
@@ -292,7 +292,7 @@ class ApiController extends Controller {
    // 每天十点放库存
    private function checkQuotaTime() {
         $time = date("H");
-        if($time >= 10) {
+        if($time >= 13) {
             return true;
         } else {
             return false;

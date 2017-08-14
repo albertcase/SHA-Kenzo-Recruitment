@@ -235,8 +235,8 @@ class ApiController extends Controller {
 			$this->dataPrint($data);
 		}
 		//中奖率
-		$rand = mt_rand(1,100);
-		if ($rand<=50) {
+		$rand = mt_rand(1,10000);
+		if ($rand<=4) {
 			$databaseAPI->setLottery($user->uid, 1);
             $user->status['isluckydraw'] = 1;
             $data = array('status' => 1, 'msg'=> '恭喜中奖', 'userStatus' => $user->status);
@@ -281,7 +281,7 @@ class ApiController extends Controller {
 
    //判断小样是否是都没了
    private function checkLastQuota($date) {
-       $lastDate = '2017-08-15';
+       $lastDate = '2017-08-19';
        if($lastDate == $date) {
            return true;
        } else {

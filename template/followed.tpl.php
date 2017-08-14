@@ -8,7 +8,7 @@
     <meta name="x5-fullscreen" content="true">
     <meta name="full-screen" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css?v=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../src/dist/css/style.css?v=2.0"/>
     <script src="http://kenzowechat.samesamechina.com/weixin/jssdkforsite"></script>
     <script>
         var _hmt = _hmt || [];
@@ -27,7 +27,7 @@
             isLuckyDraw: <?php echo $userStatus['isluckydraw'];?> /*是否抽奖*/
         };
     </script>
-    <script src="../src/dist/js/all_followed.min.js?v=1.0"></script>
+    <script src="../src/dist/js/all_followed.min.js?v=2.0"></script>
 </head>
 <body class="page-home">
 <div id="orientLayer" class="mod-orient-layer">

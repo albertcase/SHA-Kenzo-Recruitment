@@ -259,6 +259,18 @@ class DatabaseAPI {
         return 0;
     }
 
+    public function checkGiftQuota($date, $type) {
+        $sql = "SELECT `num` FROM `quota` WHERE `date` = ? AND `type` = ?";
+        $res = $this->connect()->prepare($sql);
+        $res->bind_param("ss", $date, $type);
+        $res->execute();
+        $res->bind_result($sum);
+        if($res->fetch()) {
+            return $sum;
+        }
+        return 0;
+    }
+
     public function getGift() {
     	$sql = "SELECT count(`id`) AS count FROM `gift`";
     	$res = $this->connect()->prepare($sql);
@@ -284,11 +296,11 @@ class DatabaseAPI {
     public function getGiftQuota($date) {
     	$sumQuota = $this->checkGiftQuota($date, 1);
     	return $sumQuota;
-    	// $nowQuota = $this->getGift();
-    	// if($sumQuota == 0) {
-    	// 	return 0;
-    	// }
-    	// return $sumQuota - $nowQuota;
+    }
+
+    public function getTdGiftQuota() {
+    	$sumQuota = $this->checkTdGiftQuota($date, 1);
+    	return $sumQuota;
     }
 
     public function loadGiftCount($date) {

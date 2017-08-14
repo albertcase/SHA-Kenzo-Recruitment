@@ -29,7 +29,10 @@ class UserAPI extends Base {
             'issubmit' => $this->_db->checkSubmit($_user->uid),
             'isluckydraw' => $this->_db->loadLotteryByUid($_user->uid),
         );
+        //小样当天总库存（今日库存 + 昨日剩余库存）
         $data->quota = $this->_db->getGiftQuota(date('Y-m-d'));
+        //小样今日库存。
+        $data->tdQuota = $this->_db->getTdGiftQuota(date('Y-m-d'));
         return $data;
       } else {
         return (object) array('uid' => '0', 'openid' => '0');

@@ -2193,6 +2193,7 @@ $(document).ready(function(){
                     }
                     break;
                 default :
+                    Common.gotoPin(0);
                     Common.alertBox.add(json.msg);
             }
         });

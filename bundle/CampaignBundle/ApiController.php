@@ -233,7 +233,7 @@ class ApiController extends Controller {
 			$this->dataPrint($data);
 		}
 		//中奖率
-		$rand = mt_rand(1,100);
+		$rand = mt_rand(1,1000);
 		if ($rand==2) {
 			$databaseAPI->setLottery($user->uid, 1);
             $user->status['isluckydraw'] = 1;

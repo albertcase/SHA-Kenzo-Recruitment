@@ -211,12 +211,10 @@ class ApiController extends Controller {
 
     public function lotteryAction() {
     	global $user;
-
-        if(!$this->checkQuotaTime()) {
-            $data = array('status' => 5, 'msg'=> '活动未开始，！', 'userStatus' => $user->status);
-            $this->dataPrint($data);
-        }
-
+        // if(!$this->checkQuotaTime()) {
+        //     $data = array('status' => 5, 'msg'=> '活动未开始，！', 'userStatus' => $user->status);
+        //     $this->dataPrint($data);
+        // }
     	$databaseAPI = new \Lib\DatabaseAPI();
     	$date = date('Y-m-d');
     	//已中奖

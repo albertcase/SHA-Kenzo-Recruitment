@@ -173,7 +173,7 @@ class ApiController extends Controller {
         global $user;
         $DatabaseAPI = new \Lib\DatabaseAPI();
         if(!$this->checkQuotaTime()) {
-            $data = array('status' => 5, 'msg'=> '今日活动将于上午10点开启，请稍后再来哦！', 'userStatus' => $user->status);
+            $data = array('status' => 5, 'msg'=> '今日活动还未开启，请稍后！', 'userStatus' => $user->status);
             $this->dataPrint($data);
         }
         $checknew = $DatabaseAPI->checkOpenid($user->openid);
@@ -290,7 +290,7 @@ class ApiController extends Controller {
    // 每天十点放库存
    private function checkQuotaTime() {
         $time = date("H");
-        if($time >= 10) {
+        if($time >= 23) {
             return true;
         } else {
             return false;

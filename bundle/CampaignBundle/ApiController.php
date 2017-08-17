@@ -233,8 +233,9 @@ class ApiController extends Controller {
 			$this->dataPrint($data);
 		}
 		//中奖率
-		$rand = mt_rand(1,1000);
-		if ($rand==2) {
+        $rands = explode('/', PROBABILITY);
+		$rand = mt_rand(1, $rands['0']);
+		if ($rand <= $rands['1']) {
 			$databaseAPI->setLottery($user->uid, 1);
             $user->status['isluckydraw'] = 1;
             $data = array('status' => 1, 'msg'=> '恭喜中奖', 'userStatus' => $user->status);
@@ -290,7 +291,7 @@ class ApiController extends Controller {
    // 每天十点放库存
    private function checkQuotaTime() {
         $time = date("H");
-        if($time >= 23) {
+        if($time >= OPEN_TIME) {
             return true;
         } else {
             return false;

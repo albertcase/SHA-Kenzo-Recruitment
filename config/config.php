@@ -59,9 +59,5 @@ define("WECHAT_TOKEN_PREFIX", 'wechat:token:');
 
 define("GIFT_QUOTA", '6');
 
-
-
-
-
-
-
+define("OPEN_TIME", '23');
+define("PROBABILITY", '1/1000');
